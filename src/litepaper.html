@@ -134,13 +134,12 @@
             <div class="container">
                 <div class="row justify-content-center mb-5 mb-lg-6">
                     <div class="col-12 col-md-8 text-center">
-                        <h1 class="display-3 mb-4">Tokenomics</h1>
+                        <h1 class="display-3 mb-4">Token Info & Tokenomics</h1>
                         <p class="lead">Cyberfly platform users need to hold some specified amount of CFLY tokens to use cyberfly IoT platform.</p>
                         </div>
                 </div>
                 <div class="row">
                   <div class="table-responsive">
-            <div>
                 <table class="table align-items-center">
                     <thead class="thead-light">
                         <tr>
@@ -168,8 +167,47 @@
                       </table>
                     </div>
                     <div>
-                  </div>
                 </div>
+              </div>
+              <div class="row justify-content-center mb-5 mb-lg-6">
+                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = ["Team", "Partnerships", "Platform Development & reserve", "Liquidity", "IDO"];
+var yValues = [15, 10, 15, 20, 40];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Tokenomics"
+    },
+    tooltips: {
+  callbacks: {
+    label: function(tooltipItem, data) {
+      return data['labels'][tooltipItem['index']] + ': ' + data['datasets'][0]['data'][tooltipItem['index']] + '%';
+    }
+  }
+}
+  }
+});
+</script>
+              </div>
             </div>
         </section>
 
