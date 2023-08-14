@@ -176,3 +176,7 @@ section.information .info-1 {
 section.roadmap h2 { 
     color: var(--white);
 }
+
+.navbar-toggler-icon {
+color: #FFFFFF;
+}
