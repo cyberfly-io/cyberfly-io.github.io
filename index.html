@@ -406,11 +406,14 @@ This architecture promotes reliability by preventing system-wide failures and re
           <div class="col-md-6">
             <div class="legend">
               <ul class="list-group">
-                <li class="list-group-item" style="background-color: #f00;">Team - 15%</li>
-                <li class="list-group-item" style="background-color: #0f0;">Partnership - 10%</li>
-                <li class="list-group-item" style="background-color: #00f;">Platform Development &amp; Reserve - 15%</li>
-                <li class="list-group-item" style="background-color: #ff0;">Liquidity - 20%</li>
-                <li class="list-group-item" style="background-color: #f90;">IDO - 40%</li>
+                <li class="list-group-item" style="background-color: #990000;">Team - 14%</li>
+                <li class="list-group-item" style="background-color: #660066;">Airdrop - 1%</li>
+                <li class="list-group-item" style="background-color: #009900;">Partnership - 10%</li>
+                <li class="list-group-item" style="background-color: #696971;">Platform Development &amp; Reserve - 15%</li>
+                <li class="list-group-item" style="background-color: #999900;">Liquidity - 20%</li>
+                <li class="list-group-item" style="background-color: #cc0000;">Initial Burn - 10%</li>
+                <li class="list-group-item" style="background-color: #336699;">Node Reward - 30%</li>
+                
               </ul>
             </div>
           </div>
@@ -470,35 +473,35 @@ This architecture promotes reliability by preventing system-wide failures and re
 <script>
     // Data and Configuration
     const data = {
-      labels: ["Team", "Partnership", "Platform Development & Reserve", "Liquidity", "IDO"],
-      datasets: [{
-        data: [15, 10, 15, 20, 40],
-        backgroundColor: ["#990000", "#009900", "#000099", "#999900", "#994c00"]
-      }]
-    };
+  labels: ["Team", "Airdrop", "Partnership", "Platform Development & Reserve", "Liquidity", "Initial Burn", "Node Reward"],
+  datasets: [{
+    data: [14, 1, 10, 15, 20, 10, 30],
+    backgroundColor: ["#990000", "#660066", "#009900", "#696971", "#999900", "#cc0000", "#336699"]
+  }]
+};
 
-    const config = {
-      type: 'pie',
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          position: 'bottom'
-        },
-        tooltips: {
-          callbacks: {
-            label: function (tooltipItem, data) {
-              const dataset = data.datasets[tooltipItem.datasetIndex];
-              const total = dataset.data.reduce((accumulator, currentValue) => accumulator + currentValue);
-              const currentValue = dataset.data[tooltipItem.index];
-              const percentage = ((currentValue / total) * 100).toFixed(2);
-              return `${data.labels[tooltipItem.index]}: ${percentage}%`;
-            }
-          }
+const config = {
+  type: 'pie',
+  data: data,
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    legend: {
+      position: 'bottom'
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const total = dataset.data.reduce((accumulator, currentValue) => accumulator + currentValue);
+          const currentValue = dataset.data[tooltipItem.index];
+          const percentage = ((currentValue / total) * 100).toFixed(2);
+          return `${data.labels[tooltipItem.index]}: ${percentage}%`;
         }
       }
-    };
+    }
+  }
+};
 
     // Create chart
     const tokenomicsChart = new Chart(document.getElementById('tokenomicsChart'), config);
