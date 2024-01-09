@@ -402,6 +402,7 @@ This architecture promotes reliability by preventing system-wide failures and re
                         <th scope="col">Contract Code</th>
                         <th scope="col">Token Symbol</th>
                         <th scope="col">Total Supply</th>
+                        <th scope="col">Circulating Supply</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -410,6 +411,7 @@ This architecture promotes reliability by preventing system-wide failures and re
                         <td style="color: white;">free.cyberfly_token</td>
                         <td style="color: white;">CFLY</td>
                         <td style="color: white;">100,000,000</td>
+                        <td style="color: white;" id="csupply"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -483,6 +485,30 @@ This architecture promotes reliability by preventing system-wide failures and re
       
 </section>
 
+
+<script>
+
+(async () => {
+  const rawResponse = await fetch('https://api.chainweb.com/chainweb/0.0/mainnet01/chain/2/pact/api/v1/local', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+  "cmd": "{\"signers\":[],\"meta\":{\"creationTime\":1704812213,\"ttl\":20556,\"chainId\":\"2\",\"gasPrice\":2.46754e-6,\"gasLimit\":70000,\"sender\":\"k:8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\"},\"nonce\":\"CW:2024-01-09 14:57:07.649 UTC\",\"networkId\":\"mainnet01\",\"payload\":{\"exec\":{\"code\":\"(free.cyberfly_token.get-balance \\\"k:820b3bc70df57e9dc72636ad15f2530c111ea94d6e969e1342aef0920af8c2e2\\\")\",\"data\":{}}}}",
+  "hash": "WgKNQZ8myoOb4V25XS5aUGeEtFQ6JY584jsTiHiUzew",
+  "sigs": [
+    
+  ]
+})
+});
+  const content = await rawResponse.json();
+
+  document.getElementById("csupply").innerHTML = 100000000 - content.result.data.decimal
+})();
+
+</script>
 
 <script>
     // Data and Configuration
