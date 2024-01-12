@@ -504,8 +504,8 @@ This architecture promotes reliability by preventing system-wide failures and re
 })
 });
   const content = await rawResponse.json();
-
-  document.getElementById("csupply").innerHTML = 100000000 - content.result.data.decimal
+  const burned = 10000000
+  document.getElementById("csupply").innerHTML = 100000000 - content.result.data.decimal + burned
 })();
 
 </script>
