@@ -402,7 +402,7 @@ This architecture promotes reliability by preventing system-wide failures and re
                         <th scope="col">Contract Code</th>
                         <th scope="col">Token Symbol</th>
                         <th scope="col">Total Supply</th>
-                        <th scope="col">Circulating Supply</th>
+                         <th scope="col">Circulating Supply</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -429,7 +429,6 @@ This architecture promotes reliability by preventing system-wide failures and re
                 <li class="list-group-item" style="background-color: #6666ff;">Liquidity - 20%</li>
                 <li class="list-group-item" style="background-color: #33ffff;">Initial Burn - 10%</li>
                 <li class="list-group-item" style="background-color: #cc9966;">Node Reward - 30%</li>
-                
               </ul>
             </div>
           </div>
@@ -504,8 +503,8 @@ This architecture promotes reliability by preventing system-wide failures and re
 })
 });
   const content = await rawResponse.json();
-  const burned = 10000000
-  document.getElementById("csupply").innerHTML = 100000000 - content.result.data.decimal + burned
+  console.log(content.result)
+  document.getElementById("csupply").innerHTML = 90000000 - content.result.data 
 })();
 
 </script>
