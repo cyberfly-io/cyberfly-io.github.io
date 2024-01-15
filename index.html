@@ -1,550 +1,801 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cyberfly IO</title>
-    <link rel="shortcut icon" href="assets/img/cfly-logo-twitter.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet"  href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cyberfly.io">
     <meta property="og:title" content="Cyberfly IO">
     <meta property="og:description" content="Web 3.0 scalable IoT platform">
-    <meta property="og:image" content="https://cyberfly.io/assets/img/website.png">
+    <meta property="og:image" content="https://cyberfly.io/assets/images/website-thumbnail.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1362">
     <meta property="og:image:height" content="691">
     <meta name="twitter:card" content="summary_large_image">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-91MB2LZ60T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <!-- fav icon -->
+        <link rel="icon" href="assets/images/icons/cyberfly-logo-updated.png">
+        
+        <!-- bootstarp -->
+        <link rel="stylesheet" href="css/vendors/bootstrap.min.css">
+        
+        <!-- animate.css file -->
+        <link rel="stylesheet" href="css/vendors/animate.css">
+        
+        <!-- Swiper -->
+        <link rel="stylesheet" href="css/vendors/swiper-bundle.min.css">
+        
+        <!-- flaticon -->
+        <link rel="stylesheet" href="css/vendors/flaticon/flaticon.css">
+        
+        <!-- fontAwesome -->
+        <link rel="stylesheet" href="css/vendors/all.min.css">
+        
+        <!-- bootstrap icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">        
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="css/vendors/jquery.fancybox.min.css">
+        
+        <!-- fonts site preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <!-- fonts site preconnect -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <!-- Font Family -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&amp;display=swap">
+        
+        <!-- main-LTR -->
+        <link rel="stylesheet" href="css/main-LTR.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <title>Cyberfly IO</title>
 
-  gtag('config', 'G-91MB2LZ60T');
-</script>
-</head> 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a class="navbar-brand" href="#">
-                <img src="assets/img/brand-logo.png" alt="brand"  >
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" ></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav" >
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://docs.cyberfly.io/">Whitepaper</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tokenomics">Tokenomics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#roadmap">Roadmap</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/cyberfly-io/issue-tracker/issues">Bugs?</a>
-                    </li>
-                </ul>
-                <a href="https://dev.cyberfly.io" class="btn btn-outline-secondary shadow-sm d-sm d-block">Try Testnet</a>
-            </div>
-        </div>
-    </nav>
-    
+  </head>
+  <body class=" dark-theme ">
+    <!--Start Page Header-->
+    <header class=" page-header   header-basic" id="page-header">
+     
+      <div class="container">
+        <nav class="menu-navbar">
+          <div class="header-logo"><a class="logo-link" href="#">
+            <img class="logo-img light-logo" loading="lazy" src="assets/images/icons/cyberfly-logo-updated.png" alt="logo" width="50" height="50"/>
+            <img width="50" height="50" class="logo-img  dark-logo" loading="lazy" src="assets/images/icons/cyberfly-logo-updated.png" alt="logo"/></a>
+            <h3 class="company-name">Cyberfly IO</h3>
+          </div>
+          <div class="links menu-wrapper ">
+            <ul class="list-js links-list">
+              <li class="menu-item has-sub-menu"><a class="menu-link   active" href="#home">home  </i></a>
   
-      <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 " style="background-image: url('assets/img/bg.png');background-repeat: no-repeat;background-size: 600px 250px;">
-                 <div class="text">
-                   A Decentralised <span style="color: red;">Web 3.0</span> IoT Platform
-                   
-                 </div>
-                 <p style="margin-top: 25px; font-size: 26px; color:rgb(16, 16, 185)">Connecting Everything</p>
-                 <div class="buttons">
-                    <a href="https://dev.cyberfly.io" class="btn btn-primary">Try Testnet</a>
-                    <a href="https://swap.ecko.finance/?token0=KDA&token1=CFLY" class="btn btn-primary position-relative">Buy CFLY 
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            New
-                            <span class="visually-hidden">unread messages</span>
-                          </span>
-                        
-                    </a>
-                 </div>
-                </div>
-                <div class="col-md-6 ">
-                    <img src="assets/img/main.svg" alt="main-image" class="w-100">
-                    </div>
-            </div>
-        </div>
-      </section>
-
-      <section class="setup">
-        <div class="container">
-             <div class="text-header text-center">
-                <h3>Meet our truly decentralized IoT platform
-                </h3>
-                <p>Cyberfly is the scalable decentralized internet of things platform. Connect your device with blockchain and store sensor data, Our system evaluates data and delivers them to another device based on business rules you define.</p>
-             </div>
-             <div class="items text-center">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="icons">
-                            <img src="assets/img/3.svg" alt="">
-                        </div>
-                        <div class="desc">
-                            <h5>Device Management</h5>
-                            <p>maintaining connected devices in a network efficiently. </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icons">
-                            <img src="assets/img/4.svg" width="330px"  height="330px">
-                        </div>
-                        <div class="desc">
-                            <h5>Device Monitoring</h5>
-                            <p>observing and tracking the performance, status, and data of connected devices in real-time</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icons">
-                            <img src="assets/img/5.svg" width="330px"  height="330px" alt="">
-                        </div>
-                        <div class="desc">
-                            <h5>Device Controlling</h5>
-                            <p>directing connected devices to perform specific actions or tasks. </p>
-                        </div>
-                    </div>
-                </div>
-             </div>
-        </div>
-      </section>
-
-      <section class="information">
-        <div class="container">
-            <div class="row info-1">
-                <div class="col-md-6">
-                    <div class="text-information">
-                        <h5>Why Cyberfly? </h5>
-                        <p>
-"Cyberfly io" stands out as a decentralized IoT platform due to its choice of decentralization. This approach has been embraced for several reasons. First, it significantly bolsters security by eliminating single points of failure and making the system more resilient against attacks.
-
-Moreover, decentralization enables seamless scalability as the network grows, ensuring efficient handling of a larger number of devices. It also fosters interoperability, allowing various devices and technologies to communicate effectively within the platform. 
-This architecture promotes reliability by preventing system-wide failures and reduces latency by facilitating direct device-to-device communication.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <img src="assets/img/2.svg" class="w-100" alt="">
-                </div>
-            </div>
-        </div>
-      </section>
-
-<section class="roadmap" id="roadmap">
-    <div class="container py-4">
-        <h2 class="font-weight-light text-center py-3">Roadmap</h2>
-    
-        <!-- timeline item 1 -->
-        <div class="row">
-            <!-- timeline item 1 left dot -->
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-success border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col border-end order">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <!-- timeline item 1 event content -->
-            <div class="col py-2">
-                <div class="card border-success shadow">
-                    <div class="card-body">
-                        <div class="float-end text-success">2022 Q3</div>
-                        <h4 class="card-title text-success">Python Client and Platform Testnet</h4>
-                        <p class="card-text">Python client for python based hardware devices to interact with other devices, blockchain and dashboard</p>
-                        <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-target="#t2_details" data-bs-toggle="collapse">Show Details ▼</button>
-                        <div class="collapse border" id="t2_details">
-                            <div class="p-2 text-monospace">
-                                <div>https://github.com/cyberfly-io/data-shipper <a href="https://github.com/cyberfly-io/data-shipper">Visit</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-        <!-- timeline item 2 -->
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-success">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-success">2022 Q4</div>
-                        <h4 class="card-title text-success">Dynamic Dashboard</h4>
-                        <p class="card-text">Users can easily create and configure dashboard using various static and control widgets which will be used to control and monitor devices</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-muted">2023 Q4</div>
-                        <h4 class="card-title">Testnet Airdrop</h4>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-        <!-- timeline item 3 -->
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-success">2024 Q1</div>
-                        <h4 class="card-title text-success">Dex Listing</h4>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-muted">2024 Q2</div>
-                        <h4 class="card-title">Data Storage Node</h4>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-        <!-- timeline item 4 -->
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-muted">2024 Q2</div>
-                        <h4 class="card-title">Platform Mainnet Beta</h4>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-muted">2024 Q3</div>
-                        <h4 class="card-title">Platform Mainnet</h4>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-muted">2024 Q1</div>
-                        <h4 class="card-title">Micropython Firmware</h4>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-        <div class="row">
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col border-end">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <div class="col py-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end text-muted">2024 Q3</div>
-                        <h4 class="card-title">Mobile App</h4>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-      
-</section>
-
-<section class="tokenomics" id="tokenomics">
-    <div class="container mt-5">
-        <h2 class="font-weight-light text-center py-3" style="color: white;">Tokenomics</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table">
-                    <thead class="thead-dark">
-                      <tr style="color: white;">
-                        <th scope="col">Token Name</th>
-                        <th scope="col">Contract Code</th>
-                        <th scope="col">Token Symbol</th>
-                        <th scope="col">Total Supply</th>
-                         <th scope="col">Circulating Supply</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style="color: white;">Cyberfly token</td>
-                        <td style="color: white;">free.cyberfly_token</td>
-                        <td style="color: white;">CFLY</td>
-                        <td style="color: white;">100,000,000</td>
-                        <td style="color: white;" id="csupply"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-          <div class="col-md-6">
-            <canvas id="tokenomicsChart" width="400" height="400"></canvas>
-          </div>
-          <div class="col-md-6">
-            <div class="legend">
-              <ul class="list-group">
-                <li class="list-group-item" style="background-color: #66ffff;">Team - 14%</li>
-                <li class="list-group-item" style="background-color: #99ff99;">Airdrop - 1%</li>
-                <li class="list-group-item" style="background-color: #ff66ff;">Partnership - 10%</li>
-                <li class="list-group-item" style="background-color: #96968e;">Platform Development &amp; Reserve - 15%</li>
-                <li class="list-group-item" style="background-color: #6666ff;">Liquidity - 20%</li>
-                <li class="list-group-item" style="background-color: #33ffff;">Initial Burn - 10%</li>
-                <li class="list-group-item" style="background-color: #cc9966;">Node Reward - 30%</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    </div>
-</section>
-
-<section class="footer" id="footer">
-    <div class="container mt-5">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="text-white">Touch With Us</h3>
-            <hr style="background-color: #fff;">
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="assets/img/brand-logo.png" alt="">
-            </div>
-          <div class="col-md-6">
-            <ul class="list-unstyled d-flex justify-content-center">
-              <li class="mx-3">
-                <a href="https://cyberfly-io.medium.com/" class="text-white">
-                  <i class="fas fa-blog fa-2x"></i>
-                </a>
               </li>
-              <li class="mx-3">
-                <a href="https://t.me/cyberflyio" class="text-white">
-                  <i class="fab fa-telegram fa-2x"></i>
-                </a>
+              <li class="menu-item has-sub-menu"><a class="menu-link  " href="#features">Features</a>
               </li>
-              <li class="mx-3">
-                <a href="https://twitter.com/cyberfly_io" class="text-white">
-                  <i class="fab fa-twitter fa-2x"></i>
-                </a>
+              <li class="menu-item has-sub-menu"><a class="menu-link" id="token-menu" href="#0">Token</i></a>
+                <ul class="sub-menu ">
+                  <li class="menu-item sub-menu-item"><a class="menu-link sub-menu-link  " href="#token">Token Info</a></li>
+                  <li class="menu-item sub-menu-item"><a class="menu-link sub-menu-link  " href="#tokenomics">Tokenomics</a></li>
+              
+                </ul>
               </li>
-              <li class="mx-3">
-                <a href="mailto:info@cyberfly.io" class="text-white">
-                  <i class="far fa-envelope fa-2x"></i>
-                </a>
+              <li class="menu-item has-sub-menu"><a class="menu-link  " href="#roadmap">Road Map</i></a>
+              </li>        
               </li>
+              <li class="menu-item"><a class="menu-link  " href="#blog">blog </a></li>
+              <li class="menu-item"><a class="menu-link  " href="https://docs.cyberfly.io/">WhitePaper</a></li>
+
             </ul>
           </div>
+          <div class="controls-box">
+            <!--Menu Toggler button-->
+            <div class="control  menu-toggler" ><span></span><span></span><span></span></div>
+            <!--Dark/Light mode button-->
+            <div class="mode-switcher ">
+              <div class="switch-inner go-light " title="Switch To Light Mode "><i class="bi bi-sun icon "></i></div>
+              <div class="switch-inner go-dark" title="Switch To Dark Mode "><i class="bi bi-moon icon "></i></div>
+            </div>
+            <!--mini shoping cart-->
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--End Page Header-->
+    <!-- Start  Page hero-->
+    <section class="page-hero  d-flex align-items-center  tringle-bg" id="home">
+      <div class="overlay-photo-image-bg"  data-bg-img="assets/images/sections-bg-images/pattern-bg-1.jpg" data-bg-opacity=".2"></div>
+      <div class="particles-js  dots" id="particles-js"></div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-6 ">
+            <!--Start of .hero-text-area-->
+            <div class="hero-text-area   ">
+              <div class="row">
+                <div class="col-12   ">
+                  <div class="hero-social-icons mb-3 ">
+                    <div class="sc-wrapper dir-row sc-flat">
+                      <ul class="sc-list">
+                        <li class="sc-item " title="telegram"><a class="sc-link" href="https://t.me/cyberflyio" title="social media icon"><i class="fab fa-telegram sc-icon"></i></a></li>
+                        <li class="sc-item " title="twitter"><a class="sc-link" href="https://twitter.com/cyberfly_io" title="social media icon"><i class="fab fa-twitter sc-icon"></i></a></li>
+                        <li class="sc-item " title="github"><a class="sc-link" href="https://github.com/cyberfly-io" title="social media icon"><i class="fab fa-github sc-icon"></i></a></li>
+                        <li class="sc-item " title="medium"><a class="sc-link" href="https://cyberfly-io.medium.com/" title="social media icon"><i class="fa fa-blog sc-icon"></i></a></li>
+                        <li class="sc-item " title="discord"><a class="sc-link" href="https://discord.gg/768d9Mjxyp" title="social media icon"><i class="fab fa-discord sc-icon"></i></a></li>
+
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="pre-title ">WEB 3.0</div>
+                  <h1 class="hero-title  ">A Decentralised scalable IoT  <span class="featured-text">Platform <svg xmlns="http://www.w3.org/2000/svg" class="wavey-underline"  width="1104.664" height="100.188" viewBox="0 0 1104.664 100.188">  <path id="Path_208" data-name="Path 208" d="M1395.385,1568.169a21.357,21.357,0,0,0-7.563,1.667c-5.893,2.122-10,6.516-13.9,10.646-9.685,10.253-18.565,21-27.757,31.568a74.7,74.7,0,0,1-10.36,9.6,40.274,40.274,0,0,1-4.749,2.291c-.58.154-1.151.288-1.731.406l-.07-.018c-.25-.121-.495-.247-.737-.381a69.246,69.246,0,0,1-9.219-8.363c-3.508-3.913-6.856-7.927-10.125-11.993a84.778,84.778,0,0,0-9.754-10.9,33.9,33.9,0,0,0-4.734-3.159,29.755,29.755,0,0,0-3.86-1.468,8.287,8.287,0,0,0-2.416-.514,25.223,25.223,0,0,0-8.575.116,37.238,37.238,0,0,0-6.61,2.031,55.378,55.378,0,0,0-9.6,5.049c-3.359,2.173-6.689,4.371-9.92,6.667-4.873,3.468-9.73,6.936-14.7,10.3a75.464,75.464,0,0,1-10.418,5.482c-.9.256-1.8.477-2.723.657h-.017q-.244-.123-.486-.252a123.025,123.025,0,0,1-14.522-13.025c-2.21-2.214-4.43-4.419-6.738-6.559a56.755,56.755,0,0,0-6.2-5.1,26.416,26.416,0,0,0-8.359-4.113,24.5,24.5,0,0,0-7.131-.829,24.16,24.16,0,0,0-5.9.953,45.529,45.529,0,0,0-4.43,1.659,25.049,25.049,0,0,0-3.88,2.388,43.866,43.866,0,0,0-7.121,6.052c-2.916,2.919-5.559,6.053-8.162,9.179-4.706,5.669-8.674,11.735-13.477,17.349a40.793,40.793,0,0,1-3.312,3.018c-1.77-.869-3.456-1.838-5.139-2.847-2.985-2.082-5.832-4.252-8.629-6.526-3.388-2.745-6.551-5.7-9.714-8.631q-4.449-4.13-8.909-8.259c-1.375-1.268-2.779-2.529-4.242-3.723-3.7-3.034-7.554-6.052-12.161-8.075-1.444-.531-2.887-1.037-4.341-1.534-.4-.091-.805-.191-1.208-.29q-2.3-.312-4.607-.539a24.017,24.017,0,0,0-7.9,1.153,22.473,22.473,0,0,0-4.194,1.633,32.6,32.6,0,0,0-4.823,3.142,25.689,25.689,0,0,0-3.968,3.7,143.436,143.436,0,0,0-9.822,11.674c-2.524,3.4-4.961,6.84-7.4,10.281-2.548,3.581-5.078,7.193-7.894,10.631l-.04-.024c-7.131-4.818-13.964-9.976-20.737-15.134-7.936-6.035-15.519-12.5-24.183-17.809a56.468,56.468,0,0,0-7.219-3.764,57.227,57.227,0,0,0-6.3-2.181,33.858,33.858,0,0,0-6.424-.846c-1.561.083-3.1.241-4.645.465a27.682,27.682,0,0,0-5.648,1.749,56.414,56.414,0,0,0-9.066,5.332,85.607,85.607,0,0,0-10.647,8.746c-7.2,6.686-13.456,14.117-19.865,21.341-1.1,1.186-2.207,2.358-3.38,3.482-.861-.86-1.69-1.744-2.512-2.624-5.094-5.73-9.878-11.655-15.025-17.348-1.866-2.065-3.753-4.105-5.688-6.111a54.566,54.566,0,0,0-4.606-4.17,26.641,26.641,0,0,0-7.464-4.362,19.329,19.329,0,0,0-3.969-1.268,23.247,23.247,0,0,0-5.412-.448,27.049,27.049,0,0,0-9.252,2.189,64.6,64.6,0,0,0-6.807,3.1,188.563,188.563,0,0,0-24.212,15.654c-7.265,5.4-14.36,11-21.938,16.1a58.665,58.665,0,0,1-8.325,4.456c-.832.234-1.648.426-2.5.589-.122,0-.244,0-.367,0l-.144-.033c-.107-.051-.212-.1-.317-.156a41.819,41.819,0,0,1-3.947-3.516,93.708,93.708,0,0,1-5.968-8.2c-1.867-2.852-3.585-5.779-5.432-8.639-3.28-5.091-6.748-10.223-11.767-14.261a20.525,20.525,0,0,0-7.534-3.789,16.866,16.866,0,0,0-4.292-.655,33.2,33.2,0,0,0-5.363.456c-1.316.381-2.612.821-3.87,1.318a27.008,27.008,0,0,0-3.428,1.816c-1.561.954-3.045,2-4.547,3.018a171.305,171.305,0,0,0-17.327,13.979c-5.795,5.153-11.268,10.63-17.718,15.214a48.483,48.483,0,0,1-4.709,2.516c-.392.114-.784.217-1.182.313-5.283-3.993-9.674-8.814-14.118-13.45-4.312-4.477-8.594-9-13.29-13.2-5.284-4.718-11.05-9.369-18.318-11.765a28.559,28.559,0,0,0-7.475-1.194c-1.424.124-2.838.306-4.233.539-1.307.414-2.6.862-3.879,1.343a33.49,33.49,0,0,0-5.452,3.607,42.418,42.418,0,0,0-4.754,4.833c-3.808,4.195-7.459,8.482-11.241,12.69-2.722,2.866-5.442,5.741-8.334,8.495a110.3,110.3,0,0,1-12.253,10.513c-.676.4-1.355.765-2.053,1.107-3.421-2.787-6.435-5.972-9.5-9.025s-6.12-6.1-9.273-9.071c-4.98-4.685-10.205-9.336-16.334-12.951a29.591,29.591,0,0,0-7.347-3.325,14.36,14.36,0,0,0-4.086-.688c-.491-.05-.992-.091-1.493-.141a36.093,36.093,0,0,0-3.782.489c-1.158.39-2.3.8-3.417,1.26a11.837,11.837,0,0,0-3.684,2.786,38.113,38.113,0,0,0-4.145,5.257,156.759,156.759,0,0,0-12.012,22.046c-1.651,3.549-3.016,7.172-4.371,10.8-.639,1.733-1.16,3.5-1.876,5.207-1.062,2.545-2.1,5.082-3.271,7.595a1.894,1.894,0,0,0,1.1,2.28,2.668,2.668,0,0,0,3.261-.73c2.73-3.971,5.716-7.736,8.859-11.475,2.878-3.424,5.933-6.749,8.919-10.107,5.268-5.9,10.466-11.851,15.731-17.75.333.183.663.37.993.562,7.6,5.265,13.967,11.673,20.286,17.984,2.485,2.479,4.94,4.983,7.484,7.421,2.515,2.413,5.019,4.933,8.261,6.707a18.993,18.993,0,0,0,6.217,2.173,21.641,21.641,0,0,0,10.373-.9c7.366-2.421,12.926-7.346,18.426-11.964,3.006-2.529,5.727-5.365,8.5-8.093,5.2-5.118,10.08-10.457,14.958-15.8,1.527-1.616,3.039-3.23,4.73-4.709.706.36,1.393.741,2.075,1.144,7.925,5.608,14.364,12.627,20.846,19.375,3.2,3.325,6.424,6.625,9.822,9.808a45.086,45.086,0,0,0,7.966,6.128,11.269,11.269,0,0,0,2.259,1.135c.874.316,1.748.622,2.623.937a12.809,12.809,0,0,0,4.155.68,26.906,26.906,0,0,0,11.226-1.4c7.927-2.57,14.409-7.429,20.283-12.47,3.094-2.653,6.07-5.414,9.125-8.093a234.791,234.791,0,0,1,18.358-14.822c4.517,5.537,7.877,11.693,11.747,17.551a73.925,73.925,0,0,0,7.5,9.568,51.738,51.738,0,0,0,4.686,4.46,29.5,29.5,0,0,0,3.427,2.363,24.359,24.359,0,0,0,5.3,2.421c5.706,2.032,12.306,1.617,18.023-.165,8.035-2.5,14.615-7.147,21.118-11.707,3.084-2.164,6.079-4.42,9.075-6.667,5.769-4.312,11.51-8.631,17.485-12.724a113.949,113.949,0,0,1,16.474-8.936,64.641,64.641,0,0,1,8.45,7.941c4.85,5.48,9.537,11.053,14.432,16.5a87.007,87.007,0,0,0,9.341,9.427,26.069,26.069,0,0,0,3.055,2.073,10.084,10.084,0,0,0,3.536,1.467,13.307,13.307,0,0,0,4.862.913,29.729,29.729,0,0,0,5.353-.639c3.418-.746,6.267-2.795,8.919-4.618a39.946,39.946,0,0,0,5.019-4.428c5.363-5.2,10.038-10.894,15.274-16.185a121.467,121.467,0,0,1,16.741-14.571c.87-.521,1.749-1.014,2.662-1.475l.276.073a51.763,51.763,0,0,1,6.551,3.257c6.848,4.661,13.244,9.761,19.747,14.756,7.259,5.572,14.665,11.069,22.317,16.243a57.253,57.253,0,0,0,8.819,5.281,20.68,20.68,0,0,0,9.312,1.883,19.363,19.363,0,0,0,7.406-1.7,42.414,42.414,0,0,0,5.382-3.3,20.763,20.763,0,0,0,2.161-1.924c1.454-1.393,2.741-2.926,4.077-4.394,1.325-1.451,2.485-3.01,3.673-4.544,1.463-1.881,2.878-3.78,4.293-5.687,4.834-6.49,9.512-13.021,14.91-19.18.555-.552,1.122-1.089,1.708-1.61.1.057.209.115.313.173,6.282,4.5,11.65,9.908,17.2,15.02a163.615,163.615,0,0,0,18.485,15.231c2.269,1.55,4.6,3.027,6.945,4.486a47.181,47.181,0,0,0,6.3,3.283,27.077,27.077,0,0,0,11.138,2.255,24.392,24.392,0,0,0,9.577-2.23,41.8,41.8,0,0,0,7.868-4.934,53.288,53.288,0,0,0,7.15-7.2c1.327-1.509,2.614-3.052,3.841-4.618,4.5-5.763,8.879-11.569,13.724-17.12,1.206-1.237,2.419-2.456,3.718-3.613,2.214,1.819,4.255,3.788,6.308,5.75,2.367,2.255,4.656,4.56,7,6.824,2.219,2.139,4.468,4.286,6.884,6.277.757.621,1.523,1.243,2.279,1.865a55.074,55.074,0,0,0,6.394,4.32,20.453,20.453,0,0,0,4.43,1.774,14.3,14.3,0,0,0,3.242.912c4.007.87,8.064.415,12.061-.158a34.471,34.471,0,0,0,7.5-2.321,63.157,63.157,0,0,0,6.434-2.977,109.528,109.528,0,0,0,10.53-6.592c2.848-1.948,5.687-3.913,8.437-5.952,5.157-3.823,10.248-7.693,15.573-11.348,1.425-.856,2.851-1.677,4.356-2.4a46.694,46.694,0,0,1,3.826,3.609c5.82,6.463,11.621,12.927,17.91,19.072a76.822,76.822,0,0,0,7.387,6.351,26.97,26.97,0,0,0,8.683,4.552,25.388,25.388,0,0,0,11.629.556,46.95,46.95,0,0,0,8.094-2.454,37.83,37.83,0,0,0,8.408-4.561,81.5,81.5,0,0,0,8.349-6.807c3.378-3.018,6.335-6.434,9.36-9.7,2.8-3.017,5.569-6.052,8.369-9.07,3.034-3.266,6.07-6.534,9.164-9.759,1.748-1.807,3.5-3.615,5.264-5.406,1.345-1.375,2.7-2.738,4.142-4.033,1.959,2.939,3.523,6.068,5.287,9.091a102.254,102.254,0,0,0,7.357,11.152,73.1,73.1,0,0,0,9.45,9.916,54.363,54.363,0,0,0,4.38,3.4,37.472,37.472,0,0,0,6.885,4,27.526,27.526,0,0,0,6.9,1.948,28.637,28.637,0,0,0,4.765.4,38.314,38.314,0,0,0,6.521-.713,34.284,34.284,0,0,0,7.22-2.255,55.5,55.5,0,0,0,7.534-3.673c8.564-4.892,15.921-11.276,23.14-17.478,2.564-2.2,5.1-4.427,7.642-6.642,2.695-2.334,5.41-4.692,8.34-6.825.169.152.337.308.5.465,2.514,3,4.676,6.19,7,9.3,2.23,2.993,4.509,5.961,6.807,8.921,2.092,2.7,4.243,5.423,6.561,8a54.978,54.978,0,0,0,7.072,7.13,18.737,18.737,0,0,0,6.876,3.467,26.353,26.353,0,0,0,10.47.3,71.973,71.973,0,0,0,15.814-5.315c2.74-1.193,5.363-2.537,8.015-3.863,3.841-1.924,7.524-4.022,11.236-6.111,1.474-.829,2.859-1.774,4.273-2.661,2.22-1.394,4.538-2.737,6.66-4.246,1.7-1.2,3.388-2.421,5.077-3.631,2.614-1.874,4.922-3.972,7.368-6a5.547,5.547,0,0,0,1.149-7.545,7.359,7.359,0,0,0-4.411-2.869,9.332,9.332,0,0,0-5.687.63c-.386.141-.768.284-1.152.427-2.566.891-5.157,1.755-7.609,2.84-2.092.928-4.194,1.857-6.286,2.786-3.252,1.442-6.345,3.159-9.488,4.742-8.387,4.231-16.5,8.768-25.376,12.235-1.145.358-2.293.671-3.47.941q-.555-.505-1.08-1.033a179.832,179.832,0,0,1-11.553-16.28c-2.043-3.109-4.107-6.193-6.228-9.261a49.911,49.911,0,0,0-3.281-4.17c-.933-1.054-1.9-2.09-2.9-3.1a24.214,24.214,0,0,0-20.44-6.153c-7.593,1.269-13.319,6.128-18.564,10.613-2.878,2.463-5.648,5-8.447,7.529a194.132,194.132,0,0,1-19.2,15.756,54.882,54.882,0,0,1-7.621,3.938c-.888.246-1.764.449-2.673.624-.143,0-.286.006-.43.006-.308-.063-.612-.133-.916-.209-.712-.338-1.4-.7-2.069-1.094a58.392,58.392,0,0,1-7.122-6.2,70.261,70.261,0,0,1-7.978-11.366c-1.778-3.168-3.477-6.368-5.225-9.552a26.78,26.78,0,0,0-9.774-10.63,21.285,21.285,0,0,0-6.944-2.544,22.865,22.865,0,0,0-4.153-.379c-.164,0-.328,0-.493.005Zm-2.8,18.564a9.723,9.723,0,0,1,1.384.495q-.693-.246-1.384-.495Zm7.023.141q-.51.184-1.025.367.5-.2,1.025-.367Zm100.709,4.264-.2.022.2-.022Zm1.365.167.107.038-.107-.037Zm-.949.133,0,0-.126.044.124-.046Zm-216.174,15.218,0,0c-.139.017-.278.032-.416.047.137-.019.274-.036.411-.05Zm1.107.139c.114.04.227.082.338.127l-.348-.123.01,0Zm-.411.191q.348.219.68.459l-.691-.453.011-.006Zm-105.625,1.694q.443.139.868.31l-.868-.31Zm-100.207.6-.692.077c.228-.033.46-.059.692-.077Zm-1.295.444c.1.014.19.028.284.045l-.3-.033.014-.012Zm364.3.261c-.211.029-.422.053-.633.074l0,0,.629-.072Zm-.653.075h0l-.019,0,.021,0Zm-476.071,1-.841.1c.28-.046.56-.078.841-.1Zm1.352.005c.283.022.566.055.851.1l-.857-.1.006,0Zm-.67.1-1.043.37q.512-.21,1.043-.37Zm575.443.37.324.213-.011,0c-.106-.07-.211-.142-.313-.216Zm1.708.191c-.3.046-.6.08-.9.1h0l.9-.1Zm-673.33,2.85c.182.016.366.035.548.06q-.274-.029-.548-.06Zm-.8.117q.425.134.837.3c-.282-.1-.563-.2-.845-.3l.008,0Zm-222.3.606-.54.062c.179-.026.358-.047.54-.062Zm-2.374.542.014.007-.252.09c.078-.034.159-.066.238-.1Zm.988.215c.066.023.132.048.2.073l-.2-.071v0Zm105.433.264c.17.054.336.113.5.175l-.5-.175Zm6.246.662-.6.068h0q.294-.045.6-.067Zm466.3.208,1.233.438c-.419-.126-.83-.273-1.233-.438Zm-.147.514.648.075c-.216-.021-.432-.045-.648-.075Zm-581.111,1.426c-.421.467-.847.929-1.269,1.39l1.269-1.39Zm684.823,5.083c.547.06,1.1.12,1.641.182a10.366,10.366,0,0,1-1.641-.182Zm-409.006,2.022c-.58.631-1.156,1.264-1.737,1.894.578-.629,1.158-1.265,1.737-1.894Zm220.5,3.282.669.076c-.225-.019-.448-.045-.669-.076Zm-345.858,6.8c.269.18.541.358.812.537-.278-.169-.549-.347-.812-.537Zm-.03.506,1.242.439a12.42,12.42,0,0,1-1.242-.439Zm-97.6.092.5.056c-.167-.016-.334-.034-.5-.056Zm97.8.423c.287.03.574.063.861.1-.288-.024-.574-.055-.861-.1Zm-201.748,2.76.552.36-.016.008c-.182-.118-.361-.24-.536-.368Zm-1.5.564,1.3.145-.017.007-.01,0a9.2,9.2,0,0,1-1.275-.154Zm2.877.092c-.062.008-.125.014-.187.021h0l.189-.02Z" transform="translate(-504.796 -1565.664)" fill="none" stroke="#030303" stroke-width="5"/></svg>  </span><span class="design-element rounded-shape stripes"></span></h1>
+                </div>
+                <div class="col-10       ">
+                  <p class="hero-subtitle ">
+                    Unleashing the potential of a decentralized IoT platform goes beyond mere connectivity. 
+                    contributing to a symphony of intelligence that transcends traditional boundaries, fostering a truly connected and empowered ecosystem.
+                    
+                  </p>
+                </div>
+                <div class="col-12">
+                  <div class="cta-links-area "><a class=" btn-outline cta-link cta-link-primary " href="https://dev.cyberfly.io/">Try Testnet</a>
+                    
+                    <!--<div class="play-btn-row-dir "><a class="video-link" href="https://www.youtube.com/watch?v=QI4_dGvZ5yE&amp;ab_channel=JUtah" role="button" title="play" data-fancybox="data-fancybox">
+                        <div class="play-video-btn">
+                          <div class="play-btn"> <i class="fas fa-play icon"></i></div>
+                        </div></a></div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--End of .hero-text-area-->
+          </div>
+          <!--start of .image-area -->
+          <div class="col-12   mx-md-auto col-lg-6 text-center " data-tilt>  
+            <div class="hero-image-area mb-5 mb-lg-0">
+              <div class="hero-img-wraper  "><img class="img-fluid " src="assets/images/cbg2.svg" alt="" draggable="false" width="796" height="732"></div>
+            </div>
+          </div>
+          <!--End of .image-area -->
         </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p class="text-white">&copy; 2023 CyberFly Tech. All rights reserved.</p>
+      </div>
+    </section>
+    <!-- End  Page hero-->
+    <!-- Start  services Section-->
+    <section class="services services-boxed mega-section  " id="features">
+      <div class="container">
+        <div class="sec-heading  ">
+          <div class="content-area"><span class=" pre-title       wow fadeInUp " data-wow-delay=".2s">features</span>
+            <h2 class=" title    wow fadeInUp" data-wow-delay=".4s"><span class='hollow-text'>Platform</span> features</h2>
+            <p class="subtitle   wow fadeInUp " data-wow-delay=".6s">Cyberfly revolutionizes IoT with decentralized brilliance on Kadena blockchain. Seamlessly secure, user-friendly, and community-driven, 
+              it's reshaping the IoT landscape, ensuring a future where connectivity is not just smart but also secure and accessible to all.</p>
+          </div>
+          
+        </div>
+        <div class="row gx-4 gy-4 services-row ">  
+          <div class="col-12 col-md-6  col-lg-4 mx-auto  ">
+       
+            <div class="box service-box  wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".3s">
+              <div class="service-icon"><i class="bi bi-speedometer2 font-icon"></i></div><span class="service-num hollow-text">3    </span>
+              <div class="service-content">
+                <h3 class="service-title">User-Friendly Interface</h3>
+                <p class="service-text">Providing users with a visually intuitive customizable dashboard for easy management, monitoring, and control of IoT devices.
+                 </p>
+              </div>
+            </div>
+     
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto  ">
+          
+            <div class="box service-box  wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".4s">
+              <div class="service-icon"><i class="flaticon-wallet font-icon"></i></div><span class="service-num hollow-text">4    </span>
+              <div class="service-content">
+                <h3 class="service-title">Built in wallet</h3>
+                <p class="service-text">Allowing users to manage and transact CFLY and KDA with blockchain securely.</p>
+              </div>
+            </div>
+         
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto  ">
+          
+            <div class="box service-box  wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".5s">
+              <div class="service-icon"><i class="bi bi-cpu font-icon"></i></div><span class="service-num hollow-text">5    </span>
+              <div class="service-content">
+                <h3 class="service-title">Device Integration</h3>
+                <p class="service-text">Streamlining the integration of various IoT devices, such as Raspberry Pi,Esp32 etc. making it easy for users to add and manage their devices on the platform.</p>
+              </div>
+            </div>
+           
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto  ">
+           
+            <div class="box service-box  wow fadeInUp  reveal-start" data-wow-offset="0" data-wow-delay=".6s">
+              <div class="service-icon"><i class="bi bi-calculator font-icon"></i></div><span class="service-num hollow-text">6    </span>
+              <div class="service-content">
+                <h3 class="service-title">Rules and Automation</h3>
+                <p class="service-text">Empower your IoT experience with rules that speak your language. Customize triggers and let your devices respond intelligently. 
+                  It's not just automation; it's orchestration tailored to your needs.</p>
+              </div>
+            </div>
+       
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto  ">
+         
+            <div class="box service-box  wow fadeInUp  reveal-start" data-wow-offset="0" data-wow-delay=".6s">
+              <div class="service-icon"><i class="bi bi-alarm font-icon"></i></div><span class="service-num hollow-text">6    </span>
+              <div class="service-content">
+                <h3 class="service-title">Scheduling</h3>
+                <p class="service-text">Time is of the essence in the IoT world. Schedule actions, automate routines, and let your devices synchronize seamlessly. With precision scheduling, your IoT ecosystem becomes a symphony of efficiency, playing to the rhythm of your preferences.</p>
+              </div>
+            </div>
+          
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto  ">
+            <div class="box service-box  wow fadeInUp  reveal-start" data-wow-offset="0" data-wow-delay=".6s">
+              <div class="service-icon"><i class="bi bi-filetype-py font-icon"></i></div><span class="service-num hollow-text">6    </span>
+              <div class="service-content">
+                <h3 class="service-title">Micropython Firmware</h3>
+                <p class="service-text">Developing and optimizing a custom Micropython firmware for  microcontrollers like ESP32, ensuring smooth integration with the Cyberfly platform.</p>
+              </div>
+            </div>
+            <!-- End 6th service box-->
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto ">
+      
+            <div class="box service-box  wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".1s">
+              <div class="service-icon"><i class="flaticon-nanotechnology font-icon"></i></div><span class="service-num hollow-text">1    </span>
+              <div class="service-content">
+                <h3 class="service-title">Decentralization</h3>
+                <p class="service-text">Enabling direct communication between IoT devices without relying on a centralized server, promoting a decentralized network.</p>
+              </div>
+            </div>
+            <!-- End First service box   -->
+          </div>
+          <div class="col-12 col-md-6  col-lg-4 mx-auto ">
+            <!--Start Second service box-->
+            <div class="box service-box  wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".2s">
+              <div class="service-icon"><i class="flaticon-lock font-icon"></i></div><span class="service-num hollow-text">2    </span>
+              <div class="service-content">
+                <h3 class="service-title">Security</h3>
+                <p class="service-text">Leveraging the security features of the Kadena blockchain to protect against unauthorized access and tampering of device data.</p>
+              </div>
+            </div>
+            <!-- End Second service box-->
           </div>
         </div>
       </div>
-      
-      
-      
-</section>
+    </section>
+    <!-- End  services Section-->
+    <!-- Start  about Section-->
+    <section class="about mega-section" id="token">
+      <div class="container">
+        <!-- Start first about div-->
+        <div class="content-block  ">
+          <div class="row">
+            <div class="col-12 col-lg-6 d-flex align-items-center order-1 order-lg-0 about-col pad-end  wow fadeInUp " data-wow-delay="0.6s">
+              <div class="text-area ">
+                <div class="sec-heading  light-title ">
+                  <div class="content-area"><span class=" pre-title       wow fadeInUp " data-wow-delay=".2s">Token & Utility</span>
+                    <h2 class=" title    wow fadeInUp" data-wow-delay=".4s"><span class='hollow-text'>Cyberfly</span> Token  and <span class='featured-text'>  utilities. <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path></svg></span></h2>
+                  </div>
+                </div>
+                <p class=" about-text">Welcome to Cyberfly IO, where innovation meets utility! At the core of our cutting-edge platform is CFLY, the utility token that powers the entire Cyberfly ecosystem. 
+                  When users register a device, they expend CFLY tokens, with 50% of the spent tokens being permanently burned and the remaining 50% directed to the Treasury account, 
+                  crucial for sustaining our operations.
+                  Join us in revolutionizing the future of technology with Cyberfly IO and experience a seamless, token-powered journey into the digital frontier.</p>
+                <div class="info-items-list ">
+                  <div class="row ">
+                    <div class="col-9 col-xl-6">
+                      <div class="info-item"><i class="bi bi-cpu  info-icon"></i>
+                        <div class="info-content">
+                          <h5 class="info-title">Device Registration</h5>
+                          <p class="info-text">Users utilize CFLY tokens to register devices on the platform, ensuring seamless integration.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-9 col-xl-6">
+                      <div class="info-item"><i class="bi bi-fire info-icon"></i>
+                        <div class="info-content">
+                          <h5 class="info-title">Token Burning</h5>
+                          <p class="info-text">50% of spent CFLY tokens are permanently burned, contributing to a controlled token supply.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-9 col-xl-6">
+                      <div class="info-item"><i class="bi bi-0-circle info-icon"></i>
+                        <div class="info-content">
+                          <h5 class="info-title">Zero Fee First Device</h5>
+                          <p class="info-text">Users enjoy the benefit of a fee-free initial device registration, promoting accessibility.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-9 col-xl-6">
+                      <div class="info-item"><i class="flaticon-technical-support-1  info-icon"></i>
+                        <div class="info-content">
+                          <h5 class="info-title">Platform Fee for Additional Devices</h5>
+                          <p class="info-text">A reasonable platform fee applies only when users create more than one device, ensuring fair usage and sustainability.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 d-flex align-items-center order-0 order-lg-1 about-col  wow fadeInUp" data-wow-delay="0.2s">
+              <div class="img-area  " data-tilt>
+                <div class="image   "><img class="about-img img-fluid " loading="lazy" src="assets/images/main.svg" alt="Our vision"></div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        <!--End first about div-->
+      </div>
+    </section>
+    <!-- End  about Section-->
+    <!-- Start  stats Section-->
+    <section class="stats js-stats-counter mega-section" id="tokenomics">
+      <div class="overlay-photo-image-bg" data-bg-img="assets/images/sections-bg-images/pattern-bg-3.jpg" data-bg-opacity=".2"></div>
+      <div class="container">
+        <div class="stats-inner">
+          <div class="row ">
+            <!--Info One-->
+            <div class="text-area">
+              <div class="sec-heading  light-title ">
+                <div class="content-area"><span class=" pre-title       wow fadeInUp " data-wow-delay=".2s">Tokenomics</span>
+                  <h2 class=" title    wow fadeInUp" data-wow-delay=".4s"><span class='featured-text'>Token Info <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path></svg></span></h2>
+               
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center order-0 order-lg-1 about-col  wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="img-area  " data-tilt>
+                    <div class="image   "><img class="about-img img-fluid " loading="lazy" src="assets/images/cfly-token-bg.png" alt="Our vision"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-coin stat-icon"></i>
+                <p class="stat-num "><span>Cyberfly</span></p><span class="stat-desc">Token Name </span>
+              </div>
+            </div>
+            <!--Info Two-->
+            <div class="col-12 col-md-6 col-lg-4 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-cash-stack stat-icon"></i>
+                <p class="stat-num "><span>CFLY</span></p><span class="stat-desc">Token Ticker </span>              </div>
+            </div>
+            <!--Info Three-->
+            <div class="col-12 col-md-6 col-lg-4 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi  bi-file-code stat-icon"></i>
+                <p class="stat-num "><span style="font-size: 25px;">free.cyberfly_token</span></p><span class="stat-desc">Token Contract Address</span>              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-inner">
+          <div class="row ">
+            <!--Info One-->
+            <div class="text-area">
+              <div class="sec-heading  light-title ">
+                <div class="content-area"><span class=" pre-title       wow fadeInUp " data-wow-delay=".2s">Tokenomics</span>
+                  <h2 class=" title    wow fadeInUp" data-wow-delay=".4s"><span class='featured-text'>Token Allocations. <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path></svg></span></h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-microsoft-teams stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="14" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Team</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-droplet-half stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="1" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Community Airdrop</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-diagram-3 stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="30" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Node Reward</span>
+             
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-people-fill stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="10" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Marketing & Partnership</span>
+              </div>
+            </div>
+            <!--Info Two-->
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-wallet-fill stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="15" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Platform reserve</span>
+              </div>
+            </div>
+            <!--Info Three-->
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-cash-coin stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="20" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Liquidity</span>
+              </div>
+            </div>
+            <!--Info Four-->
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-fire stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="10" data-speed="3000" data-refresh-interval="50"></span><span class="sign">%</span></p><span class="stat-desc">Initial Burn</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-inner">
+          <div class="row ">
+            <!--Info One-->
+            <div class="text-area">
+              <div class="sec-heading  light-title ">
+                <div class="content-area"><span class=" pre-title       wow fadeInUp " data-wow-delay=".2s">Tokenomics</span>
+                  <h2 class=" title    wow fadeInUp" data-wow-delay=".4s"><span class='featured-text'>Token Supply <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path></svg></span></h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-cash stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="100" data-speed="3000" data-refresh-interval="50"></span><span class="sign">M CFLY</span></p><span class="stat-desc">Maximum Supply </span>
+              </div>
+            </div>
+            <!--Info Two-->
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-cash-stack stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="90" data-speed="3000" data-refresh-interval="50"></span><span class="sign">M CFLY</span></p><span class="stat-desc">Total Supply</span>
+              </div>
+            </div>
+            <!--Info Three-->
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-cash-coin stat-icon"></i>
+                <p class="stat-num"><span class="counter" data-from="0" data-to="5.99" data-speed="3000" data-refresh-interval="50"></span><span class="sign">M CFLY</span></p><span class="stat-desc">Circulating Supply</span>
+              </div>
+            </div>
+            <!--Info Four-->
+            <div class="col-12 col-md-6 col-lg-3 stat-box ">
+              <div class="stat-box-inner  " data-tilt="data-tilt"><i class="bi bi-fire stat-icon"></i>
+                <p class="stat-num "><span class="counter" data-from="0" data-to="10" data-speed="3000" data-refresh-interval="50"></span><span class="sign">M CFLY</span></p><span class="stat-desc">Total Burned Tokens</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End  stats Section-->
+    <!-- Start  roadmap Section-->
+    <section class="portfolio portfolio-blocks mega-section   " id="roadmap">
+      <div class="container">
+        <div class="sec-heading  ">
+          <div class="content-area">
+            <h2 class=" title    wow fadeInUp" data-wow-delay=".4s"><span class='featured-text'>Road Map. <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path></svg></span></h2>
+          </div>
+        </div>
+        <div class="container py-5">
+          <div class="main-timeline-4 text-white">
+            <div class="timeline-4 completed left-4">
+              <div class="card gradient-custom">
+                <div class="card-body p-4">
+                  <i class="bi bi-speedometer fa-2x mb-3"></i>
+                  <h4>Platform Testnet</h4>
+                  <p class="small text-white-50 mb-4">Q3 2022</p>
+                  <p>Embark on a risk-free journey through the Cyberfly IO Testnet, where you can explore CFLY tokens, test device registrations, and test transactions. 
+                    Witness the power of token burning and treasury interactions, all while enjoying fee-free device registration. 
+                    Your insights contribute to refining our platform before the main net release. 
+                    Join us in shaping the future of seamless and secure IoT integration.
+                  </p>
+                  <h6 class="badge bg-success text-black mb-0">Completed</h6>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-4 completed right-4">
+              <div class="card gradient-custom-4">
+                <div class="card-body p-4">
+                  <i class="bi bi-filetype-py fa-2x mb-3"></i>
+                  <h4>Python Client and Micropython Firmware
+                  </h4>
+                  <p class="small text-white-50 mb-4">Q3 2022</p>
+                  <p>
+                    Discover a double boost in your IoT journey with our latest releases! Our Python Client gets an upgrade, 
+                    featuring a user-friendly interface, and improved functionality for seamless interactions with the Cyberfly IO platform. Simultaneously, 
+                    our MicroPython Firmware release caters to resource-constrained IoT devices, ensuring optimized performance, stability, and extended compatibility. 
+                    Elevate your projects with these advancements, 
+                    unlocking new possibilities for efficient and reliable IoT integration.
+                  </p>
+                  <h6 class="badge bg-success text-black mb-0">Completed</h6>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-4 completed left-4">
+              <div class="card gradient-custom">
+                <div class="card-body p-4">
+                  <i class="fas fa-campground fa-2x mb-3"></i>
+                  <h4>Token Dex Listing</h4>
+                  <p class="small text-white-50 mb-4">Q1 2024</p>
+                  <p>Exciting news! Our token CFLY has officially secured a listing on a decentralized exchange (eckoDEX). 
+                    This development opens up new avenues for trading and liquidity, allowing our community to engage with the token seamlessly. 
+                    Navigate the decentralized landscape and explore the potential for increased visibility and accessibility. 
+                    Stay tuned for further updates as we continue to expand our presence in the decentralized financial ecosystem.
+                  </p>
+                  <h6 class="badge bg-success text-black mb-0">Completed</h6>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-4 right-4">
+              <div class="card gradient-custom-4">
+                <div class="card-body p-4">
+                  <i class="bi bi-nvme fa-2x mb-3"></i>
+                  <h4>Device Data Storage Node</h4>
+                  <p class="small text-white-50 mb-4">Q1-Q2 2024</p>
+                  <p>Exciting developments are underway as we forge ahead with the creation of a specialized Data Storage Node designed to securely house the wealth of data generated by your device sensors. 
+                    This pivotal addition to our platform ensures a reliable and efficient repository, fostering seamless data storage and management. 
+                    As we continue to fine-tune this innovative solution, anticipate a robust infrastructure that empowers your devices to store sensor-generated data with utmost security and accessibility. 
+                    Stay tuned for further updates on this groundbreaking venture!
+                  </p>
+                  <h6 class="badge bg-light text-black mb-0">In progress</h6>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-4 left-4">
+              <div class="card gradient-custom">
+                <div class="card-body p-4">
+                  <i class="bi bi-speedometer fa-2x mb-3"></i>
+                  <h4>Platform Mainnet Beta
+                  </h4>
+                  <p class="small text-white-50 mb-4">Q2-Q3 2024</p>
+                  <p>Anticipate the future with our Mainnet Beta under active development! Our team is crafting a cutting-edge platform, set to revolutionize IoT integration. 
+                    Experience advanced features and seamless interactions soon. Stay tuned for updates on this transformative journey!
+                  </p>
+                  <h6 class="badge bg-light text-black mb-0">In progress</h6>
 
+                </div>
+              </div>
+            </div>
+            <div class="timeline-4 right-4">
+              <div class="card gradient-custom-4">
+                <div class="card-body p-4">
+                  <i class="bi bi-speedometer fa-2x mb-3"></i>
+                  <h4>Platform Mainnet</h4>
+                  <p class="small text-white-50 mb-4">Q4 2024</p>
+                  <p>Experience the anticipation as our Mainnet undergoes development, forging a cutting-edge platform for Cyberfly IO. 
+                    Stay tuned for updates, as we craft a transformative IoT integration space, 
+                    poised to redefine the future of connected technologies. The journey to seamless connectivity is in progress!
+                  </p>
+                  <h6 class="badge bg-light text-black mb-0">Pending</h6>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-4 left-4">
+              <div class="card gradient-custom">
+                <div class="card-body p-4">
+                  <i class="bi bi-phone fa-2x mb-3"></i>
+                  <h4>Mobile App</h4>
+                  <p class="small text-white-50 mb-4">Q4 2024</p>
+                  <p>Anticipate the future of IoT at your fingertips – our mobile app is currently pending and nearing release! Soon, you'll have the power to effortlessly control and manage devices on the go, ensuring a seamless and connected experience. 
+                    Stay tuned for the imminent launch, bringing you closer to a new era of mobile-driven IoT interaction with Cyberfly IO.
+                  </p>
+                  <h6 class="badge bg-light text-black mb-0">Pending</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End  roadmap Section-->
+   
+    <!-- Start  blog Section-->
+    <section class="blog blog-home mega-section  " id="blog">
+      <div class="container ">
+        <div class="sec-heading  ">
+          <div class="content-area"><span class=" pre-title  wow fadeInUp " data-wow-delay=".2s">blog</span>
+            <h2 class=" title    wow fadeInUp" data-wow-delay=".4s">latest <span class='hollow-text'>news</span></h2>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-12 "> 
+            <div class="posts-grid ">
+              <div class="row" id="blogs">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End  blog Section-->
+    <!-- Start  page-footer Section-->
+    <footer class="page-footer dark-color-footer" id="contactus">
+      <div class="overlay-photo-image-bg" data-bg-img="assets/images/sections-bg-images/footer-bg-1.jpg" data-bg-opacity=".25"></div>
+      <div class="container">
+        <div class="row footer-cols">
+          <div class="col-12 col-md-8 col-lg-4  footer-col "><img class="img-fluid footer-logo" loading="lazy" src="assets/images/icons/cyberfly-logo-updated.png" alt="logo" width="50" height="50"/>
+            <h3 class="footer-col-title">Cyberfly IO</h3>
+            <div class="footer-col-content-wrapper">        
+              <p class="footer-text-about-us ">
+                 Connecting Every'things'
+                
+              </p>
+            </div>
+         
+          </div>
+          <div class="col-6 col-lg-2  footer-col ">
+            <h2 class=" footer-col-title    ">Menu</h2>
+            <div class="footer-col-content-wrapper">
+              <ul class="footer-menu ">
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="https://docs.cyberfly.io/">WhitePaper</a>
+                </li>
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="#roadmap">RoadMap</a>
+                </li>
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="#token">Token</a>
+                </li>
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="#features">features</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2 footer-col ">
+            <h2 class=" footer-col-title">Resources</h2>
+            <div class="footer-col-content-wrapper">
+              <ul class="footer-menu">
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="https://discord.gg/768d9Mjxyp">support</a>
+                </li>
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="https://dev.cyberfly.io/">Testnet</a>
+                </li>
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="https://github.com/cyberfly-io/cyberfly-micropython/releases/tag/esp32">Cyberfly Micropython</a>
+                </li>
+                <li class="footer-menu-item"><i class="bi bi-arrow-right icon "></i><a class="footer-menu-link" href="https://github.com/cyberfly-io/data-shipper">Python SDK</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 footer-col ">
+            <h2 class=" footer-col-title    ">contact information</h2>
+            <div class="footer-col-content-wrapper">       
+              <div class="contact-info-card"><i class="bi bi-envelope icon"></i><a class="text-lowercase  info" href="mailto:info@cyberfly.io">info@cyberfly.io</a></div>
+              <div class="contact-info-card">
+                <div class="social-icons">
+                  <div class="sc-wrapper dir-row sc-size-32">
+                    <ul class="sc-list">
+                      <li class="sc-item " title="github"><a class="sc-link" href="https://github.com/cyberfly-io" title="social media icon"><i class="fab fa-github sc-icon"></i></a></li>
+                      <li class="sc-item " title="medium"><a class="sc-link" href="https://cyberfly-io.medium.com/" title="social media icon"><i class="fa fa-blog sc-icon"></i></a></li>
+                      <li class="sc-item " title="telegram"><a class="sc-link" href="https://t.me/cyberflyio" title="social media icon"><i class="fab fa-telegram sc-icon"></i></a></li>
+                      <li class="sc-item " title="twitter"><a class="sc-link" href="https://twitter.com/cyberfly_io" title="social media icon"><i class="fab fa-twitter sc-icon"></i></a></li>
+                      <li class="sc-item " title="discord"><a class="sc-link" href="https://discord.gg/768d9Mjxyp" title="social media icon"><i class="fab fa-discord sc-icon"></i></a></li>
 
-<script>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyrights ">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6 d-flex justify-content-start">
+              <p class="creadits">
+                 
+                
+                &copy; 2024
+                Copyrights all rights reserved:
+                
+                           <a class="link" href="#0">Cyberfly Technologies</a>
+              </p>
+            </div>
+            <div class="col-12 col-md-6 d-flex justify-content-end">
+              <div class="terms-links"><a href="#0">Terms of Use </a>
+                | <a href="#0" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Privacy Policy.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End  page-footer Section-->
+    <!-- Start loading-screen Component-->
+    <div class="loading-screen" id="loading-screen">
+      <img src="assets/images/icons/cyberfly-logo-updated.png" alt="Logo" class="loading-logo" width="100" height="100">
+      <span class="bar top-bar"></span>
+      <span class="progress-line"><span class="loading-counter"> </span></span>
+      <span class="bar down-bar"></span>
+    </div>
+    <!-- End loading-screen Component-->
+    <!-- Start back-to-top Button-->
+    <div class="back-to-top" id="back-to-top"><i class="bi bi-arrow-up icon "></i>
+    </div>
+    <!-- End back-to-top Button-->
+    <!-- Start privacy-policy-modal-->
+    <div class="modal privacy-policy-modal fade" id="privacyPolicyModal" aria-labelledby="PrivacyPolicyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-xl ">
+        <div class="modal-content text-dark">
+          <div class="modal-header">
+            <h2 class="modal-title" id="PrivacyPolicyModalLabel">Cyberfly Privacy Policy</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="content">
+              <h4>Privacy Policy for CyberFly.io Decentralized IoT Platform
+              </h4>
+              <p> Welcome to CyberFly.io, a decentralized IoT platform designed with a commitment to user privacy. This Privacy Policy is intended to inform you about our practices regarding the collection, use, and protection of your data.
+                By using or accessing the CyberFly.io platform, you agree to the terms outlined in this Privacy Policy.
+              </p>
+            </div>
+            <div class="content">
+              <h4>1. Information We Do Not Collect:</h4>
+              <p>1.1 Personal Information: We do not collect personal information, such as your name, email address, or contact details. Our platform operates on a decentralized model, ensuring that your personal data remains within your control.</p>
+            </div>
+            <div class="content">
+              <h4>1.2 Device Information: </h4>
+              <p>We do not collect information about the devices you use to access our platform, such as device type, operating system, or unique device identifiers.</p>
+            </div>
+            <div class="content">
+              <h4>1.3 Usage Data:</h4>
+              <p>We do not gather information about your interactions with our platform, ensuring a privacy-focused experience.</p>
+            </div>
+            <div class="content">
+              <h4>2. Your Data and Privacy:</h4>
+              <p> 2.1 Data Ownership:
 
-(async () => {
-  const rawResponse = await fetch('https://api.chainweb.com/chainweb/0.0/mainnet01/chain/2/pact/api/v1/local', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-  "cmd": "{\"signers\":[],\"meta\":{\"creationTime\":1704812213,\"ttl\":20556,\"chainId\":\"2\",\"gasPrice\":2.46754e-6,\"gasLimit\":70000,\"sender\":\"k:8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\"},\"nonce\":\"CW:2024-01-09 14:57:07.649 UTC\",\"networkId\":\"mainnet01\",\"payload\":{\"exec\":{\"code\":\"(free.cyberfly_token.get-balance \\\"k:820b3bc70df57e9dc72636ad15f2530c111ea94d6e969e1342aef0920af8c2e2\\\")\",\"data\":{}}}}",
-  "hash": "WgKNQZ8myoOb4V25XS5aUGeEtFQ6JY584jsTiHiUzew",
-  "sigs": [
-    
-  ]
-})
-});
-  const content = await rawResponse.json();
-  console.log(content.result)
-  document.getElementById("csupply").innerHTML = 90000000 - content.result.data 
-})();
+                The CyberFly.io platform is designed to prioritize your data ownership. You have full control over your data, and it remains decentralized, reducing the risk of unauthorized access.</p>
+            </div>
+            <div class="content">
+              <h4>2.2 Anonymity:</h4>
+              <p>Our platform allows you to interact with IoT devices without the need for personal identification. You can enjoy the benefits of IoT technology while maintaining your anonymity.</p>
+            </div>
+            <div class="content">
+              <h4>3. Data Security</h4>
+              <p>While we do not collect personal information, we still prioritize the security of your data within our decentralized framework. We implement industry-standard measures to protect against unauthorized access and maintain the integrity of our platform.
 
-</script>
+              </p>
+            </div>
+            <div class="content">
+              <h4>4. Updates to this Privacy Policy:
+              </h4>
+              <p>We may update this Privacy Policy periodically to reflect changes in our practices or for operational reasons. We will may notify you of any significant changes through our platform or other communication channels.</p>
+            </div>
+            <div class="content">
+              <h4>5. Contact Us:</h4>
+              <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us at [info@cyberfly.io].
 
-<script>
-    // Data and Configuration
-    const data = {
-  labels: ["Team", "Airdrop", "Partnership", "Platform Development & Reserve", "Liquidity", "Initial Burn", "Node Reward"],
-  datasets: [{
-    data: [14, 1, 10, 15, 20, 10, 30],
-    backgroundColor: ["#66ffff", "#99ff99", "#ff66ff", "#96968e", "#6666ff", "#33ffff", "#cc9966"]
-  }]
-};
-
-const config = {
-  type: 'pie',
-  data: data,
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    legend: {
-      position: 'bottom'
-    },
-    tooltips: {
-      callbacks: {
-        label: function (tooltipItem, data) {
-          const dataset = data.datasets[tooltipItem.datasetIndex];
-          const total = dataset.data.reduce((accumulator, currentValue) => accumulator + currentValue);
-          const currentValue = dataset.data[tooltipItem.index];
-          const percentage = ((currentValue / total) * 100).toFixed(2);
-          return `${data.labels[tooltipItem.index]}: ${percentage}%`;
-        }
-      }
-    }
-  }
-};
-
-    // Create chart
-    const tokenomicsChart = new Chart(document.getElementById('tokenomicsChart'), config);
-  </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+                Thank you for choosing CyberFly.io, where your privacy is our priority.</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-solid" type="button" data-bs-dismiss="modal" aria-label="Close">Click to close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End privacy-policy-modal-->   
+        <!--     JQuery     -->
+        <script src="js/custom.js"></script>
+        <script src="js/vendors/jquery-3.6.1.min.js"></script>
+        
+        <!--     appear     -->
+        <script src="js/vendors/appear.min.js"></script>
+        
+        <!--     bootstrap     -->
+        <script src="js/vendors/bootstrap.bundle.min.js"></script>
+        
+        <!--     countTo     -->
+        <script src="js/vendors/jquery.countTo.js"></script>
+        
+        <!--     wow     -->
+        <script src="js/vendors/wow.min.js"></script>
+        
+        <!--     swiper     -->
+        <script src="js/vendors/swiper-bundle.min.js"></script>
+        
+        <!--     particles     -->
+        <script src="js/vendors/particles.min.js"></script>
+        
+        <!--     Vanilla-tilt     -->
+        <script src="js/vendors/vanilla-tilt.min.js"></script>
+        
+        <!--     isotope     -->
+        <script src="js/vendors/isotope-min.js"></script>
+        
+        <!--     fancybox     -->
+        <script src="js/vendors/jquery.fancybox.min.js"></script>
+        
+        <!--     main     -->
+        <script src="js/main.js"></script>
   </body>
 </html>
