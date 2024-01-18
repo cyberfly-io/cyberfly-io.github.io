@@ -39,3 +39,27 @@
    });
  })
  .catch(error => console.error('Error fetching data:', error));
+
+
+ (async () => {
+  const rawResponse = await fetch('https://api.chainweb.com/chainweb/0.0/mainnet01/chain/2/pact/api/v1/local', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+  "cmd": "{\"signers\":[],\"meta\":{\"creationTime\":1704812213,\"ttl\":20556,\"chainId\":\"2\",\"gasPrice\":2.46754e-6,\"gasLimit\":70000,\"sender\":\"k:8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\"},\"nonce\":\"CW:2024-01-09 14:57:07.649 UTC\",\"networkId\":\"mainnet01\",\"payload\":{\"exec\":{\"code\":\"(free.cyberfly_token.get-balance \\\"k:820b3bc70df57e9dc72636ad15f2530c111ea94d6e969e1342aef0920af8c2e2\\\")\",\"data\":{}}}}",
+  "hash": "WgKNQZ8myoOb4V25XS5aUGeEtFQ6JY584jsTiHiUzew",
+  "sigs": [
+
+  ]
+})
+});
+  const content = await rawResponse.json();
+  console.log(content)
+  var csupplyElement = document.getElementById("csupply");
+  var csupply = (89965657 - content.result.data) / 1000000
+  console.log(csupply)
+  csupplyElement.innerHTML = csupply.toFixed(1);
+  })();
