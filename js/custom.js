@@ -61,5 +61,25 @@
   var csupplyElement = document.getElementById("csupply");
   var csupply = (89965657 - content.result.data) / 1000000
   console.log(csupply)
-  csupplyElement.innerHTML = csupply.toFixed(1);
+  csupplyElement.innerHTML = csupply.toFixed(2);
+  })();
+
+
+
+ (async () => {
+  const rawResponse = await fetch('https://api.chainweb.com/chainweb/0.0/mainnet01/chain/2/pact/api/v1/local', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"cmd":"{\"signers\":[{\"scheme\":\"ED25519\",\"pubKey\":\"8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\",\"addr\":\"8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\"}],\"meta\":{\"creationTime\":1705590776,\"ttl\":20556,\"chainId\":\"2\",\"gasPrice\":2.46754e-6,\"gasLimit\":70000,\"sender\":\"k:8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\"},\"nonce\":\"CW:2024-01-18 15:13:10.965 UTC\",\"networkId\":\"mainnet01\",\"payload\":{\"exec\":{\"code\":\"(free.cyberfly_token.get-balance \\\"k:0000000000000000000000000000000000000000000000000000000000000000\\\")\",\"data\":{}}}}","hash":"l0UAQwL89xX5dPSkmT6C3oMQ29yatfW6cLYteN7PSf0","sigs":[{"sig":"7b801fd6a78c95f34f94584650a517539b5ba71fb4a72def882a033c951c0cc7a6fee60b86e4a51a892aa887e816ca695ac66274de068527129dd6ad5bb8990a"}]
+  })
+});
+  const content = await rawResponse.json();
+  console.log(content)
+  var csupplyElement = document.getElementById("burned");
+  var csupply = content.result.data / 1000000
+  console.log(csupply)
+  csupplyElement.innerHTML = csupply.toFixed(2);
   })();
