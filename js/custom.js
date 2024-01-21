@@ -59,7 +59,7 @@
   const content = await rawResponse.json();
   console.log(content)
   var csupplyElement = document.getElementById("csupply");
-  var csupply = (89965657 - content.result.data) / 1000000
+  var csupply = (88965657 - content.result.data) / 1000000
   console.log(csupply)
   csupplyElement.innerHTML = csupply.toFixed(2);
   })();
