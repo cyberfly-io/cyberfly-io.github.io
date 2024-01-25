@@ -56,10 +56,20 @@
   ]
 })
 });
+const rawResponse2 = await fetch('https://api.chainweb.com/chainweb/0.0/mainnet01/chain/1/pact/api/v1/local', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({"cmd":"{\"signers\":[],\"meta\":{\"creationTime\":1706164887,\"ttl\":20556,\"chainId\":\"1\",\"gasPrice\":2.46754e-6,\"gasLimit\":70000,\"sender\":\"k:8d031ecdfffcf3b06cf6bfc2fd266e81a1c8acf697277f8348dd1f38e0ee7341\"},\"nonce\":\"CW:2024-01-25 06:41:41.752 UTC\",\"networkId\":\"mainnet01\",\"payload\":{\"exec\":{\"code\":\"(free.cyberfly_token.get-balance \\\"k:820b3bc70df57e9dc72636ad15f2530c111ea94d6e969e1342aef0920af8c2e2\\\")\",\"data\":{}}}}","hash":"FwRjgBKPWKUHSPsiOjjHWNRK37W5kQ8fH515IAle5MI","sigs":[]})
+});
   const content = await rawResponse.json();
-  console.log(content)
+  const content2 = await rawResponse2.json();
+
+  console.log(content2)
   var csupplyElement = document.getElementById("csupply");
-  var csupply = (88965657 - content.result.data) / 1000000
+  var csupply = (88965657 - content.result.data - content2.result.data) / 1000000
   console.log(csupply)
   csupplyElement.innerHTML = csupply.toFixed(2);
   })();
