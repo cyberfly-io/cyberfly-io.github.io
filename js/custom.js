@@ -69,7 +69,7 @@ const rawResponse2 = await fetch('https://api.chainweb.com/chainweb/0.0/mainnet0
 
   console.log(content2)
   var csupplyElement = document.getElementById("csupply");
-  var csupply = (88965657 - content.result.data - content2.result.data) / 1000000
+  var csupply = (74965657 - content.result.data - content2.result.data) / 1000000
   console.log(csupply)
   csupplyElement.innerHTML = csupply.toFixed(2);
   })();
