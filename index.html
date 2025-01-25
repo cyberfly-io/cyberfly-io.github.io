@@ -51,6 +51,34 @@
         <link rel="stylesheet" href="css/custom.css">
         <title>Cyberfly IO</title>
 
+        <style>
+          .countdown-container {
+            text-align: center;
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(50px);
+            padding: 5px;
+            border-radius: 35px;
+            box-shadow: 0 8px 22px 0 rgba(31, 38, 135, 0.37);
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .countdown-item {
+            text-align: center;
+            min-width: 100px;
+        }
+        .countdown-item h3 {
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+        .countdown-item p {
+            opacity: 0.5;
+        }
+          </style>
+
   </head>
   <body class=" dark-theme ">
     <!--Start Page Header-->
@@ -104,6 +132,28 @@
       <div class="overlay-photo-image-bg"  data-bg-img="assets/images/sections-bg-images/pattern-bg-1.jpg" data-bg-opacity=".2"></div>
       <div class="particles-js  dots" id="particles-js"></div>
       <div class="container">
+          <div class="countdown-container">
+              <h2 class="mb-2 featured-text">Cyberfly Mainnet Goes Live <a href="https://cyberfly-io.medium.com/cyberfly-mainnet-node-requirements-for-node-operators-dc43203db651" class="btn btn-small btn-primary">Learn More</a>
+              </h2>
+              <div id="countdown">
+                  <div class="countdown-item">
+                      <h3 id="days">10</h3>
+                      <p>Days</p>
+                  </div>
+                  <div class="countdown-item">
+                      <h3 id="hours">00</h3>
+                      <p>Hours</p>
+                  </div>
+                  <div class="countdown-item">
+                      <h3 id="minutes">00</h3>
+                      <p>Minutes</p>
+                  </div>
+                  <div class="countdown-item">
+                      <h3 id="seconds">00</h3>
+                      <p>Seconds</p>
+                  </div>
+              </div>
+      </div>
         <div class="row align-items-center">
           <div class="col-12 col-lg-6 ">
             <!--Start of .hero-text-area-->
@@ -796,5 +846,27 @@
         
         <!--     main     -->
         <script src="js/main.js"></script>
+        <script>
+          const targetDate = new Date('2025-02-05T00:00:00');
+          function updateCountdown() {
+              const now = new Date();
+              const timeLeft = targetDate.getTime() - now.getTime();
+              if (timeLeft <= 0) {
+                  document.getElementById("countdown").innerHTML = "<h2>Mainnet is Live!</h2>";
+                  return;
+              }
+              const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+              document.getElementById("days").innerText = days.toString().padStart(2, '0');
+              document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+              document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+              document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+          }
+  
+          updateCountdown();
+          setInterval(updateCountdown, 1000);
+</script>
   </body>
 </html>
