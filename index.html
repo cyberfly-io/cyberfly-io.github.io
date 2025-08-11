@@ -3,54 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Prevent dark-mode flash -->
+    <script>
+        try {
+            const ls = localStorage.getItem('darkMode');
+            const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (ls === 'true' || (ls === null && sys)) document.documentElement.classList.add('dark');
+        } catch(e) {}
+    </script>
+
+    <!-- SEO -->
+    <title>Cyberfly IO | Web 3.0 Scalable IoT Platform</title>
+    <meta name="description" content="Cyberfly IO is a modern, decentralized, and scalable IoT platform built on Web 3.0 technology powered by Kadena. Connect devices, automate, and transact securely.">
+    <link rel="canonical" href="https://cyberfly.io/">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cyberfly.io">
+    <meta property="og:url" content="https://cyberfly.io/">
     <meta property="og:title" content="Cyberfly IO - Modern IoT on Web 3.0">
     <meta property="og:description" content="A modern, decentralized, and scalable IoT platform built on Web 3.0 technology.">
     <meta property="og:image" content="https://cyberfly.io/assets/images/website.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Cyberfly IO | Web 3.0 Scalable IoT Platform</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="icon" href="https://cyberfly.io/assets/images/newlogo.png">
 
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- Tailwind & Alpine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         /* Use the Jost font family */
-        body {
-            font-family: 'Jost', sans-serif;
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Jost', sans-serif; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background-color: #f1f1f1; }
+        .dark ::-webkit-scrollbar-track { background-color: #1f2937; }
+        ::-webkit-scrollbar-thumb { background-color: #888; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background-color: #555; }
+        .dark ::-webkit-scrollbar-thumb { background-color: #4b5563; }
+        .dark ::-webkit-scrollbar-thumb:hover { background-color: #6b7280; }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
         }
-        /* Custom scrollbar for a modern touch */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background-color: #f1f1f1;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background-color: #1f2937;
-        }
-        ::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background-color: #4b5563;
-        }
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background-color: #6b7280;
+        .skip-link:focus {
+            position: static; width: auto; height: auto; padding: 0.5rem 1rem; background: #e5e7eb; border-radius: .5rem;
         }
     </style>
 
@@ -61,10 +73,30 @@
             theme: {
                 extend: {
                     colors: {
-                        // Define a modern color palette
-                        primary: {
-                            light: '#4f46e5',
-                            dark: '#6366f1'
+                        // Professional brand palette (indigo-based) and a cool accent
+                        brand: {
+                            50:  '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81'
+                        },
+                        accent: {
+                            50:  '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63'
                         },
                         darkbg: '#0f172a',
                         lightbg: '#f8fafc',
@@ -73,80 +105,121 @@
             }
         }
     </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cyberfly IO",
+      "url": "https://cyberfly.io/",
+      "logo": "https://cyberfly.io/assets/images/newlogo.png",
+      "sameAs": [
+        "https://twitter.com/cyberfly_io",
+        "https://t.me/cyberflyio",
+        "https://github.com/cyberfly-io",
+        "https://discord.gg/768d9Mjxyp",
+        "https://cyberfly-io.medium.com/"
+      ]
+    }
+    </script>
 </head>
 <body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-200 antialiased transition-colors duration-300">
 
+    <a href="#home" class="skip-link mx-6 my-2">Skip to content</a>
+
     <header x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-lg shadow-sm">
-        <nav class="container mx-auto px-6 py-3">
+        <nav class="container mx-auto px-6 py-3" aria-label="Primary">
             <div class="flex justify-between items-center">
-                <a href="#" class="flex items-center gap-3">
-                    <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly Logo" class="h-10">
+                <a href="#home" class="flex items-center gap-3">
+                    <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly IO logo" class="h-10" loading="eager" decoding="async" fetchpriority="high">
                     <span class="text-2xl font-bold text-slate-900 dark:text-white">Cyberfly IO</span>
                 </a>
 
-                <ul class="hidden lg:flex items-center space-x-8">
-                    <li><a href="#home" class="font-medium hover:text-primary-light dark:hover:text-primary-dark transition-colors">Home</a></li>
-                    <li><a href="#features" class="font-medium hover:text-primary-light dark:hover:text-primary-dark transition-colors">Features</a></li>
-                    <li><a href="#token" class="font-medium hover:text-primary-light dark:hover:text-primary-dark transition-colors">Token</a></li>
-                    <li><a href="https://node.cyberfly.io/files?cid=bagaaierapikobmbzmg6q3kshtfng2mwhyknwxojdmmxxtggqz7jy6vpzws2q" class="font-medium hover:text-primary-light dark:hover:text-primary-dark transition-colors">Cyberfly Wallet</a></li>
-                    <li><a href="https://docs.cyberfly.io/" target="_blank" class="font-medium hover:text-primary-light dark:hover:text-primary-dark transition-colors">WhitePaper</a></li>
+                <ul id="primary-navigation" class="hidden lg:flex items-center space-x-8">
+                    <li><a href="#home" class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Home</a></li>
+                    <li><a href="#features" class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Features</a></li>
+                    <li><a href="#capabilities" class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Capabilities</a></li>
+                    <li><a href="#token" class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Token</a></li>
+                    <li>
+                        <a href="https://node.cyberfly.io/files?cid=bagaaierapikobmbzmg6q3kshtfng2mwhyknwxojdmmxxtggqz7jy6vpzws2q"
+                           class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                           target="_blank" rel="noopener noreferrer">Cyberfly Wallet</a>
+                    </li>
+                    <li><a href="#roadmap" class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Roadmap</a></li>
+                    <li>
+                        <a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer"
+                           class="font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors">WhitePaper</a>
+                    </li>
                 </ul>
 
                 <div class="flex items-center gap-4">
-                    <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-                        <i class="bi bi-sun-fill" x-show="!darkMode"></i>
-                        <i class="bi bi-moon-fill" x-show="darkMode"></i>
+                    <button aria-label="Toggle dark mode" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                        <i class="bi bi-sun-fill" x-show="!darkMode" aria-hidden="true"></i>
+                        <i class="bi bi-moon-fill" x-show="darkMode" aria-hidden="true"></i>
                     </button>
 
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700">
-                        <i class="bi bi-list text-2xl" x-show="!mobileMenuOpen"></i>
-                        <i class="bi bi-x text-2xl" x-show="mobileMenuOpen"></i>
+                    <button
+                        @click="mobileMenuOpen = !mobileMenuOpen"
+                        class="lg:hidden p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700"
+                        :aria-expanded="mobileMenuOpen.toString()"
+                        aria-controls="mobile-navigation"
+                        aria-label="Toggle navigation">
+                        <i class="bi bi-list text-2xl" x-show="!mobileMenuOpen" aria-hidden="true"></i>
+                        <i class="bi bi-x text-2xl" x-show="mobileMenuOpen" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
 
-            <div x-show="mobileMenuOpen" x-transition class="lg:hidden mt-4">
+            <div id="mobile-navigation" x-show="mobileMenuOpen" x-transition class="lg:hidden mt-4">
                 <ul class="flex flex-col space-y-4">
-                     <li><a href="#home" @click="mobileMenuOpen = false" class="block py-2 font-medium">Home</a></li>
+                    <li><a href="#home" @click="mobileMenuOpen = false" class="block py-2 font-medium">Home</a></li>
                     <li><a href="#features" @click="mobileMenuOpen = false" class="block py-2 font-medium">Features</a></li>
+                    <li><a href="#capabilities" @click="mobileMenuOpen = false" class="block py-2 font-medium">Capabilities</a></li>
                     <li><a href="#token" @click="mobileMenuOpen = false" class="block py-2 font-medium">Token</a></li>
-                    <li><a href="https://node.cyberfly.io/files?cid=bagaaierapikobmbzmg6q3kshtfng2mwhyknwxojdmmxxtggqz7jy6vpzws2q" @click="mobileMenuOpen = false" class="block py-2 font-medium">Cyberfly Wallet</a></li>
+                    <li>
+                        <a href="https://node.cyberfly.io/files?cid=bagaaierapikobmbzmg6q3kshtfng2mwhyknwxojdmmxxtggqz7jy6vpzws2q"
+                           @click="mobileMenuOpen = false" class="block py-2 font-medium" target="_blank" rel="noopener noreferrer">Cyberfly Wallet</a>
+                    </li>
                     <li><a href="#roadmap" @click="mobileMenuOpen = false" class="block py-2 font-medium">Roadmap</a></li>
-                    <li><a href="https://docs.cyberfly.io/" target="_blank" class="block py-2 font-medium">WhitePaper</a></li>
+                    <li><a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer" @click="mobileMenuOpen = false" class="block py-2 font-medium">WhitePaper</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section id="home" class="relative overflow-hidden py-20 md:py-32">
-             <div class="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-400/[0.05] bg-[bottom_1px_center] [mask-image:linear-gradient(to_bottom,transparent,white)] dark:[mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+    <main id="home">
+        <section class="relative overflow-hidden py-20 md:py-32">
+            <div class="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-400/[0.05] bg-[bottom_1px_center] [mask-image:linear-gradient(to_bottom,transparent,white)] dark:[mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
             <div class="relative z-10 container mx-auto px-6">
-               
+
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="text-center lg:text-left">
-                        <span class="font-semibold text-primary-light dark:text-primary-dark">WEB 3.0 IOT PLATFORM</span>
-                        <h1 class="text-4xl md:text-6xl font-extrabold my-4 leading-tight">A Decentralized, Scalable IoT <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Platform</span></h1>
+                        <span class="font-semibold text-brand-600 dark:text-brand-400">WEB 3.0 IOT PLATFORM</span>
+                        <h1 class="text-4xl md:text-6xl font-extrabold my-4 leading-tight">
+                            A Decentralized, Scalable IoT
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 via-violet-500 to-fuchsia-500">Platform</span>
+                        </h1>
                         <p class="max-w-xl mx-auto lg:mx-0 text-lg text-slate-600 dark:text-slate-400">
                             Unleash the potential of a decentralized IoT ecosystem. We create a symphony of intelligence that transcends traditional boundaries for a truly connected world.
                         </p>
                         <div class="flex justify-center lg:justify-start space-x-4 my-8 text-2xl text-slate-500">
-                            <a href="https://t.me/cyberflyio" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-telegram"></i></a>
-                            <a href="https://twitter.com/cyberfly_io" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-twitter-x"></i></a>
-                            <a href="https://github.com/cyberfly-io" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-github"></i></a>
-                             <a href="https://discord.gg/768d9Mjxyp" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-discord"></i></a>
-                            <a href="https://cyberfly-io.medium.com/" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-medium"></i></a>
+                            <a aria-label="Telegram" href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-telegram"></i></a>
+                            <a aria-label="Twitter/X" href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-twitter-x"></i></a>
+                            <a aria-label="GitHub" href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-github"></i></a>
+                            <a aria-label="Discord" href="https://discord.gg/768d9Mjxyp" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-discord"></i></a>
+                            <a aria-label="Medium" href="https://cyberfly-io.medium.com/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-medium"></i></a>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 mt-8">
-                            <a href="https://node.cyberfly.io/files?cid=bagaaierapikobmbzmg6q3kshtfng2mwhyknwxojdmmxxtggqz7jy6vpzws2q" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 font-semibold rounded-lg bg-primary-light text-white hover:bg-opacity-90 transition-all shadow-lg">
-                                <i class="bi bi-download"></i>
+                            <a href="https://node.cyberfly.io/files?cid=bagaaierapikobmbzmg6q3kshtfng2mwhyknwxojdmmxxtggqz7jy6vpzws2q" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 font-semibold rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition-all shadow-lg" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-download" aria-hidden="true"></i>
                                 <span>Download Wallet</span>
                             </a>
-                            <a href="https://dev.cyberfly.io/" class="w-full sm:w-auto text-center px-8 py-3 font-semibold rounded-lg bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-600 transition-all">Try Testnet</a>
+                            <a href="https://dev.cyberfly.io/" class="w-full sm:w-auto text-center px-8 py-3 font-semibold rounded-lg bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-600 transition-all" target="_blank" rel="noopener noreferrer">Try Testnet</a>
                         </div>
                     </div>
                     <div class="relative">
-                       <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly Platform Illustration" class="w-full h-auto">
+                        <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly platform illustration" class="w-full h-auto" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
             </div>
@@ -155,51 +228,51 @@
         <section id="features" class="py-20 md:py-28 bg-slate-100 dark:bg-slate-900/70">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="font-semibold text-primary-light dark:text-primary-dark">FEATURES</span>
-                     <h2 class="text-3xl md:text-4xl font-extrabold my-3"><span class="text-slate-400 dark:text-slate-500">Platform</span> Features</h2>
+                    <span class="font-semibold text-brand-600 dark:text-brand-400">FEATURES</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold my-3"><span class="text-slate-400 dark:text-slate-500">Platform</span> Features</h2>
                     <p class="text-lg text-slate-600 dark:text-slate-400">
                         Cyberfly revolutionizes IoT on the Kadena blockchain. Seamlessly secure, user-friendly, and community-driven, we're building the future of connectivity.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                         <div class="inline-block text-3xl text-white bg-indigo-500 p-3 rounded-xl mb-4">
-                            <i class="bi bi-app-indicator"></i>
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500">
+                        <div class="inline-block text-3xl text-white bg-brand-600 p-3 rounded-xl mb-4">
+                            <i class="bi bi-app-indicator" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">User-Friendly Interface</h3>
                         <p class="text-slate-600 dark:text-slate-400">An intuitive, customizable dashboard for easy management and monitoring of your IoT devices.</p>
                     </div>
-                     <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                        <div class="inline-block text-3xl text-white bg-purple-500 p-3 rounded-xl mb-4">
-                            <i class="bi bi-wallet2"></i>
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500">
+                        <div class="inline-block text-3xl text-white bg-brand-500 p-3 rounded-xl mb-4">
+                            <i class="bi bi-wallet2" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Built-in Wallet</h3>
                         <p class="text-slate-600 dark:text-slate-400">Manage and transact CFLY and KDA tokens securely within the platform's integrated wallet.</p>
                     </div>
-                     <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                        <div class="inline-block text-3xl text-white bg-pink-500 p-3 rounded-xl mb-4">
-                            <i class="bi bi-cpu"></i>
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500">
+                        <div class="inline-block text-3xl text-white bg-accent-600 p-3 rounded-xl mb-4">
+                            <i class="bi bi-cpu" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Easy Device Integration</h3>
                         <p class="text-slate-600 dark:text-slate-400">Streamlined onboarding for devices like Raspberry Pi & ESP32, getting you connected in minutes.</p>
                     </div>
-                     <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                       <div class="inline-block text-3xl text-white bg-teal-500 p-3 rounded-xl mb-4">
-                            <i class="bi bi-sliders"></i>
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500">
+                        <div class="inline-block text-3xl text-white bg-brand-700 p-3 rounded-xl mb-4">
+                            <i class="bi bi-sliders" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Rules & Automation</h3>
                         <p class="text-slate-600 dark:text-slate-400">Customize triggers and automate device actions. It's not just automation; it's orchestration.</p>
                     </div>
-                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                        <div class="inline-block text-3xl text-white bg-sky-500 p-3 rounded-xl mb-4">
-                            <i class="bi bi-alarm"></i>
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500">
+                        <div class="inline-block text-3xl text-white bg-accent-500 p-3 rounded-xl mb-4">
+                            <i class="bi bi-alarm" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Intelligent Scheduling</h3>
                         <p class="text-slate-600 dark:text-slate-400">Schedule actions and routines to create a symphony of efficiency, playing to the rhythm of your needs.</p>
                     </div>
-                     <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                        <div class="inline-block text-3xl text-white bg-green-500 p-3 rounded-xl mb-4">
-                            <i class="bi bi-code-slash"></i>
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500">
+                        <div class="inline-block text-3xl text-white bg-brand-600 p-3 rounded-xl mb-4">
+                            <i class="bi bi-code-slash" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Micropython Firmware</h3>
                         <p class="text-slate-600 dark:text-slate-400">Optimized Micropython firmware for microcontrollers like ESP32 ensures smooth, native integration.</p>
@@ -208,32 +281,130 @@
             </div>
         </section>
 
+        <!-- New: Capabilities -->
+        <section id="capabilities" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="font-semibold text-brand-600 dark:text-brand-400">CAPABILITIES</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold my-3">Architecture & Platform Capabilities</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400">A comprehensive overview of device, data, automation, edge, security, developer, and ecosystem features.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 1. Device Management -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">1. Device Management</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>Multi-protocol Support – MQTT, HTTP/WebSocket for device communication.</li>
+                            <li>Dynamic Device Registration – Devices can self-register or be provisioned via the UI.</li>
+                            <li>Secure Key Exchange – Public/private key encryption for device-specific integration secrets.</li>
+                            <li>Over-the-Air Updates (OTA) – Firmware updates from the cloud.</li>
+                            <li>Captive Portal Configuration – On-device Wi-Fi provisioning and re-configuration.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. Data Handling -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">2. Data Handling</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>Hybrid Storage Architecture – Uses Redis (geo, time series, streams) for fast queries and OrbitDB over IPFS for decentralized persistence.</li>
+                            <li>Real-Time Data Streaming – Instant device-to-cloud data flow.</li>
+                            <li>Historical Data Storage – Time series storage with query APIs.</li>
+                            <li>Anomaly Detection – AI-based outlier detection in sensor data.</li>
+                            <li>Edge and Cloud Rule Processing – Rules can execute locally or in the cloud depending on latency and reliability needs.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Automation & Workflows -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">3. Automation & Workflows</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>Low-Code/No-Code Automation – Drag-and-drop workflow builder like n8n.</li>
+                            <li>Event-Driven Triggers – Execute actions when sensor values meet conditions.</li>
+                            <li>Third-Party Webhook Integrations – Securely send data to external services (encrypted for device to decrypt).</li>
+                            <li>Multi-Model AI Support – Run multiple AI models (e.g., prediction, classification) on the same dataset.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 4. Dashboard & Visualization -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">4. Dashboard & Visualization</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>Dynamic IoT Widgets – Auto-generated sensor/actuator widgets from device modules.</li>
+                            <li>Customizable Dashboards – Add, resize, and configure widgets in real time.</li>
+                            <li>Geo-Tracking – Map view for GPS-enabled devices using Redis GEO.</li>
+                            <li>Charts & Graphs – Real-time and historical data visualization.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 5. Edge Intelligence -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">5. Edge Intelligence</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>MicroPython SDK – Abstract sensor/actuator modules with dynamic command execution.</li>
+                            <li>Multiple Sensor Types Support – Select from multiple sensor brands/models for the same operation.</li>
+                            <li>Local AI Inference – Run AI models directly on edge devices (with RedisAI or emlearn).</li>
+                            <li>Offline Operation – Local caching and sync when back online.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 6. Security -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">6. Security</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>End-to-End Encryption – Device ↔ Cloud data encryption.</li>
+                            <li>Per-Device Keys – Prevents data leakage between devices.</li>
+                            <li>Signed Firmware – Prevents malicious firmware injection.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 7. Developer Tools -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">7. Developer Tools</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>REST & WebSocket APIs – For data ingestion and retrieval.</li>
+                            <li>SDKs – MicroPython, Arduino C, and planned Rust SDK.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 8. Monetization & Ecosystem -->
+                    <div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-brand-300 dark:hover:ring-brand-500 transition-colors">
+                        <h3 class="text-xl font-bold mb-4">8. Monetization & Ecosystem</h3>
+                        <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-300">
+                            <li>Incentivized Node Network – Users can run nodes and earn rewards.</li>
+                            <li>Marketplace for Integrations – Publish and consume automation templates and device drivers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="token" class="py-20 md:py-28">
             <div class="container mx-auto px-6">
-                 <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="order-2 lg:order-1">
-                        <span class="font-semibold text-primary-light dark:text-primary-dark">TOKEN & UTILITY</span>
+                        <span class="font-semibold text-brand-600 dark:text-brand-400">TOKEN & UTILITY</span>
                         <h2 class="text-3xl md:text-4xl font-extrabold my-3"><span class="text-slate-400 dark:text-slate-500">CFLY Token</span> & Utilities</h2>
                         <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
-                             At the core of our platform is CFLY, the utility token that powers the entire Cyberfly ecosystem. CFLY is crucial for device registration and sustaining our operations through a unique burn and treasury model.
+                            At the core of our platform is CFLY, the utility token that powers the entire Cyberfly ecosystem. CFLY is crucial for device registration and sustaining our operations through a unique burn and treasury model.
                         </p>
                         <div class="space-y-6">
                             <div class="flex items-start gap-4">
-                                <i class="bi bi-cpu text-2xl text-primary-light dark:text-primary-dark mt-1"></i>
+                                <i class="bi bi-cpu text-2xl text-brand-600 dark:text-brand-400 mt-1" aria-hidden="true"></i>
                                 <div>
                                     <h4 class="font-bold text-lg">Device Registration</h4>
                                     <p class="text-slate-600 dark:text-slate-400">Users utilize CFLY tokens to register new devices on the platform.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
-                                <i class="bi bi-fire text-2xl text-primary-light dark:text-primary-dark mt-1"></i>
+                                <i class="bi bi-fire text-2xl text-brand-600 dark:text-brand-400 mt-1" aria-hidden="true"></i>
                                 <div>
                                     <h4 class="font-bold text-lg">Token Burning</h4>
                                     <p class="text-slate-600 dark:text-slate-400">A portion of every transaction fee is permanently burned, creating a deflationary supply.</p>
                                 </div>
                             </div>
-                             <div class="flex items-start gap-4">
-                                <i class="bi bi-gift text-2xl text-primary-light dark:text-primary-dark mt-1"></i>
+                            <div class="flex items-start gap-4">
+                                <i class="bi bi-gift text-2xl text-brand-600 dark:text-brand-400 mt-1" aria-hidden="true"></i>
                                 <div>
                                     <h4 class="font-bold text-lg">Fee-Free First Device</h4>
                                     <p class="text-slate-600 dark:text-slate-400">Your first device registration is on us, promoting easy access and adoption.</p>
@@ -242,7 +413,46 @@
                         </div>
                     </div>
                     <div class="order-1 lg:order-2">
-                        <img src="https://cyberfly.io/assets/images/main.svg" alt="Cyberfly Token Utility Illustration" class="w-full h-auto">
+                        <img src="https://cyberfly.io/assets/images/main.svg" alt="CFLY token and utilities illustration" class="w-full h-auto" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New: Roadmap -->
+        <section id="roadmap" class="py-20 md:py-28 bg-slate-100/70 dark:bg-slate-900/40">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="font-semibold text-brand-600 dark:text-brand-400">ROADMAP</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold my-3">What’s Next</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400">Incremental milestones to deliver a secure, scalable IoT experience.</p>
+                </div>
+                <div class="relative max-w-5xl mx-auto">
+                    <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-300 dark:bg-slate-700"></div>
+                    <div class="space-y-12">
+                        <div class="relative md:grid md:grid-cols-2 md:gap-8">
+                            <div class="md:col-span-1 md:text-right md:pr-10">
+                                <h3 class="font-bold text-xl">Q3 2025 — Testnet Enhancements</h3>
+                                <p class="text-slate-600 dark:text-slate-400">Expanded device SDKs, improved dashboards, and reliability upgrades.</p>
+                            </div>
+                            <div class="hidden md:block"></div>
+                            <div class="absolute left-2.5 md:left-1/2 -translate-x-1/2 top-1 w-5 h-5 rounded-full bg-brand-600 shadow"></div>
+                        </div>
+                        <div class="relative md:grid md:grid-cols-2 md:gap-8">
+                            <div class="hidden md:block"></div>
+                            <div class="md:col-span-1 md:pl-10">
+                                <h3 class="font-bold text-xl">Q4 2025 — Mainnet Beta</h3>
+                                <p class="text-slate-600 dark:text-slate-400">CFLY utility rollout, device registration flows, and burn/treasury mechanics.</p>
+                            </div>
+                            <div class="absolute left-2.5 md:left-1/2 -translate-x-1/2 top-1 w-5 h-5 rounded-full bg-purple-500 shadow"></div>
+                        </div>
+                        <div class="relative md:grid md:grid-cols-2 md:gap-8">
+                            <div class="md:col-span-1 md:text-right md:pr-10">
+                                <h3 class="font-bold text-xl">2026 — Ecosystem & Partnerships</h3>
+                                <p class="text-slate-600 dark:text-slate-400">Marketplace integrations, partner devices, community governance inputs.</p>
+                            </div>
+                            <div class="absolute left-2.5 md:left-1/2 -translate-x-1/2 top-1 w-5 h-5 rounded-full bg-emerald-500 shadow"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -252,24 +462,31 @@
     <footer class="bg-slate-100 dark:bg-darkbg border-t border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                 <div class="text-center md:text-left">
-                    <a href="#" class="flex items-center justify-center md:justify-start gap-3 mb-2">
-                        <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly Logo" class="h-8">
+                <div class="text-center md:text-left">
+                    <a href="#home" class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                        <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly IO logo" class="h-8" loading="lazy" decoding="async">
                         <span class="text-xl font-bold text-slate-900 dark:text-white">Cyberfly IO</span>
                     </a>
                     <p class="text-sm text-slate-500">&copy; 2024 Cyberfly IO. All Rights Reserved.</p>
                 </div>
 
                 <div class="flex space-x-5 text-2xl text-slate-500">
-                    <a href="https://t.me/cyberflyio" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-telegram"></i></a>
-                    <a href="https://twitter.com/cyberfly_io" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-twitter-x"></i></a>
-                    <a href="https://github.com/cyberfly-io" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-github"></i></a>
-                     <a href="https://discord.gg/768d9Mjxyp" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-discord"></i></a>
-                    <a href="https://cyberfly-io.medium.com/" target="_blank" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="bi bi-medium"></i></a>
+                    <a aria-label="Telegram" href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-telegram"></i></a>
+                    <a aria-label="Twitter/X" href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-twitter-x"></i></a>
+                    <a aria-label="GitHub" href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-github"></i></a>
+                    <a aria-label="Discord" href="https://discord.gg/768d9Mjxyp" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-discord"></i></a>
+                    <a aria-label="Medium" href="https://cyberfly-io.medium.com/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"><i class="bi bi-medium"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to top -->
+    <div x-data="{ visible:false }" x-init="window.addEventListener('scroll', () => visible = window.scrollY > 600)" class="fixed bottom-6 right-6 z-50">
+        <a href="#home" x-show="visible" x-transition class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-600 text-white shadow-lg hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500">
+            <i class="bi bi-arrow-up" aria-hidden="true"></i>
+            <span class="sr-only">Back to top</span>
+        </a>
+    </div>
 </body>
 </html>
