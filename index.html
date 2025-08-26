@@ -14,24 +14,26 @@
     </script>
 
     <!-- SEO -->
-    <title>Cyberfly IO | Web 3.0 Scalable IoT Platform</title>
-    <meta name="description" content="Cyberfly IO is a modern, decentralized, and scalable IoT platform built on Web 3.0 technology powered by Kadena. Connect devices, automate, and transact securely.">
+    <title>Cyberfly IO — Web3 IoT • IPFS Storage • Crypto Wallet</title>
+    <meta name="description" content="Cyberfly IO — Web3 IoT platform combining secure device management, decentralized IPFS storage, and an integrated crypto wallet for tokenized device utilities.">
     <link rel="canonical" href="https://cyberfly.io/">
     <meta name="robots" content="index,follow">
-    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#efe6ff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#071025" media="(prefers-color-scheme: dark)">
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cyberfly.io/">
-    <meta property="og:title" content="Cyberfly IO - Modern IoT on Web 3.0">
-    <meta property="og:description" content="A modern, decentralized, and scalable IoT platform built on Web 3.0 technology.">
+    <meta property="og:title" content="Cyberfly IO — Web3 IoT • IPFS • Wallet">
+    <meta property="og:description" content="Secure device onboarding, decentralized IPFS persistence and an integrated crypto wallet to manage CFLY and native tokens.">
     <meta property="og:image" content="https://cyberfly.io/assets/images/website.png">
     <meta name="twitter:card" content="summary_large_image">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="icon" href="https://cyberfly.io/assets/images/newlogo.png">
+    <!-- lightweight IPFS runtime (UI helpers only) -->
+    <script src="https://unpkg.com/ipfs/dist/index.min.js" defer></script>
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -239,136 +241,120 @@
     </header>
 
     <main id="home" class="pt-20">
-        <!-- Enhanced Hero Section -->
-        <section class="relative overflow-hidden py-24 md:py-32 lg:py-40">
-            <!-- Animated Background -->
-            <div class="absolute inset-0 gradient-bg opacity-5"></div>
-            <div class="absolute inset-0">
-                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
-            </div>
-            
-            <div class="relative z-10 container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="text-center lg:text-left space-y-8">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm">
-                            <div class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></div>
-                            Web 3.0 IoT Platform
-                        </div>
-                        
-                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                            Decentralized IoT
-                            <span class="bg-gradient-to-r from-brand-600 via-purple-600 to-accent-600 bg-clip-text text-transparent block">
-                                Ecosystem
-                            </span>
-                        </h1>
-                        
-                        <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-                            Build the future of connected devices with our secure, scalable, and decentralized IoT platform powered by Kadena blockchain technology.
-                        </p>
-                        
-                        <!-- Social Links -->
-                        <div class="flex justify-center lg:justify-start items-center gap-4">
-                            <span class="text-sm text-slate-500 font-medium">Connect with us:</span>
-                            <div class="flex space-x-3">
-                                <a aria-label="Telegram" href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-telegram"></i></a>
-                                <a aria-label="Twitter/X" href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-twitter-x"></i></a>
-                                <a aria-label="GitHub" href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-github"></i></a>
-                                <a aria-label="Discord" href="https://discord.gg/768d9Mjxyp" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-discord"></i></a>
-                                <a aria-label="Medium" href="https://cyberfly-io.medium.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-medium"></i></a>
-                            </div>
-                        </div>
-                        
-                        <!-- CTA Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                            <a href="https://node.cyberfly.io/files?cid=bagaaiera7ggi35jy6tuckbxctbkjuozkcxd33kvfuoc2jc4hp5sxogyez73a" 
-                               class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold rounded-2xl hover:from-brand-700 hover:to-brand-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-                               target="_blank" rel="noopener noreferrer">
-                                <i class="bi bi-download group-hover:animate-bounce" aria-hidden="true"></i>
-                                <span>Download Wallet</span>
-                            </a>
-                            <a href="https://dev.cyberfly.io/" 
-                               class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
-                               target="_blank" rel="noopener noreferrer">
-                                <i class="bi bi-play-circle" aria-hidden="true"></i>
-                                <span>Try Testnet</span>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="relative">
-                        <div class="float">
-                            <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly platform illustration" class="w-full h-auto drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- HERO SECTION -->
+<section class="relative overflow-hidden py-10 md:py-12 lg:py-14 min-h-screen flex items-center">
+  <div class="absolute inset-0 gradient-bg opacity-15 pointer-events-none"></div>
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative z-10 container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center" style="zoom:0.95;">
+      <div class="text-center lg:text-left space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm shadow">
+          <div class="w-2 h-2 rounded-full animate-pulse" style="background:linear-gradient(90deg,#8b5cf6,#6d28d9)"></div>
+          Web3 IoT • IPFS Storage • Crypto Wallet
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+          The Web3 Platform for <span class="bg-gradient-to-r from-brand-600 via-purple-600 to-accent-600 bg-clip-text text-transparent">Connected Devices</span>
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          Onboard IoT devices, store data on IPFS, and manage tokens with a secure crypto wallet. All-in-one, decentralized, and developer-friendly.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+          <a href="https://node.cyberfly.io/files?cid=bagaaiera7ggi35jy6tuckbxctbkjuozkcxd33kvfuoc2jc4hp5sxogyez73a"
+             class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold rounded-2xl hover:from-brand-700 hover:to-brand-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+             target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-wallet2 group-hover:animate-bounce" aria-hidden="true"></i>
+            <span>Open Wallet</span>
+          </a>
+          <a href="#features"
+             class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+            <i class="bi bi-hdd-stack" aria-hidden="true"></i>
+            <span>Explore IPFS Storage</span>
+          </a>
+        </div>
+        <div class="flex justify-center lg:justify-start items-center gap-4 pt-2">
+          <span class="text-sm text-slate-500 font-medium">Connect:</span>
+          <a aria-label="Telegram" href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-telegram"></i></a>
+          <a aria-label="Twitter/X" href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-twitter-x"></i></a>
+          <a aria-label="GitHub" href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-github"></i></a>
+          <a aria-label="Discord" href="https://discord.gg/768d9Mjxyp" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-discord"></i></a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="float">
+          <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly platform illustration" class="w-full h-auto drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Enhanced Features Section -->
-        <section id="features" class="py-24 md:py-32 bg-slate-50/50 dark:bg-slate-900/30">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-4xl mx-auto mb-20">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm mb-6">
-                        Platform Features
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Everything You Need for <span class="text-brand-600">IoT Excellence</span></h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Comprehensive IoT solutions built on cutting-edge blockchain technology for the next generation of connected devices.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="bi bi-app-indicator text-2xl text-white" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Intuitive Dashboard</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Advanced, customizable interface for seamless device management and real-time monitoring.</p>
-                    </div>
-                    
-                    <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="bi bi-wallet2 text-2xl text-white" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Integrated Wallet</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Secure management of CFLY and KDA tokens with enterprise-grade security.</p>
-                    </div>
-                    
-                    <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="bi bi-cpu text-2xl text-white" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Device Integration</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Effortless onboarding for IoT devices with plug-and-play connectivity.</p>
-                    </div>
-                    
-                    <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="bi bi-sliders text-2xl text-white" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Smart Automation</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">AI-powered automation engine for intelligent device orchestration.</p>
-                    </div>
-                    
-                    <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="bi bi-alarm text-2xl text-white" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Intelligent Scheduling</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Advanced scheduling system for optimal device performance and efficiency.</p>
-                    </div>
-                    
-                    <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="bi bi-code-slash text-2xl text-white" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">MicroPython SDK</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Optimized firmware for seamless microcontroller integration.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- FEATURES SECTION -->
+<section id="features" class="py-24 md:py-32 bg-slate-50/50 dark:bg-slate-900/30">
+  <div class="container mx-auto px-6">
+    <div class="text-center max-w-4xl mx-auto mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm mb-6">
+        Why Cyberfly?
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Web3 IoT, IPFS Storage &amp; Crypto Utility</h2>
+      <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+        All the tools you need to build, automate, and scale decentralized device networks.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Crypto Wallet -->
+      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-purple-600 to-violet-700 rounded-2xl flex items-center justify-center mb-6">
+          <i class="bi bi-wallet2 text-2xl text-white" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Integrated Crypto Wallet</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Manage CFLY, KDA, and compatible tokens. Sign transactions and anchor device data on-chain.</p>
+      </div>
+      <!-- IPFS Storage -->
+      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+          <i class="bi bi-hdd-stack text-2xl text-white" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">IPFS &amp; Decentralized Storage</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Store firmware, device data, and analytics on IPFS/OrbitDB for tamper-resistant, distributed access.</p>
+      </div>
+      <!-- Device Management -->
+      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="bi bi-app-indicator text-2xl text-white" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Device Management</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Onboard, monitor, and update IoT devices with secure keys and OTA firmware.</p>
+      </div>
+      <!-- Automation -->
+      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="bi bi-sliders text-2xl text-white" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Smart Automation</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Automate device actions and data flows with AI-powered rules and triggers.</p>
+      </div>
+      <!-- Security -->
+      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="bi bi-shield-check text-2xl text-white" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">End-to-End Security</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Encryption, per-device keys, and on-chain proofs for trustless IoT.</p>
+      </div>
+      <!-- Developer SDKs -->
+      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="bi bi-code-slash text-2xl text-white" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Developer SDKs</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">MicroPython, Arduino, and REST/WebSocket APIs for rapid dApp and device integration.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
         <!-- Enhanced Capabilities Section -->
         <section id="capabilities" class="py-24 md:py-32">
@@ -569,53 +555,123 @@
 
         <!-- Enhanced Roadmap Section -->
         <section id="roadmap" class="py-24 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-4xl mx-auto mb-20">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm mb-6">
-                        Development Roadmap
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Building the <span class="text-brand-600">Future</span></h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Strategic milestones toward a fully decentralized, secure, and scalable IoT ecosystem.
-                    </p>
-                </div>
-                
-                <div class="relative max-w-5xl mx-auto">
-                    <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500 via-purple-500 to-emerald-500"></div>
-                    
-                    <div class="space-y-16">
-                        <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                            <div class="md:text-right md:pr-12">
-                                <div class="inline-block px-4 py-2 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-sm font-medium mb-4">Q3 2025</div>
-                                <h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white">Testnet Enhancement</h3>
-                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Advanced device SDKs, enhanced dashboard interfaces, and comprehensive reliability improvements.</p>
-                            </div>
-                            <div class="hidden md:block"></div>
-                            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900"></div>
-                        </div>
-                        
-                        <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                            <div class="hidden md:block"></div>
-                            <div class="md:pl-12">
-                                <div class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4">Q4 2025</div>
-                                <h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white">Mainnet Beta Launch</h3>
-                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">CFLY utility deployment, streamlined device registration, and implementation of burn/treasury economics.</p>
-                            </div>
-                            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900"></div>
-                        </div>
-                        
-                        <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                            <div class="md:text-right md:pr-12">
-                                <div class="inline-block px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium mb-4">2026</div>
-                                <h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white">Ecosystem Expansion</h3>
-                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Marketplace launch, strategic partnerships, and community-driven governance implementation.</p>
-                            </div>
-                            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div class="container mx-auto px-6">
+    <div class="text-center max-w-4xl mx-auto mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm mb-6">
+        Development Roadmap
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Cyberfly Project Roadmap</h2>
+      <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+        Track our progress as we build the future of decentralized IoT, storage, and crypto utility.
+      </p>
+    </div>
+    <div class="relative max-w-4xl mx-auto">
+      <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500 via-purple-500 to-emerald-500"></div>
+      <div class="space-y-16">
+        <!-- 1 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="md:text-right md:pr-12">
+            <div class="inline-block px-4 py-2 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Testnet IoT Platform</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="hidden md:block"></div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 2 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12">
+            <div class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">MicroPython Firmware for ESP32</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 3 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="md:text-right md:pr-12">
+            <div class="inline-block px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Python Device SDK</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="hidden md:block"></div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 4 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12">
+            <div class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium mb-4">…</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Sensor Library</h3>
+            <p class="text-slate-600 dark:text-slate-400">In Progress</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">…</div>
+        </div>
+        <!-- 5 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="md:text-right md:pr-12">
+            <div class="inline-block px-4 py-2 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Storage Node</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="hidden md:block"></div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 6 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12">
+            <div class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Incentivized Node</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 7 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="md:text-right md:pr-12">
+            <div class="inline-block px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">cyberfly.js Node Client</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="hidden md:block"></div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 8 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12">
+            <div class="inline-block px-4 py-2 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-sm font-medium mb-4">✓</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Mobile Crypto Wallet</h3>
+            <p class="text-slate-600 dark:text-slate-400">Done</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+        </div>
+        <!-- 9 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="md:text-right md:pr-12">
+            <div class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium mb-4">…</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Mobile App for IoT Platform</h3>
+            <p class="text-slate-600 dark:text-slate-400">In Progress</p>
+          </div>
+          <div class="hidden md:block"></div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">…</div>
+        </div>
+        <!-- 10 -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12">
+            <div class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium mb-4">…</div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Mainnet IoT Platform</h3>
+            <p class="text-slate-600 dark:text-slate-400">In Progress</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- Enhanced Footer -->
