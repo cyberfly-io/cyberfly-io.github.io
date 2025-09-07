@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') !== 'false' }" :class="{ 'dark': darkMode }">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kadena Balance Checker</title>
     <script src="https://cdn.jsdelivr.net/npm/pact-lang-api@4.1.1/pact-lang-api-global.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Prevent dark-mode flash -->
+    <script>
+        try {
+            const ls = localStorage.getItem('darkMode');
+            const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (ls !== 'false' || (ls === null && sys)) document.documentElement.classList.add('dark');
+        } catch(e) {}
+    </script>
     <style>
         * {
             margin: 0;
@@ -17,6 +27,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            transition: background 0.3s ease;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
 
         .container {
@@ -27,12 +42,46 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+        }
+
+        .dark .container {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .header {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             padding: 30px;
             text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.2rem;
             color: white;
         }
 
@@ -53,6 +102,10 @@
             border-bottom: 1px solid #e0e6ed;
         }
 
+        .dark .search-section {
+            border-bottom-color: #374151;
+        }
+
         .search-box {
             display: flex;
             gap: 15px;
@@ -68,6 +121,14 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             outline: none;
+            background: white;
+            color: #1e293b;
+        }
+
+        .dark .search-input {
+            border-color: #374151;
+            background: #1f2937;
+            color: #f9fafb;
         }
 
         .search-input:focus {
@@ -114,6 +175,10 @@
             margin: 0 auto 20px;
         }
 
+        .dark .spinner {
+            border-color: #374151;
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -137,6 +202,12 @@
             border-radius: 12px;
             text-align: center;
             border: 1px solid #e2e8f0;
+            transition: background 0.3s ease;
+        }
+
+        .dark .stat-card {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border-color: #4b5563;
         }
 
         .stat-value {
@@ -144,6 +215,11 @@
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .dark .stat-value {
+            color: #f9fafb;
         }
 
         .stat-label {
@@ -151,6 +227,11 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .dark .stat-label {
+            color: #9ca3af;
         }
 
         .assets-grid {
@@ -170,6 +251,12 @@
             overflow: hidden;
         }
 
+        .dark .asset-card {
+            background: #1f2937;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border-color: #374151;
+        }
+
         .asset-card::before {
             content: '';
             position: absolute;
@@ -185,6 +272,10 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
+        .dark .asset-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
         .asset-header {
             display: flex;
             justify-content: space-between;
@@ -196,6 +287,11 @@
             font-size: 1.2rem;
             color: #1e293b;
             margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .dark .asset-info h3 {
+            color: #f9fafb;
         }
 
         .asset-symbol {
@@ -205,6 +301,12 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark .asset-symbol {
+            background: #374151;
+            color: #d1d5db;
         }
 
         .total-balance {
@@ -212,12 +314,6 @@
             font-weight: 700;
             color: #059669;
             margin-bottom: 15px;
-        }
-
-        .chain-balances {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
         }
 
         .chain-balance {
@@ -228,16 +324,31 @@
             background: #f8fafc;
             border-radius: 8px;
             border-left: 3px solid #4facfe;
+            transition: background 0.3s ease;
+        }
+
+        .dark .chain-balance {
+            background: #374151;
         }
 
         .chain-id {
             font-weight: 600;
             color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .dark .chain-id {
+            color: #d1d5db;
         }
 
         .balance-amount {
             font-weight: 600;
             color: #1e293b;
+            transition: color 0.3s ease;
+        }
+
+        .dark .balance-amount {
+            color: #f9fafb;
         }
 
         .error {
@@ -245,6 +356,10 @@
             padding: 40px;
             color: #dc2626;
             display: none;
+        }
+
+        .dark .error {
+            color: #fca5a5;
         }
 
         .error-icon {
@@ -258,6 +373,10 @@
 
         .zero-balance .total-balance {
             color: #9ca3af;
+        }
+
+        .dark .zero-balance .total-balance {
+            color: #6b7280;
         }
 
         .price-info {
@@ -295,6 +414,10 @@
             font-style: italic;
         }
 
+        .dark .loading-prices {
+            color: #9ca3af;
+        }
+
         @media (max-width: 768px) {
             .search-box {
                 flex-direction: column;
@@ -313,8 +436,12 @@
 <body>
     <div class="container">
         <div class="header">
+            <button class="dark-mode-toggle" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" aria-label="Toggle dark mode">
+                <i class="bi bi-sun-fill" x-show="!darkMode" aria-hidden="true"></i>
+                <i class="bi bi-moon-fill" x-show="darkMode" aria-hidden="true"></i>
+            </button>
             <h1>Kadena Balance Checker</h1>
-            <p>Check your wallet balance across all chains with live Kaddex prices</p>
+            <p>Check your wallet balance across all chains with live dex prices</p>
         </div>
 
         <div class="search-section">
@@ -498,6 +625,12 @@
             }
 
             currentAccount = account;
+            
+            // Update URL with account parameter
+            const url = new URL(window.location);
+            url.searchParams.set('account', account);
+            window.history.pushState({}, '', url);
+            
             showLoading();
             hideError();
             hideResults();
