@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" :class="{ 'dark': darkMode }">
+<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') !== 'false' }" :class="{ 'dark': darkMode }">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +9,105 @@
         try {
             const ls = localStorage.getItem('darkMode');
             const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (ls === 'true' || (ls === null && sys)) document.documentElement.classList.add('dark');
+            if (ls !== 'false' || (ls === null && sys)) document.documentElement.classList.add('dark');
         } catch(e) {}
     </script>
 
-    <!-- SEO -->
-    <title>Cyberfly IO — Web3 IoT • IPFS Storage • Crypto Wallet</title>
-    <meta name="description" content="Cyberfly IO — Web3 IoT platform combining secure device management, decentralized IPFS storage, and an integrated crypto wallet for tokenized device utilities.">
+    <!-- Enhanced SEO -->
+    <title>Cyberfly IO — Web3 IoT Platform • IPFS Storage • Crypto Wallet</title>
+    <meta name="description" content="Cyberfly IO: Decentralized Web3 IoT platform with IPFS storage, crypto wallet, device management, and blockchain integration. Build secure IoT dApps with CFLY tokens on Kadena.">
+    <meta name="keywords" content="Web3 IoT, IPFS storage, crypto wallet, blockchain IoT, decentralized devices, CFLY token, Kadena blockchain, IoT platform, device management, Web3 dApps">
+    <meta name="author" content="Cyberfly IO">
+    <meta name="publisher" content="Cyberfly IO">
+    <meta name="language" content="en-US">
+    <meta name="geo.region" content="Global">
+    <meta name="geo.placename" content="Worldwide">
     <link rel="canonical" href="https://cyberfly.io/">
-    <meta name="robots" content="index,follow">
-    <meta name="theme-color" content="#efe6ff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#071025" media="(prefers-color-scheme: dark)">
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <meta name="bingbot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <meta name="theme-color" content="#f3e8ff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
 
-    <!-- Open Graph / Twitter -->
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Cyberfly IO">
+    <meta name="apple-mobile-web-app-title" content="Cyberfly IO">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//t.me">
+    <link rel="dns-prefetch" href="//twitter.com">
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//discord.gg">
+    <link rel="dns-prefetch" href="//cyberfly-io.medium.com">
+
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="https://cyberfly.io/">
+    <link rel="alternate" hreflang="x-default" href="https://cyberfly.io/">
+
+    <!-- Enhanced Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cyberfly IO">
     <meta property="og:url" content="https://cyberfly.io/">
-    <meta property="og:title" content="Cyberfly IO — Web3 IoT • IPFS • Wallet">
-    <meta property="og:description" content="Secure device onboarding, decentralized IPFS persistence and an integrated crypto wallet to manage CFLY and native tokens.">
+    <meta property="og:title" content="Cyberfly IO — Web3 IoT Platform • IPFS Storage • Crypto Wallet">
+    <meta property="og:description" content="Decentralized Web3 IoT platform with IPFS storage, crypto wallet, and blockchain integration. Build secure IoT dApps with CFLY tokens on Kadena blockchain.">
     <meta property="og:image" content="https://cyberfly.io/assets/images/website.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cyberfly IO - Web3 IoT Platform with IPFS Storage and Crypto Wallet">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cyberfly_io">
+    <meta name="twitter:creator" content="@cyberfly_io">
+    <meta name="twitter:title" content="Cyberfly IO — Web3 IoT Platform • IPFS Storage • Crypto Wallet">
+    <meta name="twitter:description" content="Decentralized Web3 IoT platform with IPFS storage, crypto wallet, and blockchain integration. Build secure IoT dApps with CFLY tokens.">
+    <meta name="twitter:image" content="https://cyberfly.io/assets/images/website.png">
+    <meta name="twitter:image:alt" content="Cyberfly IO - Web3 IoT Platform Dashboard">
+
+    <!-- LinkedIn -->
+    <meta property="linkedin:owner" content="cyberfly-io">
+
+    <!-- Telegram -->
+    <meta property="telegram:channel" content="@cyberflyio">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="icon" href="https://cyberfly.io/assets/images/newlogo.png">
+
+    <!-- Enhanced Favicon and Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="shortcut icon" href="https://cyberfly.io/assets/images/newlogo.png">
+    <meta name="msapplication-TileImage" content="https://cyberfly.io/assets/images/newlogo.png">
+    <meta name="msapplication-TileColor" content="#6366f1">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.json">
     <!-- lightweight IPFS runtime (UI helpers only) -->
     <script src="https://unpkg.com/ipfs/dist/index.min.js" defer></script>
 
     <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -46,67 +116,449 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        /* Use Inter font for more professional look */
+        /* Modern Inter font stack */
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
-
-        /* Professional scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background-color: transparent; }
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border-radius: 3px;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+            line-height: 1.6;
         }
-        ::-webkit-scrollbar-thumb:hover { 
+
+        /* Ultra-sleek scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Enhanced glassmorphism */
+        .glass {
+            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.72);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        /* Premium gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(-45deg,
+                #6366f1 0%, #8b5cf6 25%, #06b6d4 50%, #10b981 75%, #6366f1 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Sophisticated floating animation */
+        .float {
+            animation: floatElegant 8s ease-in-out infinite;
+        }
+
+        @keyframes floatElegant {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-8px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(-16px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-8px) rotate(-1deg);
+            }
+        }
+
+        /* Premium shadow system */
+        .shadow-premium {
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24),
+                0 20px 40px -12px rgba(99, 102, 241, 0.15);
+        }
+        .dark .shadow-premium {
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.3),
+                0 1px 2px rgba(0, 0, 0, 0.6),
+                0 20px 40px -12px rgba(99, 102, 241, 0.25);
+        }
+
+        .shadow-card {
+            box-shadow:
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        .dark .shadow-card {
+            box-shadow:
+                0 4px 6px -1px rgba(0, 0, 0, 0.3),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Smooth transitions */
+        * {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Enhanced button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Clean focus states */
+        .focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
         }
 
         /* Skip link */
         .skip-link {
-            position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            z-index: 9999;
         }
         .skip-link:focus {
-            position: static; width: auto; height: auto; padding: 0.5rem 1rem; background: #e5e7eb; border-radius: .5rem;
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Glassmorphism effect */
-        .glass {
-            backdrop-filter: blur(12px);
+        /* Advanced animations and micro-interactions */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Stagger animations */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 1s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        /* Stagger delays */
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+
+        /* Enhanced hover effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Glass morphism variations */
+        .glass-card {
+            backdrop-filter: blur(16px) saturate(180%);
             background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .dark .glass {
+        .dark .glass-card {
             background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.1);
         }
 
-        /* Animated gradient background */
-        .gradient-bg {
-            background: linear-gradient(-45deg, #6366f1, #8b5cf6, #06b6d4, #10b981);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+        /* Gradient borders */
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2px;
+            border-radius: 16px;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: white;
+            border-radius: inherit;
+        }
+        .dark .gradient-border::before {
+            background: #0f172a;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
+        /* Magnetic hover effect */
+        .magnetic {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .magnetic:hover {
+            transform: scale(1.05);
+        }
+
+        /* Text reveal animation */
+        .text-reveal {
+            overflow: hidden;
+        }
+        .text-reveal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: textReveal 2s infinite;
+        }
+
+        @keyframes textReveal {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+
+        /* Particle effect */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            animation: floatParticle 6s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero section specific enhancements */
+        .hero-section {
+            background: linear-gradient(135deg,
+                #f8fafc 0%,
+                #f1f5f9 25%,
+                #e2e8f0 50%,
+                #f8fafc 75%,
+                #ffffff 100%);
+        }
+        .dark .hero-section {
+            background: linear-gradient(135deg,
+                #0f172a 0%,
+                #1e293b 25%,
+                #334155 50%,
+                #1e293b 75%,
+                #0f172a 100%);
+        }
+
+        /* Enhanced gradient text for hero */
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: heroGradientShift 8s ease infinite;
+        }
+
+        @keyframes heroGradientShift {
+            0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
-        /* Floating animation */
-        .float {
-            animation: float 6s ease-in-out infinite;
+        /* Premium button hover effects */
+        .hero-btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow:
+                0 4px 14px 0 rgba(99, 102, 241, 0.39),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hero-btn-primary:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            box-shadow:
+                0 8px 25px rgba(99, 102, 241, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.02);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        /* Social icon enhancements */
+        .social-icon {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .social-icon {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .social-icon:hover {
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Professional shadow utilities */
-        .shadow-elegant {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        /* Floating orbs animation */
+        .floating-orb {
+            animation: floatingOrb 6s ease-in-out infinite;
         }
-        .dark .shadow-elegant {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+        @keyframes floatingOrb {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-10px) translateX(5px) scale(1.05);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-20px) translateX(0px) scale(1.1);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-10px) translateX(-5px) scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        /* Enhanced responsive design */
+        @media (max-width: 1024px) {
+            .hero-section {
+                padding: 6rem 0;
+                min-height: auto;
+            }
+            .hero-title {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+            .hero-subtitle {
+                font-size: 1.25rem;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
         }
     </style>
 
@@ -148,27 +600,175 @@
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-in-out',
                         'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'slide-in-left': 'slideInLeft 1s ease-out',
+                        'slide-in-right': 'slideInRight 1s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                        'gradient-shift': 'gradientShift 20s ease infinite',
+                        'gradient-text': 'gradientText 8s ease infinite',
+                        'float-elegant': 'floatElegant 8s ease-in-out infinite',
+                        'text-reveal': 'textReveal 2s infinite',
+                        'float-particle': 'floatParticle 6s infinite linear',
+                        'loading': 'loading 1.5s infinite'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideInLeft: {
+                            'from': { opacity: '0', transform: 'translateX(-50px)' },
+                            'to': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        slideInRight: {
+                            'from': { opacity: '0', transform: 'translateX(50px)' },
+                            'to': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        scaleIn: {
+                            'from': { opacity: '0', transform: 'scale(0.9)' },
+                            'to': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        gradientShift: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        },
+                        gradientText: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        },
+                        floatElegant: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '25%': { transform: 'translateY(-8px) rotate(1deg)' },
+                            '50%': { transform: 'translateY(-16px) rotate(0deg)' },
+                            '75%': { transform: 'translateY(-8px) rotate(-1deg)' }
+                        },
+                        textReveal: {
+                            '0%': { left: '-100%' },
+                            '50%': { left: '100%' },
+                            '100%': { left: '-100%' }
+                        },
+                        floatParticle: {
+                            '0%': { transform: 'translateY(100vh) rotate(0deg)', opacity: '0' },
+                            '10%': { opacity: '1' },
+                            '90%': { opacity: '1' },
+                            '100%': { transform: 'translateY(-100vh) rotate(360deg)', opacity: '0' }
+                        },
+                        loading: {
+                            '0%': { 'background-position': '-200% 0' },
+                            '100%': { 'background-position': '200% 0' }
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), 0 20px 40px -12px rgba(99, 102, 241, 0.15)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.05)'
                     }
                 }
             }
         }
     </script>
 
-    <!-- Structured Data -->
+    <!-- Enhanced Structured Data / JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Cyberfly IO",
+      "alternateName": "Cyberfly",
       "url": "https://cyberfly.io/",
-      "logo": "https://cyberfly.io/assets/images/newlogo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cyberfly.io/assets/images/newlogo.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Cyberfly IO is a decentralized Web3 IoT platform combining secure device management, IPFS storage, and an integrated crypto wallet for building IoT dApps.",
+      "foundingDate": "2023",
+      "keywords": ["Web3 IoT", "IPFS Storage", "Crypto Wallet", "Blockchain IoT", "CFLY Token", "Kadena", "Decentralized Devices"],
+      "industry": "Blockchain Technology",
+      "numberOfEmployees": "10-50",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Global"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "support@cyberfly.io",
+        "availableLanguage": "English"
+      },
       "sameAs": [
         "https://twitter.com/cyberfly_io",
         "https://t.me/cyberflyio",
         "https://github.com/cyberfly-io",
         "https://discord.gg/768d9Mjxyp",
-        "https://cyberfly-io.medium.com/"
-      ]
+        "https://cyberfly-io.medium.com/",
+        "https://docs.cyberfly.io/"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "name": "Web3 IoT Platform",
+        "description": "Decentralized IoT platform with IPFS storage and crypto wallet integration",
+        "category": "Software as a Service"
+      }
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Cyberfly IO",
+      "url": "https://cyberfly.io/",
+      "description": "Web3 IoT platform with IPFS storage, crypto wallet, and blockchain integration",
+      "inLanguage": "en-US",
+      "copyrightYear": "2024",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Cyberfly IO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cyberfly IO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cyberfly.io/assets/images/newlogo.png"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cyberfly.io/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Software Application Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cyberfly IoT Platform",
+      "description": "Web3 IoT platform for device management, IPFS storage, and crypto wallet integration",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free tier available"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Cyberfly IO"
+      }
     }
     </script>
 </head>
@@ -177,42 +777,50 @@
     <a href="#home" class="skip-link mx-6 my-2">Skip to content</a>
 
     <!-- Enhanced Professional Header -->
-    <header x-data="{ mobileMenuOpen: false }" class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/20 dark:border-slate-800/50">
+    <header x-data="{ mobileMenuOpen: false }" class="fixed top-0 left-0 right-0 z-50 glass shadow-premium">
         <nav class="container mx-auto px-6 py-4" aria-label="Primary">
             <div class="flex justify-between items-center">
                 <a href="#home" class="flex items-center gap-3 group">
                     <div class="relative">
-                        <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly IO logo" class="h-10 transition-transform group-hover:scale-105" loading="eager" decoding="async" fetchpriority="high">
+                        <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly IO logo" class="h-10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3" loading="eager" decoding="async" fetchpriority="high">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-500/20 to-accent-500/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                     </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-brand-600 to-brand-700 bg-clip-text text-transparent">Cyberfly IO</span>
+                    <span class="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">Cyberfly IO</span>
                 </a>
 
                 <ul id="primary-navigation" class="hidden lg:flex items-center space-x-1">
-                    <li><a href="#home" class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Home</a></li>
-                    <li><a href="#features" class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Features</a></li>
-                    <li><a href="#capabilities" class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Capabilities</a></li>
-                    <li><a href="#token" class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Token</a></li>
+                    <li><a href="#home" class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group">Home
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#features" class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group">Features
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#capabilities" class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group">Capabilities
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#token" class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group">Token
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a></li>
                     <li>
                         <a href="https://node.cyberfly.io/files?cid=bagaaiera7ggi35jy6tuckbxctbkjuozkcxd33kvfuoc2jc4hp5sxogyez73a"
-                           class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"
-                           target="_blank" rel="noopener noreferrer">Wallet</a>
+                           class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group"
+                           target="_blank" rel="noopener noreferrer">Wallet
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a>
                     </li>
-                    <li><a href="#roadmap" class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Roadmap</a></li>
+                    <li><a href="#roadmap" class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group">Roadmap
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a></li>
                     <li>
                         <a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer"
-                           class="px-4 py-2 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Docs</a>
+                           class="px-5 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:from-brand-50 hover:to-accent-50 dark:hover:from-brand-950/50 dark:hover:to-accent-950/50 hover:text-brand-600 dark:hover:text-brand-400 hover:shadow-card transition-all duration-300 relative group">Docs
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-accent-500 group-hover:w-full transition-all duration-300"></span></a>
                     </li>
                 </ul>
 
-                <div class="flex items-center gap-3">
-                    <button aria-label="Toggle dark mode" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-                        <i class="bi bi-sun-fill text-lg" x-show="!darkMode" aria-hidden="true"></i>
-                        <i class="bi bi-moon-fill text-lg" x-show="darkMode" aria-hidden="true"></i>
+                <div class="flex items-center gap-4">
+                    <button aria-label="Toggle dark mode" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-card transition-all duration-300 focus-ring group">
+                        <i class="bi bi-sun-fill text-lg text-amber-500 group-hover:scale-110 transition-transform" x-show="!darkMode" aria-hidden="true"></i>
+                        <i class="bi bi-moon-fill text-lg text-slate-400 group-hover:scale-110 transition-transform" x-show="darkMode" aria-hidden="true"></i>
                     </button>
 
                     <button
                         @click="mobileMenuOpen = !mobileMenuOpen"
-                        class="lg:hidden p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+                        class="lg:hidden p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-card transition-all duration-300 focus-ring"
                         :aria-expanded="mobileMenuOpen.toString()"
                         aria-controls="mobile-navigation"
                         aria-label="Toggle navigation">
@@ -223,7 +831,7 @@
             </div>
 
             <!-- Enhanced Mobile Menu -->
-            <div id="mobile-navigation" x-show="mobileMenuOpen" x-transition class="lg:hidden mt-6 p-4 bg-white/90 dark:bg-slate-900/90 rounded-2xl backdrop-blur-lg border border-white/20 dark:border-slate-800/50">
+            <div id="mobile-navigation" x-show="mobileMenuOpen" x-transition class="lg:hidden mt-6 p-6 bg-white/95 dark:bg-slate-900/95 rounded-2xl backdrop-blur-xl border border-white/20 dark:border-slate-800/50 shadow-premium">
                 <ul class="flex flex-col space-y-2">
                     <li><a href="#home" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 transition-all">Home</a></li>
                     <li><a href="#features" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-950/50 transition-all">Features</a></li>
@@ -242,49 +850,86 @@
 
     <main id="home" class="pt-20">
         <!-- HERO SECTION -->
-<section class="relative overflow-hidden py-10 md:py-12 lg:py-14 min-h-screen flex items-center">
-  <div class="absolute inset-0 gradient-bg opacity-15 pointer-events-none"></div>
+<section class="hero-section relative overflow-hidden py-24 md:py-32 lg:py-40 min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+  <!-- Background Elements -->
   <div class="absolute inset-0">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-brand-500/10 to-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-accent-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-transparent via-brand-500/3 to-transparent rounded-full blur-3xl animate-spin" style="animation-duration: 25s;"></div>
   </div>
-  <div class="relative z-10 container mx-auto px-6">
-    <div class="grid lg:grid-cols-2 gap-12 items-center" style="zoom:0.95;">
-      <div class="text-center lg:text-left space-y-6">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm shadow">
-          <div class="w-2 h-2 rounded-full animate-pulse" style="background:linear-gradient(90deg,#8b5cf6,#6d28d9)"></div>
-          Web3 IoT • IPFS Storage • Crypto Wallet
+
+  <div class="relative z-10 container mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <!-- Content Column -->
+      <div class="text-center lg:text-left space-y-10">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-3 px-6 py-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 rounded-full text-brand-700 dark:text-brand-300 font-semibold text-sm shadow-premium animate-fade-in-up">
+          <div class="w-3 h-3 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 animate-pulse"></div>
+          <span class="tracking-wide">Web3 IoT • IPFS Storage • Crypto Wallet</span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-          The Web3 Platform for <span class="bg-gradient-to-r from-brand-600 via-purple-600 to-accent-600 bg-clip-text text-transparent">Connected Devices</span>
+
+        <!-- Main Heading -->
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight animate-fade-in-up animate-delay-200">
+          The Web3 Platform for
+          <span class="hero-gradient-text block mt-3 animate-fade-in-up animate-delay-300">Connected Devices</span>
         </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+
+        <!-- Description -->
+        <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light animate-fade-in-up animate-delay-400">
           Onboard IoT devices, store data on IPFS, and manage tokens with a secure crypto wallet. All-in-one, decentralized, and developer-friendly.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-6 pt-8 justify-center lg:justify-start animate-fade-in-up animate-delay-500">
           <a href="https://node.cyberfly.io/files?cid=bagaaiera7ggi35jy6tuckbxctbkjuozkcxd33kvfuoc2jc4hp5sxogyez73a"
-             class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold rounded-2xl hover:from-brand-700 hover:to-brand-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+             class="hero-btn-primary group inline-flex items-center justify-center gap-4 px-10 py-5 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 focus-ring animate-scale-in animate-delay-600"
              target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-wallet2 group-hover:animate-bounce" aria-hidden="true"></i>
-            <span>Open Wallet</span>
+            <i class="bi bi-wallet2 text-xl group-hover:animate-bounce" aria-hidden="true"></i>
+            <span class="text-lg">Open Wallet</span>
           </a>
           <a href="#features"
-             class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
-            <i class="bi bi-hdd-stack" aria-hidden="true"></i>
-            <span>Explore IPFS Storage</span>
+             class="group inline-flex items-center justify-center gap-4 px-10 py-5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl text-slate-900 dark:text-white font-bold rounded-2xl border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-premium transition-all duration-300 focus-ring animate-scale-in animate-delay-700">
+            <i class="bi bi-hdd-stack text-xl group-hover:rotate-12 transition-transform" aria-hidden="true"></i>
+            <span class="text-lg">Explore Features</span>
           </a>
         </div>
-        <div class="flex justify-center lg:justify-start items-center gap-4 pt-2">
-          <span class="text-sm text-slate-500 font-medium">Connect:</span>
-          <a aria-label="Telegram" href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-telegram"></i></a>
-          <a aria-label="Twitter/X" href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-twitter-x"></i></a>
-          <a aria-label="GitHub" href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-github"></i></a>
-          <a aria-label="Discord" href="https://discord.gg/768d9Mjxyp" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center hover:bg-brand-100 dark:hover:bg-brand-900/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"><i class="bi bi-discord"></i></a>
+
+        <!-- Social Links -->
+        <div class="flex justify-center lg:justify-start items-center gap-6 pt-8 animate-fade-in-up animate-delay-800">
+          <span class="text-sm font-semibold text-slate-500 dark:text-slate-400 tracking-wide">Connect with us:</span>
+          <div class="flex gap-4">
+            <a aria-label="Telegram" href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer"
+               class="social-icon w-12 h-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-600 hover:text-white hover:shadow-premium transition-all duration-300 focus-ring group">
+              <i class="bi bi-telegram text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+            </a>
+            <a aria-label="Twitter/X" href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer"
+               class="social-icon w-12 h-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-gradient-to-br hover:from-slate-900 hover:to-slate-700 hover:text-white hover:shadow-premium transition-all duration-300 focus-ring group">
+              <i class="bi bi-twitter-x text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+            </a>
+            <a aria-label="GitHub" href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer"
+               class="social-icon w-12 h-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-gradient-to-br hover:from-slate-800 hover:to-slate-900 hover:text-white hover:shadow-premium transition-all duration-300 focus-ring group">
+              <i class="bi bi-github text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+            </a>
+            <a aria-label="Discord" href="https://discord.gg/768d9Mjxyp" target="_blank" rel="noopener noreferrer"
+               class="social-icon w-12 h-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-gradient-to-br hover:from-indigo-500 hover:to-purple-600 hover:text-white hover:shadow-premium transition-all duration-300 focus-ring group">
+              <i class="bi bi-discord text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="relative">
-        <div class="float">
-          <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly platform illustration" class="w-full h-auto drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high">
+
+      <!-- Image Column -->
+      <div class="relative animate-slide-in-right animate-delay-300">
+        <div class="relative">
+          <!-- Main illustration with enhanced effects -->
+          <div class="relative z-10 float">
+            <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly platform illustration" class="w-full h-auto drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high">
+          </div>
+
+          <!-- Floating elements for visual interest -->
+          <div class="absolute -top-8 -right-8 w-20 h-20 bg-gradient-to-br from-brand-500/20 to-purple-600/20 rounded-2xl blur-xl animate-float-elegant"></div>
+          <div class="absolute -bottom-8 -left-8 w-16 h-16 bg-gradient-to-br from-accent-500/20 to-cyan-500/20 rounded-2xl blur-xl animate-float-elegant" style="animation-delay: 3s;"></div>
+          <div class="absolute top-1/2 -right-4 w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl animate-float-elegant" style="animation-delay: 6s;"></div>
         </div>
       </div>
     </div>
@@ -292,41 +937,57 @@
 </section>
 
         <!-- FEATURES SECTION -->
-<section id="features" class="py-24 md:py-32 bg-slate-50/50 dark:bg-slate-900/30">
-  <div class="container mx-auto px-6">
-    <div class="text-center max-w-4xl mx-auto mb-20">
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-sm mb-6">
+<section id="features" class="py-32 md:py-40 bg-gradient-to-br from-slate-50/30 via-white to-slate-100/30 dark:from-slate-900/30 dark:via-slate-800/20 dark:to-slate-900/30 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-brand-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-accent-500/5 to-cyan-500/5 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative z-10 container mx-auto px-6">
+    <div class="text-center max-w-5xl mx-auto mb-24">
+      <div class="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-brand-50 to-accent-50 dark:from-brand-950/50 dark:to-accent-950/50 border border-brand-200/50 dark:border-brand-800/50 rounded-full text-brand-700 dark:text-brand-300 font-semibold text-sm mb-8 shadow-card">
+        <i class="bi bi-stars text-lg" aria-hidden="true"></i>
         Why Cyberfly?
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">Web3 IoT, IPFS Storage &amp; Crypto Utility</h2>
-      <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-        All the tools you need to build, automate, and scale decentralized device networks.
+      <h2 class="text-5xl md:text-6xl font-black mb-8 leading-tight">
+        Web3 IoT, <span class="gradient-text">IPFS Storage</span> &amp; Crypto Utility
+      </h2>
+      <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed font-light max-w-4xl mx-auto">
+        All the tools you need to build, automate, and scale decentralized device networks with enterprise-grade security and performance.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
       <!-- Crypto Wallet -->
-      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-        <div class="w-14 h-14 bg-gradient-to-br from-purple-600 to-violet-700 rounded-2xl flex items-center justify-center mb-6">
-          <i class="bi bi-wallet2 text-2xl text-white" aria-hidden="true"></i>
+      <div class="group relative p-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl shadow-card hover:shadow-premium border border-slate-200/50 dark:border-slate-700/50 hover:border-brand-300/50 dark:hover:border-brand-600/50 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-purple-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+            <i class="bi bi-wallet2 text-3xl text-white" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Integrated Crypto Wallet</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">Manage CFLY, KDA, and compatible tokens. Sign transactions and anchor device data on-chain with military-grade security.</p>
         </div>
-        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Integrated Crypto Wallet</h3>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Manage CFLY, KDA, and compatible tokens. Sign transactions and anchor device data on-chain.</p>
       </div>
       <!-- IPFS Storage -->
-      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-          <i class="bi bi-hdd-stack text-2xl text-white" aria-hidden="true"></i>
+      <div class="group relative p-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl shadow-card hover:shadow-premium border border-slate-200/50 dark:border-slate-700/50 hover:border-accent-300/50 dark:hover:border-accent-600/50 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-cyan-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 shadow-lg">
+            <i class="bi bi-hdd-stack text-3xl text-white" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">IPFS &amp; Decentralized Storage</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">Store firmware, device data, and analytics on IPFS/OrbitDB for tamper-resistant, distributed access with global redundancy.</p>
         </div>
-        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">IPFS &amp; Decentralized Storage</h3>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Store firmware, device data, and analytics on IPFS/OrbitDB for tamper-resistant, distributed access.</p>
       </div>
       <!-- Device Management -->
-      <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
-        <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <i class="bi bi-app-indicator text-2xl text-white" aria-hidden="true"></i>
+      <div class="group relative p-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl shadow-card hover:shadow-premium border border-slate-200/50 dark:border-slate-700/50 hover:border-green-300/50 dark:hover:border-green-600/50 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg">
+            <i class="bi bi-app-indicator text-3xl text-white" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Device Management</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">Onboard, monitor, and update IoT devices with secure keys, OTA firmware updates, and real-time analytics dashboard.</p>
         </div>
-        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Device Management</h3>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Onboard, monitor, and update IoT devices with secure keys and OTA firmware.</p>
       </div>
       <!-- Automation -->
       <div class="group p-8 bg-white dark:bg-slate-800/50 rounded-3xl shadow-elegant hover:shadow-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all duration-300 hover:-translate-y-2">
