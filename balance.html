@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadena Balance Checker</title>
+    <script src="https://cdn.jsdelivr.net/npm/pact-lang-api@4.1.1/pact-lang-api-global.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            padding: 30px;
+            border-bottom: 1px solid #e0e6ed;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .search-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e0e6ed;
+            border-top: 4px solid #4facfe;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            padding: 30px;
+            display: none;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .asset-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .asset-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+
+        .asset-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .asset-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .asset-info h3 {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .asset-symbol {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .total-balance {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 15px;
+        }
+
+        .chain-balances {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chain-balance {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 3px solid #4facfe;
+        }
+
+        .chain-id {
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .balance-amount {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #dc2626;
+            display: none;
+        }
+
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .zero-balance {
+            opacity: 0.6;
+        }
+
+        .zero-balance .total-balance {
+            color: #9ca3af;
+        }
+
+        .price-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .token-price {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .kda-value {
+            color: #7c3aed;
+            font-weight: 600;
+        }
+
+        .price-loading {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        .price-error {
+            color: #dc2626;
+            font-size: 0.8rem;
+        }
+
+        .loading-prices {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .search-box {
+                flex-direction: column;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .assets-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kadena Balance Checker</h1>
+            <p>Check your wallet balance across all chains with live Kaddex prices</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="accountInput" 
+                    placeholder="Enter your Kadena account address..."
+                    autocomplete="off"
+                >
+                <button class="search-btn" id="searchBtn" onclick="checkBalance()">
+                    Check Balance
+                </button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Fetching your balance...</p>
+        </div>
+
+        <div class="error" id="error">
+            <div class="error-icon">⚠️</div>
+            <h3>Error fetching balance</h3>
+            <p id="errorMessage">Please check the account address and try again.</p>
+        </div>
+
+        <div class="results" id="results">
+            <div class="summary-stats" id="summaryStats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalKdaWorth">0.00</div>
+                    <div class="stat-label">Total KDA Worth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalAssets">0</div>
+                    <div class="stat-label">Total Assets</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalTransactions">0</div>
+                    <div class="stat-label">Transactions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeChains">0</div>
+                    <div class="stat-label">Active Chains</div>
+                </div>
+            </div>
+
+            <div class="assets-grid" id="assetsGrid">
+                <!-- Assets will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentAccount = '';
+        let tokenPrices = new Map();
+        let totalKdaWorth = 0;
+        
+        // GraphQL endpoint for Kadena
+        const KADENA_GRAPHQL_ENDPOINT = 'https://graph.kadena.network/graphql';
+        
+        // Add enter key support
+        document.getElementById('accountInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkBalance();
+            }
+        });
+
+        async function getTokenPriceFromKaddex(tokenId) {
+            try {
+                console.log(`🔍 Fetching price for token: ${tokenId}`);
+                
+                // Skip price lookup for KDA (base currency)
+                if (tokenId === 'coin') {
+                    return { kdaPrice: 1.0, source: 'base-currency' };
+                }
+
+                console.log(`Querying Kaddex pool for ${tokenId}/coin pair...`);
+
+                // GraphQL query to get pair info
+                const query = `
+                    query GetPairInfo {
+                        pactQuery(pactQuery: {
+                            chainId: "2", 
+                            code: "(kaddex.exchange.get-pair coin ${tokenId})"
+                        }) {
+                            result
+                        }
+                    }
+                `;
+
+                const response = await fetch(KADENA_GRAPHQL_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GraphQL request failed: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(`GraphQL response for ${tokenId}:`, data);
+
+                if (data.data && data.data.pactQuery && data.data.pactQuery.length > 0) {
+                    const result = data.data.pactQuery[0].result;
+                    
+                    if (result && typeof result === 'string') {
+                        try {
+                            const pairData = JSON.parse(result);
+                            console.log('Parsed pair data:', pairData);
+                            
+                            if (pairData && pairData.leg0 && pairData.leg1) {
+                                // Handle reserve as either number or object with decimal property
+                                const leg0Reserve = typeof pairData.leg0.reserve === 'object' && pairData.leg0.reserve.decimal 
+                                    ? parseFloat(pairData.leg0.reserve.decimal) 
+                                    : parseFloat(pairData.leg0.reserve);
+                                const leg1Reserve = typeof pairData.leg1.reserve === 'object' && pairData.leg1.reserve.decimal 
+                                    ? parseFloat(pairData.leg1.reserve.decimal) 
+                                    : parseFloat(pairData.leg1.reserve);
+                                
+                                console.log(`Reserves - Leg0: ${leg0Reserve}, Leg1: ${leg1Reserve}`);
+                                
+                                // Simple price calculation: leg1_reserve / leg0_reserve
+                                const kdaPrice =  leg0Reserve/leg1Reserve
+                                
+                                if (kdaPrice > 0) {
+                                    console.log(`✅ Found price for ${tokenId}: ${kdaPrice} KDA`);
+                                    return { kdaPrice, source: 'kaddex-pool', pairData };
+                                }
+                            }
+                        } catch (parseError) {
+                            console.error('Error parsing pair data:', parseError);
+                        }
+                    }
+                }
+
+                console.log(`⚠️ No price data found for ${tokenId} on Kaddex`);
+                return { kdaPrice: 0, source: 'unavailable' };
+                
+            } catch (error) {
+                console.error(`❌ Error fetching price for ${tokenId}:`, error);
+                return { kdaPrice: 0, source: 'error', error: error.message };
+            }
+        }
+
+        async function fetchAllTokenPrices(assets) {
+            console.log('💰 Fetching token prices from Kaddex...');
+            const pricePromises = assets.map(async (asset) => {
+                const price = await getTokenPriceFromKaddex(asset.assetId);
+                tokenPrices.set(asset.assetId, price);
+                return { assetId: asset.assetId, price };
+            });
+
+            await Promise.all(pricePromises);
+            console.log('✅ All token prices fetched');
+        }
+
+        function calculateKdaWorth(asset) {
+            const balance = parseFloat(asset.totalBalance) || 0;
+            const priceInfo = tokenPrices.get(asset.assetId);
+            
+            if (!priceInfo || priceInfo.kdaPrice === 0) {
+                return 0;
+            }
+            
+            return balance * priceInfo.kdaPrice;
+        }
+
+        async function checkBalance() {
+            const accountInput = document.getElementById('accountInput');
+            const account = accountInput.value.trim();
+            
+            if (!account) {
+                alert('Please enter an account address');
+                return;
+            }
+
+            currentAccount = account;
+            showLoading();
+            hideError();
+            hideResults();
+            
+            // Clear previous data
+            tokenPrices.clear();
+            totalKdaWorth = 0;
+
+            try {
+                const url = `https://node.cyberfly.io/api/balance/${encodeURIComponent(account)}`;
+                console.log('🚀 Testing API call to:', url);
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    mode: 'cors'
+                });
+                
+                console.log('✅ Balance request successful!');
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Server error ${response.status}: ${errorText}`);
+                }
+                
+                const data = await response.json();
+                console.log('✅ Balance data received');
+                
+                // Display results first
+                displayResults(data);
+                
+                // Then fetch prices in background
+                if (data.assets && data.assets.length > 0) {
+                    console.log('🔄 Starting price fetch process...');
+                    showPriceLoading();
+                    await fetchAllTokenPrices(data.assets);
+                    updateResultsWithPrices(data);
+                }
+                
+            } catch (error) {
+                console.error('❌ Request failed:', error);
+                
+                let errorMessage = '';
+                if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                    errorMessage = 'Network request failed - check CORS configuration and server status.';
+                } else {
+                    errorMessage = `Error: ${error.message}`;
+                }
+                
+                showError(errorMessage);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function displayResults(data) {
+            // Update summary stats
+            document.getElementById('totalAssets').textContent = data.totalAssets || 0;
+            document.getElementById('totalTransactions').textContent = data.totalTransactions || 0;
+            document.getElementById('totalKdaWorth').textContent = '0.00';
+            
+            // Calculate active chains
+            const activeChains = new Set();
+            if (data.assets) {
+                data.assets.forEach(asset => {
+                    asset.balances?.forEach(balance => {
+                        if (parseFloat(balance.balance) > 0) {
+                            activeChains.add(balance.chainId);
+                        }
+                    });
+                });
+            }
+            document.getElementById('activeChains').textContent = activeChains.size;
+
+            // Display assets
+            const assetsGrid = document.getElementById('assetsGrid');
+            assetsGrid.innerHTML = '';
+
+            if (!data.assets || data.assets.length === 0) {
+                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets found for this account.</p>';
+                showResults();
+                return;
+            }
+
+            data.assets.forEach(asset => {
+                const assetCard = createAssetCard(asset);
+                assetsGrid.appendChild(assetCard);
+            });
+
+            showResults();
+        }
+
+        function updateResultsWithPrices(data) {
+            console.log('🔄 Updating results with price data...');
+            
+            // Recalculate total KDA worth
+            totalKdaWorth = 0;
+            
+            data.assets?.forEach(asset => {
+                const kdaWorth = calculateKdaWorth(asset);
+                totalKdaWorth += kdaWorth;
+                console.log(`${asset.symbol}: ${asset.totalBalance} × ${tokenPrices.get(asset.assetId)?.kdaPrice || 0} = ${kdaWorth} KDA`);
+            });
+            
+            // Update total KDA worth display
+            document.getElementById('totalKdaWorth').textContent = formatBalance(totalKdaWorth);
+            
+            // Update individual asset cards with price info
+            const assetsGrid = document.getElementById('assetsGrid');
+            assetsGrid.innerHTML = '';
+            
+            data.assets.forEach(asset => {
+                const assetCard = createAssetCard(asset, true); // true = include price info
+                assetsGrid.appendChild(assetCard);
+            });
+            
+            console.log(`💰 Total portfolio value: ${totalKdaWorth} KDA`);
+        }
+
+        function showPriceLoading() {
+            const assetsGrid = document.getElementById('assetsGrid');
+            const existingLoading = document.querySelector('.loading-prices');
+            if (existingLoading) existingLoading.remove();
+            
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'loading-prices';
+            loadingDiv.innerHTML = '💰 Fetching token prices from Kaddex exchange via GraphQL...';
+            assetsGrid.appendChild(loadingDiv);
+        }
+
+        function createAssetCard(asset, includePrices = false) {
+            const card = document.createElement('div');
+            const hasBalance = parseFloat(asset.totalBalance) > 0;
+            card.className = `asset-card ${!hasBalance ? 'zero-balance' : ''}`;
+
+            const chainBalancesHtml = asset.balances?.map(balance => `
+                <div class="chain-balance">
+                    <span class="chain-id">Chain ${balance.chainId}</span>
+                    <span class="balance-amount">${formatBalance(balance.balance)}</span>
+                </div>
+            `).join('') || '';
+
+            let priceInfoHtml = '';
+            let kdaValueHtml = '';
+            
+            if (includePrices) {
+                const priceInfo = tokenPrices.get(asset.assetId);
+                const kdaWorth = calculateKdaWorth(asset);
+                
+                if (priceInfo) {
+                    if (priceInfo.source === 'base-currency') {
+                        priceInfoHtml = `
+                            <div class="price-info">
+                                <span>Base Currency (KDA)</span>
+                                <span class="token-price">1.00 KDA</span>
+                            </div>
+                        `;
+                    } else if (priceInfo.kdaPrice > 0) {
+                        priceInfoHtml = `
+                            <div class="price-info">
+                                <span>Price per token</span>
+                                <span class="token-price">${formatBalance(priceInfo.kdaPrice)} KDA</span>
+                            </div>
+                        `;
+                    } else {
+                        priceInfoHtml = `
+                            <div class="price-info">
+                                <span class="price-error">Price not available on Kaddex</span>
+                            </div>
+                        `;
+                    }
+                    
+                    if (kdaWorth > 0) {
+                        kdaValueHtml = `
+                            <div class="price-info">
+                                <span><strong>Total KDA Value</strong></span>
+                                <span class="kda-value">${formatBalance(kdaWorth)} KDA</span>
+                            </div>
+                        `;
+                    }
+                } else {
+                    priceInfoHtml = `
+                        <div class="price-info">
+                            <span class="price-loading">Loading price...</span>
+                        </div>
+                    `;
+                }
+            }
+
+            card.innerHTML = `
+                <div class="asset-header">
+                    <div class="asset-info">
+                        <h3>${asset.name}</h3>
+                        <div class="asset-symbol">${asset.symbol}</div>
+                    </div>
+                </div>
+                <div class="total-balance">${formatBalance(asset.totalBalance)}</div>
+                ${priceInfoHtml}
+                ${kdaValueHtml}
+                <div class="chain-balances">
+                    ${chainBalancesHtml}
+                </div>
+            `;
+
+            return card;
+        }
+
+        function formatBalance(balance) {
+            const num = parseFloat(balance);
+            if (num === 0) return '0';
+            if (num < 0.000001) return num.toExponential(2);
+            if (num < 1) return num.toFixed(6).replace(/\.?0+$/, '');
+            if (num < 1000) return num.toFixed(4).replace(/\.?0+$/, '');
+            return num.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('searchBtn').disabled = true;
+            document.getElementById('searchBtn').textContent = 'Loading...';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('searchBtn').disabled = false;
+            document.getElementById('searchBtn').textContent = 'Check Balance';
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('error').style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+
+        function showResults() {
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function hideResults() {
+            document.getElementById('results').style.display = 'none';
+        }
+
+        // Debug function to test GraphQL API
+        window.testGraphQLAPI = function() {
+            console.log('🧪 Testing GraphQL API connection...');
+            
+            const testQuery = `
+                query TestQuery {
+                    pactQuery(pactQuery: {
+                        chainId: "2", 
+                        code: "(kaddex.exchange.get-pair coin free.cyberfly_token)"
+                    }) {
+                        result
+                    }
+                }
+            `;
+
+            fetch(KADENA_GRAPHQL_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ query: testQuery })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ GraphQL test successful:', data);
+            })
+            .catch(error => {
+                console.error('❌ GraphQL test failed:', error);
+            });
+        };
+
+        // Function to get account from URL params or hash
+        function getAccountFromUrl() {
+            // Check URL hash first (e.g., #k:account)
+            if (window.location.hash) {
+                const hashAccount = window.location.hash.substring(1); // remove #
+                if (hashAccount && hashAccount.startsWith('k:')) {
+                    return hashAccount;
+                }
+            }
+            
+            // Check URL query parameters (e.g., ?account=k:account)
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramAccount = urlParams.get('account');
+            if (paramAccount && paramAccount.startsWith('k:')) {
+                return paramAccount;
+            }
+            
+            return null;
+        }
+
+        // Auto-load account and test GraphQL API on load
+        window.addEventListener('load', function() {
+            // Check for account in URL
+            const urlAccount = getAccountFromUrl();
+            if (urlAccount) {
+                console.log('🔗 Found account in URL:', urlAccount);
+                document.getElementById('accountInput').value = urlAccount;
+                // Auto-fetch balance after a short delay
+                setTimeout(() => {
+                    checkBalance();
+                }, 500);
+            }
+            
+            setTimeout(() => {
+                console.log('🔧 Auto-testing GraphQL API...');
+                console.log('GraphQL endpoint:', KADENA_GRAPHQL_ENDPOINT);
+            }, 1000);
+        });
+
+        // Listen for hash changes to support direct navigation
+        window.addEventListener('hashchange', function() {
+            const urlAccount = getAccountFromUrl();
+            if (urlAccount) {
+                console.log('🔗 Hash changed, found account:', urlAccount);
+                document.getElementById('accountInput').value = urlAccount;
+                checkBalance();
+            }
+        });
+    </script>
+</body>
+</html>
