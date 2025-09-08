@@ -191,15 +191,15 @@
 
         .summary-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
         .stat-card {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid #e2e8f0;
             transition: background 0.3s ease;
@@ -211,10 +211,10 @@
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             transition: color 0.3s ease;
         }
 
@@ -397,6 +397,11 @@
             font-weight: 600;
         }
 
+        .usd-value {
+            color: #059669;
+            font-weight: 600;
+        }
+
         .price-loading {
             color: #9ca3af;
             font-style: italic;
@@ -441,7 +446,7 @@
                 <i class="bi bi-moon-fill" x-show="darkMode" aria-hidden="true"></i>
             </button>
             <h1>Kadena Balance Checker</h1>
-            <p>Check your wallet balance across all chains with live dex prices</p>
+            <p>Check your wallet balance across all chains with live KDA and USD prices</p>
         </div>
 
         <div class="search-section">
@@ -477,6 +482,10 @@
                     <div class="stat-label">Total KDA Worth</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-value" id="totalUsdWorth">$0.00</div>
+                    <div class="stat-label">Total USD Worth</div>
+                </div>
+                <div class="stat-card">
                     <div class="stat-value" id="totalAssets">0</div>
                     <div class="stat-label">Total Assets</div>
                 </div>
@@ -500,6 +509,7 @@
         let currentAccount = '';
         let tokenPrices = new Map();
         let totalKdaWorth = 0;
+        let kdaUsdPrice = 0;
         
         // GraphQL endpoint for Kadena
         const KADENA_GRAPHQL_ENDPOINT = 'https://graph.kadena.network/graphql';
@@ -604,6 +614,64 @@
             console.log('✅ All token prices fetched');
         }
 
+        async function getKdaUsdPrice() {
+            try {
+                console.log('💵 Fetching KDA/USD price from DIA oracle...');
+                
+                const query = `
+                    query GetKdaUsdPrice {
+                        pactQuery(
+                            pactQuery: {chainId: "1", code: "(n_bfb76eab37bf8c84359d6552a1d96a309e030b71.dia-oracle.get-value \\"KDA/USD\\" )"}
+                        ) {
+                            result
+                        }
+                    }
+                `;
+
+                const response = await fetch(KADENA_GRAPHQL_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GraphQL request failed: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('KDA/USD response:', data);
+
+                if (data.data && data.data.pactQuery && data.data.pactQuery.length > 0) {
+                    const result = data.data.pactQuery[0].result;
+                    
+                    if (result && typeof result === 'string') {
+                        try {
+                            const priceData = JSON.parse(result);
+                            console.log('Parsed KDA/USD data:', priceData);
+                            
+                            if (priceData && priceData.value && priceData.value.decimal) {
+                                const usdPrice = parseFloat(priceData.value.decimal);
+                                console.log(`✅ KDA/USD price: $${usdPrice}`);
+                                return usdPrice;
+                            }
+                        } catch (parseError) {
+                            console.error('Error parsing KDA/USD data:', parseError);
+                        }
+                    }
+                }
+
+                console.log('⚠️ No KDA/USD price data found');
+                return 0;
+                
+            } catch (error) {
+                console.error('❌ Error fetching KDA/USD price:', error);
+                return 0;
+            }
+        }
+
         function calculateKdaWorth(asset) {
             const balance = parseFloat(asset.totalBalance) || 0;
             const priceInfo = tokenPrices.get(asset.assetId);
@@ -669,6 +737,10 @@
                     console.log('🔄 Starting price fetch process...');
                     showPriceLoading();
                     await fetchAllTokenPrices(data.assets);
+                    
+                    // Fetch KDA/USD price
+                    kdaUsdPrice = await getKdaUsdPrice();
+                    
                     updateResultsWithPrices(data);
                 }
                 
@@ -693,6 +765,7 @@
             document.getElementById('totalAssets').textContent = data.totalAssets || 0;
             document.getElementById('totalTransactions').textContent = data.totalTransactions || 0;
             document.getElementById('totalKdaWorth').textContent = '0.00';
+            document.getElementById('totalUsdWorth').textContent = '$0.00';
             
             // Calculate active chains
             const activeChains = new Set();
@@ -740,6 +813,10 @@
             // Update total KDA worth display
             document.getElementById('totalKdaWorth').textContent = formatBalance(totalKdaWorth);
             
+            // Calculate and display total USD worth
+            const totalUsdWorth = totalKdaWorth * kdaUsdPrice;
+            document.getElementById('totalUsdWorth').textContent = kdaUsdPrice > 0 ? `$${formatBalance(totalUsdWorth)}` : '$0.00';
+            
             // Update individual asset cards with price info
             const assetsGrid = document.getElementById('assetsGrid');
             assetsGrid.innerHTML = '';
@@ -749,7 +826,7 @@
                 assetsGrid.appendChild(assetCard);
             });
             
-            console.log(`💰 Total portfolio value: ${totalKdaWorth} KDA`);
+            console.log(`💰 Total portfolio value: ${totalKdaWorth} KDA ($${totalUsdWorth})`);
         }
 
         function showPriceLoading() {
@@ -759,7 +836,7 @@
             
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'loading-prices';
-            loadingDiv.innerHTML = '💰 Fetching token prices from Kaddex exchange via GraphQL...';
+            loadingDiv.innerHTML = '💰 Fetching token prices from Kaddex exchange and KDA/USD rate from DIA oracle...';
             assetsGrid.appendChild(loadingDiv);
         }
 
@@ -806,11 +883,18 @@
                     }
                     
                     if (kdaWorth > 0) {
+                        const usdWorth = kdaWorth * kdaUsdPrice;
                         kdaValueHtml = `
                             <div class="price-info">
                                 <span><strong>Total KDA Value</strong></span>
                                 <span class="kda-value">${formatBalance(kdaWorth)} KDA</span>
                             </div>
+                            ${kdaUsdPrice > 0 ? `
+                            <div class="price-info">
+                                <span><strong>Total USD Value</strong></span>
+                                <span class="usd-value">$${formatBalance(usdWorth)}</span>
+                            </div>
+                            ` : ''}
                         `;
                     }
                 } else {
