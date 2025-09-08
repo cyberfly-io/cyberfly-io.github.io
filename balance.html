@@ -423,6 +423,13 @@
             color: #9ca3af;
         }
 
+        /* Small, subtle sub-label for price timestamp */
+        #usdPriceAsOf {
+            margin-top: 4px;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
         @media (max-width: 768px) {
             .search-box {
                 flex-direction: column;
@@ -484,6 +491,7 @@
                 <div class="stat-card">
                     <div class="stat-value" id="totalUsdWorth">$0.00</div>
                     <div class="stat-label">Total USD Worth</div>
+                    <div class="stat-label" id="usdPriceAsOf"></div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="totalAssets">0</div>
@@ -614,7 +622,7 @@
             console.log('✅ All token prices fetched');
         }
 
-        async function getKdaUsdPrice() {
+    async function getKdaUsdPrice() {
             try {
                 console.log('💵 Fetching KDA/USD price from DIA oracle...');
                 
@@ -652,10 +660,38 @@
                             const priceData = JSON.parse(result);
                             console.log('Parsed KDA/USD data:', priceData);
                             
-                            if (priceData && priceData.value && priceData.value.decimal) {
-                                const usdPrice = parseFloat(priceData.value.decimal);
-                                console.log(`✅ KDA/USD price: $${usdPrice}`);
-                                return usdPrice;
+                            // Handle multiple possible DIA response shapes
+                            // Examples:
+                            // { value: 0.3713929895, timestamp: { time: "..." } }
+                            // { value: { decimal: "0.3713929895" }, timestamp: { time: "..." } }
+                            // { value: "0.3713929895" }
+                            let usdPrice = 0;
+                            let asOfIso = undefined;
+                            if (priceData && Object.prototype.hasOwnProperty.call(priceData, 'value')) {
+                                const v = priceData.value;
+                                if (typeof v === 'number') {
+                                    usdPrice = v;
+                                } else if (typeof v === 'string') {
+                                    const parsed = parseFloat(v);
+                                    if (!Number.isNaN(parsed)) usdPrice = parsed;
+                                } else if (v && typeof v === 'object') {
+                                    if (v.decimal !== undefined) {
+                                        const parsed = parseFloat(v.decimal);
+                                        if (!Number.isNaN(parsed)) usdPrice = parsed;
+                                    } else if (v.int !== undefined) {
+                                        const parsed = parseFloat(v.int);
+                                        if (!Number.isNaN(parsed)) usdPrice = parsed;
+                                    }
+                                }
+                                // capture timestamp if provided
+                                if (priceData.timestamp && priceData.timestamp.time) {
+                                    asOfIso = priceData.timestamp.time;
+                                }
+                            }
+
+                            if (Number.isFinite(usdPrice) && usdPrice > 0) {
+                                console.log(`✅ KDA/USD price: $${usdPrice}`, asOfIso ? `(as of ${asOfIso})` : '');
+                                return { price: usdPrice, asOf: asOfIso };
                             }
                         } catch (parseError) {
                             console.error('Error parsing KDA/USD data:', parseError);
@@ -664,11 +700,11 @@
                 }
 
                 console.log('⚠️ No KDA/USD price data found');
-                return 0;
+                return { price: 0 };
                 
             } catch (error) {
                 console.error('❌ Error fetching KDA/USD price:', error);
-                return 0;
+                return { price: 0 };
             }
         }
 
@@ -739,8 +775,17 @@
                     await fetchAllTokenPrices(data.assets);
                     
                     // Fetch KDA/USD price
-                    kdaUsdPrice = await getKdaUsdPrice();
-                    
+                    const usdInfo = await getKdaUsdPrice();
+                    kdaUsdPrice = usdInfo.price || 0;
+                    if (usdInfo.asOf) {
+                        try {
+                            const dt = new Date(usdInfo.asOf);
+                            // Format as local time string
+                            const pretty = dt.toLocaleString(undefined, { hour12: false });
+                            const el = document.getElementById('usdPriceAsOf');
+                            if (el) el.textContent = `As of ${pretty}`;
+                        } catch {}
+                    }
                     updateResultsWithPrices(data);
                 }
                 
