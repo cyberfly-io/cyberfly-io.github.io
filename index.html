@@ -114,6 +114,7 @@
     <!-- Tailwind & Alpine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Modern Inter font stack */
@@ -1214,6 +1215,128 @@
             </div>
         </section>
 
+        <!-- Enhanced Tokenomics Section -->
+        <section id="tokenomics" class="py-12 md:py-16 bg-gradient-to-br from-slate-50/30 via-white to-slate-100/30 dark:from-slate-900/30 dark:via-slate-800/20 dark:to-slate-900/30">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto mb-12">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-xs mb-4">
+                        Token Distribution
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">CFLY Tokenomics</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Transparent and sustainable token distribution designed for long-term value creation and community growth.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Pie Chart -->
+                    <div class="order-1 lg:order-1">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-brand-500/10 to-accent-500/10 rounded-3xl blur-3xl"></div>
+                            <div class="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-premium border border-slate-200/50 dark:border-slate-700/50">
+                                <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Token Distribution Details -->
+                    <div class="order-2 lg:order-2 space-y-4">
+                        <div class="space-y-4">
+                            <!-- Node Reward -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Node Reward</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">40% - Distributed to network participants</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-blue-600">40%</span>
+                            </div>
+
+                            <!-- Liquidity -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Liquidity</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">20% - DEX liquidity provision</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-green-600">20%</span>
+                            </div>
+
+                            <!-- Platform Development -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Platform Development</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">10% - Development & reserve fund</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-purple-600">10%</span>
+                            </div>
+
+                            <!-- Initial Burn -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-red-500 to-red-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Initial Burn</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">10% - Immediate token burn</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-red-600">10%</span>
+                            </div>
+
+                            <!-- Marketing & Partnership -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Marketing & Partnership</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">5% - Growth & partnerships</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-orange-600">5%</span>
+                            </div>
+
+                            <!-- Airdrop -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Airdrop</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">1% - Community distribution</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-cyan-600">1%</span>
+                            </div>
+
+                            <!-- Team -->
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-4 h-4 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white">Team</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">14% - Locked until 2026, vested 2 years</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-indigo-600">14%</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-gradient-to-r from-brand-50 to-accent-50 dark:from-brand-950/50 dark:to-accent-950/50 rounded-xl border border-brand-200/50 dark:border-brand-800/50">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">Total Supply</h4>
+                            <p class="text-2xl font-bold text-brand-600 dark:text-brand-400">100,000,000 CFLY</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Fixed supply with deflationary mechanisms</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Enhanced Roadmap Section -->
         <section id="roadmap" class="py-12 md:py-16">
   <div class="container mx-auto px-6">
@@ -1371,5 +1494,97 @@
             <span class="sr-only">Back to top</span>
         </a>
     </div>
+
+    <!-- Tokenomics Pie Chart Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+            
+            const data = {
+                labels: [
+                    'Node Reward (40%)',
+                    'Liquidity (20%)',
+                    'Platform Development & Reserve (10%)',
+                    'Initial Burn (10%)',
+                    'Team (14%)',
+                    'Marketing & Partnership (5%)',
+                    'Airdrop (1%)'
+                ],
+                datasets: [{
+                    data: [40, 20, 10, 10, 14, 5, 1],
+                    backgroundColor: [
+                        '#6366f1', // Node Reward - Indigo
+                        '#8b5cf6', // Liquidity - Purple
+                        '#06b6d4', // Platform Development - Cyan
+                        '#10b981', // Initial Burn - Emerald
+                        '#f59e0b', // Team - Amber
+                        '#ef4444', // Marketing - Red
+                        '#ec4899'  // Airdrop - Pink
+                    ],
+                    borderColor: [
+                        '#4f46e5',
+                        '#7c3aed',
+                        '#0891b2',
+                        '#059669',
+                        '#d97706',
+                        '#dc2626',
+                        '#db2777'
+                    ],
+                    borderWidth: 2,
+                    hoverBorderWidth: 3,
+                    hoverOffset: 8
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                font: {
+                                    size: 12,
+                                    family: 'Inter, sans-serif',
+                                    weight: '500'
+                                },
+                                color: '#64748b'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#f1f5f9',
+                            bodyColor: '#cbd5e1',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    return `${label}: ${value}%`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%',
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true,
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            };
+
+            new Chart(ctx, config);
+        });
+    </script>
 </body>
 </html>
