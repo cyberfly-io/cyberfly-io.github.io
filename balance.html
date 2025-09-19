@@ -430,6 +430,372 @@
             opacity: 0.8;
         }
 
+        /* Transactions Section Styles */
+        .transactions-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .dark .transactions-section {
+            border-top-color: #374151;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+
+        .dark .section-header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-color: #334155;
+        }
+
+        .section-header h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin: 0;
+            transition: color 0.3s ease;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .section-header h3 {
+            color: #f9fafb;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(79, 172, 254, 0.2);
+        }
+
+        .refresh-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .refresh-btn:hover::before {
+            left: 100%;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .transactions-loading, .transactions-error {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .transactions-error {
+            color: #dc2626;
+        }
+
+        .dark .transactions-error {
+            color: #fca5a5;
+        }
+
+        .transactions-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .transaction-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .dark .transaction-item {
+            background: #1f2937;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border-color: #374151;
+        }
+
+        .transaction-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .transaction-item:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .transaction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .transaction-type {
+            font-weight: 600;
+            color: #059669;
+            background: #dcfce7;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .dark .transaction-type {
+            color: #10b981;
+            background: #064e3b;
+        }
+
+        .transaction-type.error {
+            color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .dark .transaction-type.error {
+            color: #fca5a5;
+            background: #7f1d1d;
+        }
+
+        .transaction-details {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .dark .transaction-details {
+            color: #9ca3af;
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 10px;
+        }
+
+        .dark .transaction-amount {
+            color: #f9fafb;
+        }
+
+        .transaction-index {
+            font-size: 0.8rem;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .dark .transaction-index {
+            color: #9ca3af;
+            background: #374151;
+        }
+
+        .transaction-events {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .dark .transaction-events {
+            border-top-color: #374151;
+        }
+
+        .event-item {
+            font-size: 0.85rem;
+            color: #475569;
+            background: #f8fafc;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            border-left: 3px solid #4facfe;
+        }
+
+        .dark .event-item {
+            color: #cbd5e1;
+            background: #1f2937;
+        }
+
+        .swap-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .swap-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 50%, #4facfe 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .swap-item:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.15);
+            border-color: #4facfe;
+        }
+
+        .swap-item:hover::before {
+            opacity: 1;
+        }
+
+        .dark .swap-item {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-color: #334155;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark .swap-item:hover {
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.25);
+            border-color: #4facfe;
+        }
+
+        .swap-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .swap-icon {
+            font-size: 18px;
+            color: #4facfe;
+            flex-shrink: 0;
+            animation: pulse 2s infinite;
+        }
+
+        .swap-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .dark .swap-text {
+            color: #f1f5f9;
+        }
+
+        .swap-amount {
+            font-weight: 600;
+            color: #059669;
+        }
+
+        .dark .swap-amount {
+            color: #10b981;
+        }
+
+        .swap-token {
+            font-weight: 500;
+            color: #7c3aed;
+        }
+
+        .dark .swap-token {
+            color: #a78bfa;
+        }
+
+        .swap-arrow {
+            color: #6b7280;
+            margin: 0 8px;
+        }
+
+        .dark .swap-arrow {
+            color: #9ca3af;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .swap-item.fade-in {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toggle-btn {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+            color: #475569;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dark .toggle-btn {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border-color: #4b5563;
+            color: #d1d5db;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .toggle-btn:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
         @media (max-width: 768px) {
             .search-box {
                 flex-direction: column;
@@ -441,6 +807,34 @@
 
             .assets-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .swap-item {
+                padding: 14px 16px;
+                margin-bottom: 10px;
+            }
+
+            .swap-content {
+                gap: 10px;
+            }
+
+            .swap-icon {
+                font-size: 16px;
+            }
+
+            .swap-text {
+                font-size: 13px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+                padding: 16px;
+            }
+
+            .section-header h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -509,6 +903,33 @@
 
             <div class="assets-grid" id="assetsGrid">
                 <!-- Assets will be populated here -->
+            </div>
+
+            <!-- Toggle Transactions Button -->
+            <div class="toggle-section">
+                <button class="toggle-btn" onclick="toggleTransactions()">
+                    <span id="toggleText">Show Token Swap Transactions</span>
+                    <i class="bi bi-chevron-down" id="toggleIcon"></i>
+                </button>
+            </div>
+
+            <!-- Transactions Section -->
+            <div class="transactions-section" id="transactionsSection" style="display: none;">
+                <div class="section-header">
+                    <h3>Swap Transactions</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Token swap transactions involving this account</p>
+                    <button class="refresh-btn" onclick="fetchTransactions()">Refresh</button>
+                </div>
+                <div class="transactions-loading" id="transactionsLoading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Loading swap transactions...</p>
+                </div>
+                <div class="transactions-error" id="transactionsError" style="display: none;">
+                    <p>Error loading swap transactions</p>
+                </div>
+                <div class="transactions-list" id="transactionsList">
+                    <!-- Transactions will be populated here -->
+                </div>
             </div>
         </div>
     </div>
@@ -806,26 +1227,30 @@
         }
 
         function displayResults(data) {
+            // Filter assets with meaningful balances (> 0.0001)
+            const visibleAssets = data.assets?.filter(asset => {
+                const balance = parseFloat(asset.totalBalance) || 0;
+                return balance > 0.0001;
+            }) || [];
+
             // Update summary stats
-            document.getElementById('totalAssets').textContent = data.totalAssets || 0;
+            document.getElementById('totalAssets').textContent = visibleAssets.length;
             document.getElementById('totalTransactions').textContent = data.totalTransactions || 0;
             document.getElementById('totalKdaWorth').textContent = '0.00';
             document.getElementById('totalUsdWorth').textContent = '$0.00';
             
-            // Calculate active chains
+            // Calculate active chains from visible assets only
             const activeChains = new Set();
-            if (data.assets) {
-                data.assets.forEach(asset => {
-                    asset.balances?.forEach(balance => {
-                        if (parseFloat(balance.balance) > 0) {
-                            activeChains.add(balance.chainId);
-                        }
-                    });
+            visibleAssets.forEach(asset => {
+                asset.balances?.forEach(balance => {
+                    if (parseFloat(balance.balance) > 0) {
+                        activeChains.add(balance.chainId);
+                    }
                 });
-            }
+            });
             document.getElementById('activeChains').textContent = activeChains.size;
 
-            // Display assets
+            // Display assets (filter out very low balance assets)
             const assetsGrid = document.getElementById('assetsGrid');
             assetsGrid.innerHTML = '';
 
@@ -835,10 +1260,20 @@
                 return;
             }
 
-            data.assets.forEach(asset => {
-                const assetCard = createAssetCard(asset);
-                assetsGrid.appendChild(assetCard);
+            // Filter assets with meaningful balances (> 0.0001)
+            const filteredAssets = data.assets.filter(asset => {
+                const balance = parseFloat(asset.totalBalance) || 0;
+                return balance > 0.0001;
             });
+
+            if (filteredAssets.length === 0) {
+                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets with meaningful balances found.</p>';
+            } else {
+                filteredAssets.forEach(asset => {
+                    const assetCard = createAssetCard(asset);
+                    assetsGrid.appendChild(assetCard);
+                });
+            }
 
             showResults();
         }
@@ -862,14 +1297,24 @@
             const totalUsdWorth = totalKdaWorth * kdaUsdPrice;
             document.getElementById('totalUsdWorth').textContent = kdaUsdPrice > 0 ? `$${formatBalance(totalUsdWorth)}` : '$0.00';
             
-            // Update individual asset cards with price info
+            // Update individual asset cards with price info (filter out very low balance assets)
             const assetsGrid = document.getElementById('assetsGrid');
             assetsGrid.innerHTML = '';
             
-            data.assets.forEach(asset => {
-                const assetCard = createAssetCard(asset, true); // true = include price info
-                assetsGrid.appendChild(assetCard);
+            // Filter assets with meaningful balances (> 0.0001)
+            const pricedAssets = data.assets.filter(asset => {
+                const balance = parseFloat(asset.totalBalance) || 0;
+                return balance > 0.0001;
             });
+
+            if (pricedAssets.length === 0) {
+                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets with meaningful balances found.</p>';
+            } else {
+                pricedAssets.forEach(asset => {
+                    const assetCard = createAssetCard(asset, true); // true = include price info
+                    assetsGrid.appendChild(assetCard);
+                });
+            }
             
             console.log(`💰 Total portfolio value: ${totalKdaWorth} KDA ($${totalUsdWorth})`);
         }
@@ -1090,6 +1535,309 @@
                 checkBalance();
             }
         });
+
+        // Transactions functionality
+        let transactionsVisible = false;
+
+        function toggleTransactions() {
+            const section = document.getElementById('transactionsSection');
+            const toggleBtn = document.querySelector('.toggle-btn');
+            const toggleText = document.getElementById('toggleText');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            transactionsVisible = !transactionsVisible;
+
+            if (transactionsVisible) {
+                section.style.display = 'block';
+                toggleBtn.classList.add('expanded');
+                toggleText.textContent = 'Hide Token Swap Transactions';
+                fetchTransactions();
+            } else {
+                section.style.display = 'none';
+                toggleBtn.classList.remove('expanded');
+                toggleText.textContent = 'Show Token Swap Transactions';
+            }
+        }
+
+        async function fetchTransactions() {
+            if (!currentAccount) {
+                alert('Please check balance first to load transactions');
+                return;
+            }
+
+            showTransactionsLoading();
+            hideTransactionsError();
+
+            try {
+                console.log('📊 Fetching transactions for account:', currentAccount);
+
+                const query = `
+                    query GetTransactions {
+                        transactions(
+                            accountName: "${currentAccount}"
+                        ) {
+                            edges {
+                                node {
+                                    hash
+                                    result {
+                                        ... on TransactionResult {
+                                            badResult
+                                            goodResult
+                                            events {
+                                                edges {
+                                                    node {
+                                                        qualifiedName
+                                                        parameters
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                `;
+
+                const response = await fetch(KADENA_GRAPHQL_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GraphQL request failed: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('📊 Transactions response:', data);
+
+                // Check for GraphQL errors
+                if (data.errors) {
+                    console.error('GraphQL errors:', data.errors);
+                    throw new Error(`GraphQL error: ${data.errors[0].message}`);
+                }
+
+                // Check different possible response structures
+                if (data.data) {
+                    if (data.data.transactions && data.data.transactions.edges) {
+                        displayTransactions(data.data.transactions.edges);
+                    } else {
+                        console.log('Available data keys:', Object.keys(data.data));
+                        throw new Error('Transaction data not found in response. Available: ' + Object.keys(data.data).join(', '));
+                    }
+                } else {
+                    console.log('Response structure:', data);
+                    throw new Error('Invalid response format - no data field');
+                }
+
+            } catch (error) {
+                console.error('❌ Error fetching transactions:', error);
+                showTransactionsError('Failed to load transactions: ' + error.message);
+            } finally {
+                hideTransactionsLoading();
+            }
+        }
+
+        function displayTransactions(edges) {
+            const container = document.getElementById('transactionsList');
+            container.innerHTML = '';
+
+            if (!edges || edges.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px;">No transactions found for this account.</p>';
+                return;
+            }
+
+            edges.forEach((edge, index) => {
+                const transaction = createTransactionItem(edge.node, index);
+                if (transaction) {
+                    container.appendChild(transaction);
+                }
+            });
+
+            if (container.children.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">🔄</div>
+                        <h4 style="color: #64748b; margin-bottom: 8px; font-weight: 600;">No Swap Transactions Found</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">This account hasn't performed any token swap transactions yet.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function createTransactionItem(node, index) {
+            // Check if transaction contains swap events
+            let hasSwapEvents = false;
+            let swapText = '';
+
+            if (node.result.events && node.result.events.edges && node.result.events.edges.length > 0) {
+                node.result.events.edges.forEach(edge => {
+                    const eventName = edge.node.qualifiedName;
+                    if (eventName.includes('SWAP')) {
+                        hasSwapEvents = true;
+                        const params = JSON.parse(edge.node.parameters);
+
+                        if (params.length >= 6) {
+                            const amountIn = typeof params[2] === 'object' && params[2].decimal ? parseFloat(params[2].decimal) : parseFloat(params[2]);
+                            const tokenIn = params[3]?.refName?.name || 'coin';
+                            const amountOut = typeof params[4] === 'object' && params[4].decimal ? parseFloat(params[4].decimal) : parseFloat(params[4]);
+                            const tokenOut = params[5]?.refName?.name || 'Unknown';
+
+                            // Format amounts with commas
+                            const formattedAmountIn = amountIn.toLocaleString('en-US', { maximumFractionDigits: 2 });
+                            const formattedAmountOut = amountOut.toLocaleString('en-US', { maximumFractionDigits: 2 });
+
+                            swapText = `🔄 Swapped ${formattedAmountIn} ${tokenIn} for ${formattedAmountOut} ${tokenOut}`;
+                        }
+                    }
+                });
+            }
+
+            // Only show transactions with swap events
+            if (!hasSwapEvents || !swapText) {
+                return null;
+            }
+
+            const item = document.createElement('div');
+            item.className = 'swap-item fade-in';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'swap-content';
+
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'swap-icon';
+            iconDiv.textContent = '🔄';
+            contentDiv.appendChild(iconDiv);
+
+            const textDiv = document.createElement('div');
+            textDiv.className = 'swap-text';
+
+            // Parse the swap text to add styling
+            const parts = swapText.split(' ');
+            let formattedText = '';
+
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                if (i === 1) { // Amount in
+                    formattedText += `<span class="swap-amount">${part}</span> `;
+                } else if (i === 2) { // Token in
+                    formattedText += `<span class="swap-token">${part}</span> `;
+                } else if (i === 3) { // "for"
+                    formattedText += `<span class="swap-arrow">${part}</span> `;
+                } else if (i === 4) { // Amount out
+                    formattedText += `<span class="swap-amount">${part}</span> `;
+                } else if (i === 5) { // Token out
+                    formattedText += `<span class="swap-token">${part}</span>`;
+                } else {
+                    formattedText += part + ' ';
+                }
+            }
+
+            textDiv.innerHTML = formattedText;
+            contentDiv.appendChild(textDiv);
+            item.appendChild(contentDiv);
+
+            return item;
+        }
+
+        function createTransactionItem(node, index) {
+            // Check if transaction contains swap events
+            let hasSwapEvents = false;
+            let swapText = '';
+
+            if (node.result.events && node.result.events.edges && node.result.events.edges.length > 0) {
+                node.result.events.edges.forEach(edge => {
+                    const eventName = edge.node.qualifiedName;
+                    if (eventName.includes('SWAP')) {
+                        hasSwapEvents = true;
+                        const params = JSON.parse(edge.node.parameters);
+
+                        if (params.length >= 6) {
+                            const amountIn = typeof params[2] === 'object' && params[2].decimal ? parseFloat(params[2].decimal) : parseFloat(params[2]);
+                            const tokenIn = params[3]?.refName?.name || 'coin';
+                            const amountOut = typeof params[4] === 'object' && params[4].decimal ? parseFloat(params[4].decimal) : parseFloat(params[4]);
+                            const tokenOut = params[5]?.refName?.name || 'Unknown';
+
+                            // Format amounts with commas
+                            const formattedAmountIn = amountIn.toLocaleString('en-US', { maximumFractionDigits: 2 });
+                            const formattedAmountOut = amountOut.toLocaleString('en-US', { maximumFractionDigits: 2 });
+
+                            swapText = `🔄 Swapped ${formattedAmountIn} ${tokenIn} for ${formattedAmountOut} ${tokenOut}`;
+                        }
+                    }
+                });
+            }
+
+            // Only show transactions with swap events
+            if (!hasSwapEvents || !swapText) {
+                return null;
+            }
+
+            const item = document.createElement('div');
+            item.className = 'swap-item fade-in';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'swap-content';
+
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'swap-icon';
+            iconDiv.textContent = '🔄';
+            contentDiv.appendChild(iconDiv);
+
+            const textDiv = document.createElement('div');
+            textDiv.className = 'swap-text';
+
+            // Parse the swap text to add styling
+            const parts = swapText.split(' ');
+            let formattedText = '';
+
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                if (i === 1) { // Amount in
+                    formattedText += `<span class="swap-amount">${part}</span> `;
+                } else if (i === 2) { // Token in
+                    formattedText += `<span class="swap-token">${part}</span> `;
+                } else if (i === 3) { // "for"
+                    formattedText += `<span class="swap-arrow">${part}</span> `;
+                } else if (i === 4) { // Amount out
+                    formattedText += `<span class="swap-amount">${part}</span> `;
+                } else if (i === 5) { // Token out
+                    formattedText += `<span class="swap-token">${part}</span>`;
+                } else {
+                    formattedText += part + ' ';
+                }
+            }
+
+            textDiv.innerHTML = formattedText;
+            contentDiv.appendChild(textDiv);
+            item.appendChild(contentDiv);
+
+            return item;
+        }
+
+        function showTransactionsLoading() {
+            document.getElementById('transactionsLoading').style.display = 'block';
+            document.getElementById('transactionsList').style.display = 'none';
+        }
+
+        function hideTransactionsLoading() {
+            document.getElementById('transactionsLoading').style.display = 'none';
+            document.getElementById('transactionsList').style.display = 'block';
+        }
+
+        function showTransactionsError(message) {
+            const errorDiv = document.getElementById('transactionsError');
+            errorDiv.innerHTML = `<p>${message}</p>`;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideTransactionsError() {
+            document.getElementById('transactionsError').style.display = 'none';
+        }
     </script>
 </body>
 </html>
