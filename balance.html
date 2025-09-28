@@ -935,10 +935,11 @@
     </div>
 
     <script>
-        let currentAccount = '';
-        let tokenPrices = new Map();
-        let totalKdaWorth = 0;
-        let kdaUsdPrice = 0;
+    let currentAccount = '';
+    let tokenPrices = new Map();
+    let totalKdaWorth = 0;
+    let kdaUsdPrice = 0;
+    const MIN_VISIBLE_BALANCE = 1; // Hide assets below 1 KDA
         
         // GraphQL endpoint for Kadena
         const KADENA_GRAPHQL_ENDPOINT = 'https://graph.kadena.network/graphql';
@@ -1227,10 +1228,10 @@
         }
 
         function displayResults(data) {
-            // Filter assets with meaningful balances (> 0.0001)
+            // Filter assets with meaningful balances (≥ MIN_VISIBLE_BALANCE)
             const visibleAssets = data.assets?.filter(asset => {
                 const balance = parseFloat(asset.totalBalance) || 0;
-                return balance > 0.0001;
+                return balance >= MIN_VISIBLE_BALANCE;
             }) || [];
 
             // Update summary stats
@@ -1260,14 +1261,14 @@
                 return;
             }
 
-            // Filter assets with meaningful balances (> 0.0001)
+            // Filter assets with meaningful balances (≥ MIN_VISIBLE_BALANCE)
             const filteredAssets = data.assets.filter(asset => {
                 const balance = parseFloat(asset.totalBalance) || 0;
-                return balance > 0.0001;
+                return balance >= MIN_VISIBLE_BALANCE;
             });
 
             if (filteredAssets.length === 0) {
-                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets with meaningful balances found.</p>';
+                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets with balances of at least 1 KDA found.</p>';
             } else {
                 filteredAssets.forEach(asset => {
                     const assetCard = createAssetCard(asset);
@@ -1301,14 +1302,14 @@
             const assetsGrid = document.getElementById('assetsGrid');
             assetsGrid.innerHTML = '';
             
-            // Filter assets with meaningful balances (> 0.0001)
+            // Filter assets with meaningful balances (≥ MIN_VISIBLE_BALANCE)
             const pricedAssets = data.assets.filter(asset => {
                 const balance = parseFloat(asset.totalBalance) || 0;
-                return balance > 0.0001;
+                return balance >= MIN_VISIBLE_BALANCE;
             });
 
             if (pricedAssets.length === 0) {
-                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets with meaningful balances found.</p>';
+                assetsGrid.innerHTML = '<p style="text-align: center; color: #64748b;">No assets with balances of at least 1 KDA found.</p>';
             } else {
                 pricedAssets.forEach(asset => {
                     const assetCard = createAssetCard(asset, true); // true = include price info
@@ -1569,35 +1570,29 @@
             hideTransactionsError();
 
             try {
-                console.log('📊 Fetching transactions for account:', currentAccount);
+                                console.log('📊 Fetching transfers for account:', currentAccount);
 
-                const query = `
-                    query GetTransactions {
-                        transactions(
-                            accountName: "${currentAccount}"
-                        ) {
-                            edges {
-                                node {
-                                    hash
-                                    result {
-                                        ... on TransactionResult {
-                                            badResult
-                                            goodResult
-                                            events {
+                                const query = `
+                                        query GetTransfers {
+                                            transfers(
+                                                accountName: "${currentAccount}"
+                                                first: 100
+                                            ) {
                                                 edges {
                                                     node {
-                                                        qualifiedName
-                                                        parameters
+                                                        requestKey
+                                                        transaction {
+                                                            result {
+                                                                ... on TransactionResult {
+                                                                    goodResult
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                `;
+                                `;
 
                 const response = await fetch(KADENA_GRAPHQL_ENDPOINT, {
                     method: 'POST',
@@ -1613,7 +1608,7 @@
                 }
 
                 const data = await response.json();
-                console.log('📊 Transactions response:', data);
+                console.log('📊 Transfers response:', data);
 
                 // Check for GraphQL errors
                 if (data.errors) {
@@ -1623,11 +1618,11 @@
 
                 // Check different possible response structures
                 if (data.data) {
-                    if (data.data.transactions && data.data.transactions.edges) {
-                        displayTransactions(data.data.transactions.edges);
+                    if (data.data.transfers && data.data.transfers.edges) {
+                        displayTransactions(data.data.transfers.edges);
                     } else {
                         console.log('Available data keys:', Object.keys(data.data));
-                        throw new Error('Transaction data not found in response. Available: ' + Object.keys(data.data).join(', '));
+                        throw new Error('Transfers data not found in response. Available: ' + Object.keys(data.data).join(', '));
                     }
                 } else {
                     console.log('Response structure:', data);
@@ -1647,15 +1642,21 @@
             container.innerHTML = '';
 
             if (!edges || edges.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px;">No transactions found for this account.</p>';
+                container.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px;">No swap transactions found.</p>';
                 return;
             }
 
+            // Deduplicate by requestKey if present
+            const seen = new Set();
             edges.forEach((edge, index) => {
-                const transaction = createTransactionItem(edge.node, index);
-                if (transaction) {
-                    container.appendChild(transaction);
+                const rk = edge?.node?.requestKey;
+                if (rk) {
+                    if (seen.has(rk)) return;
+                    seen.add(rk);
                 }
+                const transferNode = edge.node;
+                const item = createTransferItem(transferNode, index);
+                if (item) container.appendChild(item);
             });
 
             if (container.children.length === 0) {
@@ -1669,38 +1670,45 @@
             }
         }
 
-        function createTransactionItem(node, index) {
-            // Check if transaction contains swap events
-            let hasSwapEvents = false;
-            let swapText = '';
-
-            if (node.result.events && node.result.events.edges && node.result.events.edges.length > 0) {
-                node.result.events.edges.forEach(edge => {
-                    const eventName = edge.node.qualifiedName;
-                    if (eventName.includes('SWAP')) {
-                        hasSwapEvents = true;
-                        const params = JSON.parse(edge.node.parameters);
-
-                        if (params.length >= 6) {
-                            const amountIn = typeof params[2] === 'object' && params[2].decimal ? parseFloat(params[2].decimal) : parseFloat(params[2]);
-                            const tokenIn = params[3]?.refName?.name || 'coin';
-                            const amountOut = typeof params[4] === 'object' && params[4].decimal ? parseFloat(params[4].decimal) : parseFloat(params[4]);
-                            const tokenOut = params[5]?.refName?.name || 'Unknown';
-
-                            // Format amounts with commas
-                            const formattedAmountIn = amountIn.toLocaleString('en-US', { maximumFractionDigits: 2 });
-                            const formattedAmountOut = amountOut.toLocaleString('en-US', { maximumFractionDigits: 2 });
-
-                            swapText = `🔄 Swapped ${formattedAmountIn} ${tokenIn} for ${formattedAmountOut} ${tokenOut}`;
-                        }
-                    }
-                });
-            }
-
-            // Only show transactions with swap events
-            if (!hasSwapEvents || !swapText) {
+        function createTransferItem(node, index) {
+            // Expect node.transaction.result.goodResult to be a JSON string of array
+            const gr = node?.transaction?.result?.goodResult;
+            if (!gr || typeof gr !== 'string') return null;
+            let arr;
+            try {
+                arr = JSON.parse(gr);
+            } catch {
                 return null;
             }
+            if (!Array.isArray(arr) || arr.length < 2) return null;
+            // Heuristic: treat first element as token given, second as token received (or vice-versa)
+            // We'll prefer swaps where one leg is 'coin' and the other is not.
+            let legA = arr[0];
+            let legB = arr[1];
+            if (!legA || !legB || legA.amount == null || legB.amount == null) return null;
+
+            // Normalize
+            const tokA = legA.token || 'Unknown';
+            const tokB = legB.token || 'Unknown';
+            const amtA = Number(legA.amount) || 0;
+            const amtB = Number(legB.amount) || 0;
+
+            if (amtA <= 0 || amtB <= 0) return null;
+
+            // Decide direction: If tokA is coin and tokB not coin => swapped amtA coin for amtB tokB
+            // Else if tokB is coin and tokA not coin => swapped amtB coin for amtA tokA
+            // Else default to A for B
+            let amountIn, tokenIn, amountOut, tokenOut;
+            if (tokA === 'coin' && tokB !== 'coin') {
+                amountIn = amtA; tokenIn = tokA; amountOut = amtB; tokenOut = tokB;
+            } else if (tokB === 'coin' && tokA !== 'coin') {
+                amountIn = amtB; tokenIn = tokB; amountOut = amtA; tokenOut = tokA;
+            } else {
+                amountIn = amtA; tokenIn = tokA; amountOut = amtB; tokenOut = tokB;
+            }
+
+            const formattedAmountIn = amountIn.toLocaleString('en-US', { maximumFractionDigits: 6 });
+            const formattedAmountOut = amountOut.toLocaleString('en-US', { maximumFractionDigits: 6 });
 
             const item = document.createElement('div');
             item.className = 'swap-item fade-in';
@@ -1716,108 +1724,32 @@
             const textDiv = document.createElement('div');
             textDiv.className = 'swap-text';
 
-            // Parse the swap text to add styling
-            const parts = swapText.split(' ');
-            let formattedText = '';
+            // Build styled line: Swapped X tokenIn for Y tokenOut
+            textDiv.innerHTML = `Swapped <span class="swap-amount">${formattedAmountIn}</span> <span class="swap-token">${tokenIn}</span> <span class="swap-arrow">for</span> <span class="swap-amount">${formattedAmountOut}</span> <span class="swap-token">${tokenOut}</span>`;
 
-            for (let i = 0; i < parts.length; i++) {
-                const part = parts[i];
-                if (i === 1) { // Amount in
-                    formattedText += `<span class="swap-amount">${part}</span> `;
-                } else if (i === 2) { // Token in
-                    formattedText += `<span class="swap-token">${part}</span> `;
-                } else if (i === 3) { // "for"
-                    formattedText += `<span class="swap-arrow">${part}</span> `;
-                } else if (i === 4) { // Amount out
-                    formattedText += `<span class="swap-amount">${part}</span> `;
-                } else if (i === 5) { // Token out
-                    formattedText += `<span class="swap-token">${part}</span>`;
-                } else {
-                    formattedText += part + ' ';
-                }
-            }
-
-            textDiv.innerHTML = formattedText;
             contentDiv.appendChild(textDiv);
-            item.appendChild(contentDiv);
 
+            // Explorer link
+            const rk = node?.requestKey;
+            if (rk && typeof rk === 'string') {
+                const link = document.createElement('a');
+                link.href = `https://kdaexplorer.com/tx-details/${rk}`;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = 'View';
+                link.style.marginLeft = 'auto';
+                link.style.fontSize = '12px';
+                link.style.fontWeight = '600';
+                link.style.color = '#4facfe';
+                link.style.textDecoration = 'none';
+                link.onmouseenter = () => link.style.textDecoration = 'underline';
+                link.onmouseleave = () => link.style.textDecoration = 'none';
+                contentDiv.appendChild(link);
+            }
+            item.appendChild(contentDiv);
             return item;
         }
 
-        function createTransactionItem(node, index) {
-            // Check if transaction contains swap events
-            let hasSwapEvents = false;
-            let swapText = '';
-
-            if (node.result.events && node.result.events.edges && node.result.events.edges.length > 0) {
-                node.result.events.edges.forEach(edge => {
-                    const eventName = edge.node.qualifiedName;
-                    if (eventName.includes('SWAP')) {
-                        hasSwapEvents = true;
-                        const params = JSON.parse(edge.node.parameters);
-
-                        if (params.length >= 6) {
-                            const amountIn = typeof params[2] === 'object' && params[2].decimal ? parseFloat(params[2].decimal) : parseFloat(params[2]);
-                            const tokenIn = params[3]?.refName?.name || 'coin';
-                            const amountOut = typeof params[4] === 'object' && params[4].decimal ? parseFloat(params[4].decimal) : parseFloat(params[4]);
-                            const tokenOut = params[5]?.refName?.name || 'Unknown';
-
-                            // Format amounts with commas
-                            const formattedAmountIn = amountIn.toLocaleString('en-US', { maximumFractionDigits: 2 });
-                            const formattedAmountOut = amountOut.toLocaleString('en-US', { maximumFractionDigits: 2 });
-
-                            swapText = `🔄 Swapped ${formattedAmountIn} ${tokenIn} for ${formattedAmountOut} ${tokenOut}`;
-                        }
-                    }
-                });
-            }
-
-            // Only show transactions with swap events
-            if (!hasSwapEvents || !swapText) {
-                return null;
-            }
-
-            const item = document.createElement('div');
-            item.className = 'swap-item fade-in';
-
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'swap-content';
-
-            const iconDiv = document.createElement('div');
-            iconDiv.className = 'swap-icon';
-            iconDiv.textContent = '🔄';
-            contentDiv.appendChild(iconDiv);
-
-            const textDiv = document.createElement('div');
-            textDiv.className = 'swap-text';
-
-            // Parse the swap text to add styling
-            const parts = swapText.split(' ');
-            let formattedText = '';
-
-            for (let i = 0; i < parts.length; i++) {
-                const part = parts[i];
-                if (i === 1) { // Amount in
-                    formattedText += `<span class="swap-amount">${part}</span> `;
-                } else if (i === 2) { // Token in
-                    formattedText += `<span class="swap-token">${part}</span> `;
-                } else if (i === 3) { // "for"
-                    formattedText += `<span class="swap-arrow">${part}</span> `;
-                } else if (i === 4) { // Amount out
-                    formattedText += `<span class="swap-amount">${part}</span> `;
-                } else if (i === 5) { // Token out
-                    formattedText += `<span class="swap-token">${part}</span>`;
-                } else {
-                    formattedText += part + ' ';
-                }
-            }
-
-            textDiv.innerHTML = formattedText;
-            contentDiv.appendChild(textDiv);
-            item.appendChild(contentDiv);
-
-            return item;
-        }
 
         function showTransactionsLoading() {
             document.getElementById('transactionsLoading').style.display = 'block';
