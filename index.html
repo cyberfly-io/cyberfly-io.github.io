@@ -362,6 +362,26 @@
             border: 1px solid rgba(148, 163, 184, 0.1);
         }
 
+        /* Roadmap mobile adjustments */
+        .roadmap-line {
+            display: none;
+        }
+        .roadmap-bullet {
+            display: none;
+        }
+        .roadmap-item {
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 0 25px 45px -20px rgba(15, 23, 42, 0.35);
+        }
+        .dark .roadmap-item {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(71, 85, 105, 0.6);
+            box-shadow: 0 25px 45px -20px rgba(15, 23, 42, 0.6);
+        }
+
         /* Gradient borders */
         .gradient-border {
             position: relative;
@@ -559,6 +579,22 @@
             }
             .hero-subtitle {
                 font-size: 1.125rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .roadmap-line {
+                display: block;
+            }
+            .roadmap-bullet {
+                display: flex;
+            }
+            .roadmap-item {
+                padding: 0;
+                border: none;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
             }
         }
     </style>
@@ -779,7 +815,7 @@
 
     <!-- Enhanced Professional Header -->
     <header x-data="{ mobileMenuOpen: false }" class="fixed top-0 left-0 right-0 z-50 glass shadow-premium">
-        <nav class="container mx-auto px-6 py-4" aria-label="Primary">
+        <nav class="container mx-auto px-4 sm:px-6 py-4" aria-label="Primary">
             <div class="flex justify-between items-center">
                 <a href="#home" class="flex items-center gap-3 group">
                     <div class="relative">
@@ -866,7 +902,7 @@
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-r from-transparent via-brand-500/3 to-transparent rounded-full blur-3xl animate-spin" style="animation-duration: 25s;"></div>
   </div>
 
-  <div class="relative z-10 container mx-auto px-6 lg:px-8">
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
             <!-- Content Column -->
             <div class="text-center lg:text-left max-w-2xl mx-auto lg:mx-0 space-y-8">
@@ -922,32 +958,32 @@
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start animate-fade-in-up animate-delay-500">
-                    <a href="https://node.cyberfly.io/files?cid=bagaaiera7ggi35jy6tuckbxctbkjuozkcxd33kvfuoc2jc4hp5sxogyez73a"
-                         class="hero-btn-primary group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-2xl transform hover:scale-105 transition-all duration-300 focus-ring"
+                <a href="https://node.cyberfly.io/files?cid=bagaaiera7ggi35jy6tuckbxctbkjuozkcxd33kvfuoc2jc4hp5sxogyez73a"
+                    class="hero-btn-primary group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-2xl transform hover:scale-105 transition-all duration-300 focus-ring w-full sm:w-auto"
                          target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-rocket-takeoff-fill text-lg group-hover:animate-bounce" aria-hidden="true"></i>
                         <span class="text-base">Launch Wallet</span>
                     </a>
-                    <a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer"
-                         class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl text-slate-900 dark:text-white font-semibold rounded-2xl border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-premium transition-all duration-300 focus-ring">
+                <a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer"
+                    class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl text-slate-900 dark:text-white font-semibold rounded-2xl border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-premium transition-all duration-300 focus-ring w-full sm:w-auto">
                         <i class="bi bi-journal-text text-lg group-hover:rotate-12 transition-transform" aria-hidden="true"></i>
                         <span class="text-base">Read the Docs</span>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 animate-fade-in-up animate-delay-600">
-                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 animate-fade-in-up animate-delay-600">
+                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                         <p class="text-3xl font-bold text-slate-900 dark:text-white">500+</p>
                         <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Devices orchestrated</p>
                     </div>
-                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                         <p class="text-3xl font-bold text-slate-900 dark:text-white">1.2M</p>
                         <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Packets secured daily</p>
                     </div>
-                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                         <p class="text-3xl font-bold text-slate-900 dark:text-white">24+</p>
                         <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Integrations &amp; SDKs</p>
                     </div>
-                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                                <div class="rounded-2xl p-4 bg-white/80 dark:bg-slate-900/50 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                         <p class="text-3xl font-bold text-slate-900 dark:text-white">6</p>
                         <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Continents supported</p>
                     </div>
@@ -965,7 +1001,7 @@
                     <div class="relative z-10 rounded-3xl bg-white/80 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/30 dark:border-slate-800/60 shadow-premium p-6">
                         <img src="https://cyberfly.io/assets/images/cbg2.svg" alt="Cyberfly platform illustration" class="w-full h-auto drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high">
                     </div>
-                    <div class="absolute -top-12 right-4 w-60 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl border border-white/30 dark:border-slate-800/70 rounded-2xl shadow-xl p-5 animate-float-elegant">
+                    <div class="absolute -top-12 right-4 w-60 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl border border-white/30 dark:border-slate-800/70 rounded-2xl shadow-xl p-5 animate-float-elegant hidden sm:block">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                                 <i class="bi bi-shield-check" aria-hidden="true"></i>
@@ -977,7 +1013,7 @@
                         </div>
                         <p class="mt-3 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Automated failover across incentivized storage nodes.</p>
                     </div>
-                    <div class="absolute -bottom-12 left-0 w-64">
+                    <div class="absolute -bottom-12 left-0 w-64 hidden sm:block">
                         <div class="bg-gradient-to-r from-brand-500/40 to-accent-500/40 rounded-3xl p-[1px]">
                             <div class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-white/20 dark:border-slate-800/70 rounded-3xl p-5 shadow-xl">
                                 <div class="flex items-center justify-between">
@@ -1020,7 +1056,7 @@
     <div class="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-brand-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-accent-500/5 to-cyan-500/5 rounded-full blur-3xl"></div>
   </div>
-  <div class="relative z-10 container mx-auto px-6">
+    <div class="relative z-10 container mx-auto px-4 sm:px-6">
         <div class="text-center max-w-4xl mx-auto mb-12 space-y-4">
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-50 to-accent-50 dark:from-brand-950/50 dark:to-accent-950/50 border border-brand-200/50 dark:border-brand-800/50 rounded-full text-brand-700 dark:text-brand-300 font-semibold text-xs shadow-card">
                 <i class="bi bi-stars text-base" aria-hidden="true"></i>
@@ -1134,7 +1170,7 @@
 
         <!-- Enhanced Capabilities Section -->
         <section id="capabilities" class="py-12 md:py-16">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="text-center max-w-4xl mx-auto mb-12 space-y-4">
                     <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-xs">
                         Platform Capabilities
@@ -1287,7 +1323,7 @@
 
         <!-- Enhanced Token Section -->
         <section id="token" class="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/30">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="order-2 lg:order-1 space-y-8">
                         <div class="space-y-4">
@@ -1302,20 +1338,20 @@
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                                 <p class="text-2xl font-bold text-slate-900 dark:text-white">100M</p>
                                 <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Total supply (fixed)</p>
                             </div>
-                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                                 <p class="text-2xl font-bold text-slate-900 dark:text-white">40%</p>
                                 <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Node incentives</p>
                             </div>
-                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                                 <p class="text-2xl font-bold text-slate-900 dark:text-white">20%</p>
                                 <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">DEX liquidity</p>
                             </div>
-                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+                            <div class="rounded-2xl p-4 bg-white/90 dark:bg-slate-900/60 border border-white/30 dark:border-slate-800/60 shadow-card text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
                                 <p class="text-2xl font-bold text-slate-900 dark:text-white">14%</p>
                                 <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Team (locked)</p>
                             </div>
@@ -1370,11 +1406,11 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                            <a href="#tokenomics" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-brand-500 to-accent-500 text-white font-semibold shadow-premium hover:shadow-xl transition-all duration-300 focus-ring">
+                            <a href="#tokenomics" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-brand-500 to-accent-500 text-white font-semibold shadow-premium hover:shadow-xl transition-all duration-300 focus-ring w-full sm:w-auto">
                                 View tokenomics
                                 <i class="bi bi-graph-up" aria-hidden="true"></i>
                             </a>
-                            <a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border-2 border-slate-200/60 dark:border-slate-700/60 text-slate-900 dark:text-white font-semibold hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-card transition-all duration-300 focus-ring">
+                            <a href="https://docs.cyberfly.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border-2 border-slate-200/60 dark:border-slate-700/60 text-slate-900 dark:text-white font-semibold hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-card transition-all duration-300 focus-ring w-full sm:w-auto">
                                 Read token paper
                                 <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
                             </a>
@@ -1393,7 +1429,7 @@
 
         <!-- Enhanced Tokenomics Section -->
         <section id="tokenomics" class="py-12 md:py-16 bg-gradient-to-br from-slate-50/30 via-white to-slate-100/30 dark:from-slate-900/30 dark:via-slate-800/20 dark:to-slate-900/30">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="text-center max-w-4xl mx-auto mb-12">
                     <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-xs mb-4">
                         Token Distribution
@@ -1515,7 +1551,7 @@
 
         <!-- Enhanced Roadmap Section -->
         <section id="roadmap" class="py-12 md:py-16">
-  <div class="container mx-auto px-6">
+    <div class="container mx-auto px-4 sm:px-6">
     <div class="text-center max-w-4xl mx-auto mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 rounded-full text-brand-700 dark:text-brand-300 font-medium text-xs mb-4">
         Development Roadmap
@@ -1526,107 +1562,107 @@
       </p>
     </div>
     <div class="relative max-w-4xl mx-auto">
-      <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500 via-purple-500 to-emerald-500"></div>
+    <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500 via-purple-500 to-emerald-500 roadmap-line"></div>
       <div class="space-y-8">
         <!-- 1 -->
-        <div class="relative grid md:grid-cols-2 gap-6 items-center">
+    <div class="relative grid md:grid-cols-2 gap-6 items-center roadmap-item">
           <div class="md:text-right md:pr-8">
             <div class="inline-block px-3 py-1 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium mb-3">✓</div>
             <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Testnet IoT Platform</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
           <div class="hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-3 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold text-xs">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-3 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold text-xs roadmap-bullet">✓</div>
         </div>
         <!-- 2 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="hidden md:block"></div>
           <div class="md:pl-12">
             <div class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4">✓</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">MicroPython Firmware for ESP32</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">✓</div>
         </div>
         <!-- 3 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="md:text-right md:pr-12">
             <div class="inline-block px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium mb-4">✓</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Python Device SDK</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
           <div class="hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">✓</div>
         </div>
         <!-- 4 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="hidden md:block"></div>
           <div class="md:pl-12">
             <div class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium mb-4">…</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Sensor Library</h3>
             <p class="text-slate-600 dark:text-slate-400">In Progress</p>
           </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">…</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">…</div>
         </div>
         <!-- 5 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="md:text-right md:pr-12">
             <div class="inline-block px-4 py-2 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-sm font-medium mb-4">✓</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Storage Node</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
           <div class="hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">✓</div>
         </div>
         <!-- 6 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="hidden md:block"></div>
           <div class="md:pl-12">
             <div class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4">✓</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Incentivized Node</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">✓</div>
         </div>
         <!-- 7 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="md:text-right md:pr-12">
             <div class="inline-block px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium mb-4">✓</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">cyberfly.js Node Client</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
           <div class="hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">✓</div>
         </div>
         <!-- 8 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="hidden md:block"></div>
           <div class="md:pl-12">
             <div class="inline-block px-4 py-2 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-sm font-medium mb-4">✓</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Mobile Crypto Wallet</h3>
             <p class="text-slate-600 dark:text-slate-400">Done</p>
           </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">✓</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-brand-500 to-brand-600 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">✓</div>
         </div>
         <!-- 9 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="md:text-right md:pr-12">
             <div class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium mb-4">…</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Mobile App for IoT Platform</h3>
             <p class="text-slate-600 dark:text-slate-400">In Progress</p>
           </div>
           <div class="hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">…</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">…</div>
         </div>
         <!-- 10 -->
-        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative grid md:grid-cols-2 gap-8 items-center roadmap-item">
           <div class="hidden md:block"></div>
           <div class="md:pl-12">
             <div class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium mb-4">…</div>
             <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Mainnet IoT Platform</h3>
             <p class="text-slate-600 dark:text-slate-400">In Progress</p>
           </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold">…</div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full shadow-lg border-4 border-white dark:border-slate-900 flex items-center justify-center text-white font-bold roadmap-bullet">…</div>
         </div>
       </div>
     </div>
@@ -1636,7 +1672,7 @@
 
     <!-- Enhanced Footer -->
     <footer class="bg-slate-900 dark:bg-slate-950 text-white">
-        <div class="container mx-auto px-6 py-8">
+    <div class="container mx-auto px-4 sm:px-6 py-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                     <a href="#home" class="flex items-center gap-2 mb-4">
