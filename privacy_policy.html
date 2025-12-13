@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') !== 'false' }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Prevent dark-mode flash -->
+    <script>
+        try {
+            const ls = localStorage.getItem('darkMode');
+            const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (ls !== 'false' || (ls === null && sys)) document.documentElement.classList.add('dark');
+        } catch(e) {}
+    </script>
+
+    <title>Privacy Policy — Cyberfly Node | Cyberfly IO</title>
+    <meta name="description" content="Privacy Policy for Cyberfly Node - A decentralized peer-to-peer mobile node application. Learn how we handle your information.">
+    <meta name="keywords" content="Cyberfly, privacy policy, P2P node, decentralized, mobile app, data privacy">
+    <meta name="author" content="Cyberfly IO">
+    <link rel="canonical" href="https://cyberfly.io/privacy_policy.html">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3e8ff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cyberfly IO">
+    <meta property="og:url" content="https://cyberfly.io/privacy_policy.html">
+    <meta property="og:title" content="Privacy Policy — Cyberfly Node">
+    <meta property="og:description" content="Privacy Policy for Cyberfly Node - A decentralized peer-to-peer mobile node application.">
+    <meta property="og:image" content="https://cyberfly.io/assets/images/website.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cyberfly_io">
+    <meta name="twitter:title" content="Privacy Policy — Cyberfly Node">
+    <meta name="twitter:description" content="Privacy Policy for Cyberfly Node - A decentralized peer-to-peer mobile node application.">
+
+    <link rel="icon" href="https://cyberfly.io/assets/images/newlogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cyberfly.io/assets/images/newlogo.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        :root {
+            --bg-light: #f8fafc;
+            --bg-dark: #0b1020;
+            --text-light: #1e293b;
+            --text-dark: #e2e8f0;
+            --card-light: #ffffff;
+            --card-dark: #1e293b;
+            --border-light: #e2e8f0;
+            --border-dark: #334155;
+            --accent: #8b5cf6;
+            --accent-hover: #7c3aed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.7;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dark .header {
+            border-bottom-color: var(--border-dark);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark-toggle {
+            background: var(--card-light);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        .dark .dark-toggle {
+            background: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+
+        .dark-toggle:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .policy-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .policy-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .policy-header .last-updated {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .dark .policy-header .last-updated {
+            color: #94a3b8;
+        }
+
+        .policy-content {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        .dark .policy-content {
+            background: var(--card-dark);
+            border-color: var(--border-dark);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            margin-top: 20px;
+            color: var(--text-light);
+        }
+
+        .dark h3 {
+            color: var(--text-dark);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #475569;
+        }
+
+        .dark p {
+            color: #94a3b8;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+
+        .dark li {
+            color: #94a3b8;
+        }
+
+        strong {
+            color: var(--text-light);
+        }
+
+        .dark strong {
+            color: var(--text-dark);
+        }
+
+        /* Permission Table */
+        .permission-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .permission-table th,
+        .permission-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dark .permission-table th,
+        .dark .permission-table td {
+            border-bottom-color: var(--border-dark);
+        }
+
+        .permission-table th {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            font-weight: 600;
+        }
+
+        .permission-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .permission-table tr:hover td {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .dark .permission-table tr:hover td {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Links */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .dark .highlight-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .dark .footer {
+            color: #94a3b8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        .dark .footer-links a {
+            color: #94a3b8;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Back to Home Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 32px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .policy-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .policy-content {
+                padding: 24px;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .permission-table {
+                font-size: 0.9rem;
+            }
+
+            .permission-table th,
+            .permission-table td {
+                padding: 10px 12px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <a href="/" class="logo">
+                <img src="https://cyberfly.io/assets/images/newlogo.png" alt="Cyberfly Logo">
+                <span class="logo-text">Cyberfly IO</span>
+            </a>
+            <button class="dark-toggle" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" aria-label="Toggle dark mode">
+                <span x-show="!darkMode">🌙</span>
+                <span x-show="darkMode">☀️</span>
+            </button>
+        </header>
+
+        <!-- Back Button -->
+        <a href="/" class="back-btn">
+            ← Back to Home
+        </a>
+
+        <!-- Policy Header -->
+        <div class="policy-header">
+            <h1>Privacy Policy for Cyberfly Node</h1>
+            <p class="last-updated"><strong>Last Updated:</strong> December 13, 2025</p>
+        </div>
+
+        <!-- Policy Content -->
+        <div class="policy-content">
+            <!-- Introduction -->
+            <div class="section">
+                <h2>Introduction</h2>
+                <p>Cyberfly Node ("we", "our", or "the app") is a decentralized peer-to-peer (P2P) mobile node application developed by Cyberfly.io. This Privacy Policy explains how we handle information when you use our application.</p>
+            </div>
+
+            <!-- Information We Collect -->
+            <div class="section">
+                <h2>Information We Collect</h2>
+                
+                <h3>Locally Stored Data</h3>
+                <p>The Cyberfly Node app stores the following information <strong>locally on your device only</strong>:</p>
+                <ol>
+                    <li><strong>Cryptographic Keys:</strong> Ed25519 key pairs generated for node identity and network authentication. These keys never leave your device.</li>
+                    <li><strong>Wallet Data:</strong> If you create or import a wallet, the mnemonic phrase and derived keys are stored encrypted on your device using secure storage.</li>
+                    <li><strong>Network Data:</strong> P2P discovery information, peer connection data, and sync metadata stored in a local embedded database (Sled).</li>
+                    <li><strong>Preferences:</strong> App settings and preferences stored locally.</li>
+                </ol>
+
+                <h3>Network Communications</h3>
+                <p>When operating as a P2P node:</p>
+                <ul>
+                    <li>Your device communicates directly with other peers in the Cyberfly network</li>
+                    <li>Your node's public key and network address are shared with connected peers</li>
+                    <li>Gossip protocol messages may include your node's public identifier</li>
+                    <li>Latency check data is published to the network for node health monitoring</li>
+                </ul>
+
+                <h3>Data We Do NOT Collect</h3>
+                <div class="highlight-box">
+                    <ul style="margin-bottom: 0;">
+                        <li>We do <strong>not</strong> collect personal information</li>
+                        <li>We do <strong>not</strong> track your location</li>
+                        <li>We do <strong>not</strong> access your contacts, camera, or microphone</li>
+                        <li>We do <strong>not</strong> send any data to centralized servers operated by us</li>
+                        <li>We do <strong>not</strong> use analytics or tracking services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- How We Use Information -->
+            <div class="section">
+                <h2>How We Use Information</h2>
+                <p>All data processing occurs locally on your device for the purpose of:</p>
+                <ul>
+                    <li>Operating a P2P network node</li>
+                    <li>Maintaining peer connections</li>
+                    <li>Synchronizing distributed data</li>
+                    <li>Managing your cryptocurrency wallet (if used)</li>
+                    <li>Running background services to keep your node online</li>
+                </ul>
+            </div>
+
+            <!-- Data Storage and Security -->
+            <div class="section">
+                <h2>Data Storage and Security</h2>
+                <ul>
+                    <li>All sensitive data (wallet keys, node identity) is encrypted using platform-secure storage</li>
+                    <li>The app uses Ed25519 cryptographic signatures for network authentication</li>
+                    <li>Data stored in the local Sled database is only accessible by the app</li>
+                </ul>
+            </div>
+
+            <!-- Third-Party Services -->
+            <div class="section">
+                <h2>Third-Party Services</h2>
+                <p>The app connects to:</p>
+                <ol>
+                    <li><strong>Iroh Relay Servers:</strong> For NAT traversal and peer discovery (operated by n0.computer)</li>
+                    <li><strong>Kadena Blockchain:</strong> For wallet transactions (public blockchain network)</li>
+                </ol>
+                <p>These services may have their own privacy policies.</p>
+            </div>
+
+            <!-- Permissions Used -->
+            <div class="section">
+                <h2>Permissions Used</h2>
+                <table class="permission-table">
+                    <thead>
+                        <tr>
+                            <th>Permission</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Internet</strong></td>
+                            <td>Required for P2P networking and blockchain access</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Network State</strong></td>
+                            <td>Check connectivity before network operations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foreground Service</strong></td>
+                            <td>Run the P2P node continuously in background</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wake Lock</strong></td>
+                            <td>Keep node active during data synchronization</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Boot Completed</strong></td>
+                            <td>Optionally restart node after device reboot</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Notifications</strong></td>
+                            <td>Display node status and connection information</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Data Retention -->
+            <div class="section">
+                <h2>Data Retention</h2>
+                <ul>
+                    <li>Data remains on your device until you uninstall the app or manually clear data</li>
+                    <li>Deleting the app removes all locally stored data</li>
+                    <li>Network-published data (like node discovery broadcasts) is transient and not permanently stored</li>
+                </ul>
+            </div>
+
+            <!-- Children's Privacy -->
+            <div class="section">
+                <h2>Children's Privacy</h2>
+                <p>This app is not intended for children under 13. We do not knowingly collect data from children.</p>
+            </div>
+
+            <!-- Your Rights -->
+            <div class="section">
+                <h2>Your Rights</h2>
+                <p>Since all data is stored locally on your device:</p>
+                <ul>
+                    <li>You have full control over your data</li>
+                    <li>You can delete all data by uninstalling the app</li>
+                    <li>You can export your wallet backup at any time</li>
+                    <li>No account or registration is required</li>
+                </ul>
+            </div>
+
+            <!-- Changes to This Policy -->
+            <div class="section">
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy. Changes will be posted with an updated "Last Updated" date.</p>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="section">
+                <h2>Contact Us</h2>
+                <p>For questions about this Privacy Policy:</p>
+                <ul>
+                    <li>GitHub: <a href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer">https://github.com/cyberfly-io</a></li>
+                    <li>Website: <a href="https://cyberfly.io" target="_blank" rel="noopener noreferrer">https://cyberfly.io</a></li>
+                </ul>
+            </div>
+
+            <!-- Open Source -->
+            <div class="section">
+                <h2>Open Source</h2>
+                <p>Cyberfly Node is open source. You can review the code at:</p>
+                <p><a href="https://github.com/cyberfly-io/cyberfly-node" target="_blank" rel="noopener noreferrer">https://github.com/cyberfly-io/cyberfly-node</a></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="https://github.com/cyberfly-io" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://t.me/cyberflyio" target="_blank" rel="noopener noreferrer">Telegram</a>
+                <a href="https://twitter.com/cyberfly_io" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </div>
+            <p>© 2025 Cyberfly IO. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
