@@ -1291,7 +1291,7 @@
   <div class="absolute inset-0">
     <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-brand-500/10 to-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
     <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-br from-accent-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-r from-transparent via-brand-500/3 to-transparent rounded-full blur-3xl animate-spin" style="animation-duration: 25s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[400px] sm:h-[400px] max-w-full bg-gradient-to-r from-transparent via-brand-500/3 to-transparent rounded-full blur-3xl animate-spin" style="animation-duration: 25s;"></div>
   </div>
 
     <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1837,8 +1837,10 @@
                     <div class="order-1 lg:order-1">
                         <div class="relative">
                             <div class="absolute inset-0 bg-gradient-to-r from-brand-500/10 to-accent-500/10 rounded-3xl blur-3xl"></div>
-                            <div class="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-premium border border-slate-200/50 dark:border-slate-700/50">
-                                <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+                            <div class="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-4 sm:p-8 shadow-premium border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
+                                <div class="relative w-full max-w-xs sm:max-w-md mx-auto aspect-square flex items-center justify-center">
+                                    <canvas id="tokenomicsChart" class="max-w-full h-auto"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>

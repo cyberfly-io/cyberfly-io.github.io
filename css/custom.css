@@ -300,3 +300,14 @@
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
+
+/* Mobile view fixes & global overflow prevention */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+canvas {
+  max-width: 100% !important;
+}
